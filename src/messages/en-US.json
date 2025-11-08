@@ -1,0 +1,13 @@
+{
+  "Home": {
+    "heading": "Welcome",
+    "tagline": "UtilityGenAI brings AI-powered tools and finance calculators together.",
+    "switch_link": "Switch to British English",
+    "current_locale": "You are viewing the US English experience.",
+    "tools_link": "Browse tools"
+  },
+  "Navigation": {
+    "tools": "View tools"
+  }
+}
+
