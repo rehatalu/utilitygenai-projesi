@@ -1,7 +1,9 @@
-import { redirect } from "next/navigation";
-import { defaultLocale } from "@/i18n/routing";
-
-export default function IndexPage() {
-  redirect(`/${defaultLocale}`);
+export default function Home() {
+  return (
+    <main>
+      <h1>Site Yayında!</h1>
+      <p>Dil desteği (i18n) kaldırıldı. Vercel testi başarılı.</p>
+    </main>
+  );
 }
 
