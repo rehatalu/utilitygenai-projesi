@@ -44,18 +44,18 @@ export default function EmailSubjectGenerator() {
   };
 
   return (
-    <div className="container mx-auto p-4 max-w-2xl">
-      <h1 className="text-3xl font-bold mb-4">
+    <div className="container mx-auto p-4 max-w-2xl text-gray-900">
+      <h1 className="text-3xl font-bold mb-4 text-gray-900">
         AI Email Subject Line Generator
       </h1>
-      <p className="mb-4">
+      <p className="mb-4 text-gray-800">
         Enter the topic or main idea of your email, 
         and we will generate compelling subject lines for you.
       </p>
       
       <form onSubmit={handleSubmit}>
         <textarea
-          className="w-full p-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
           rows={3}
           placeholder="e.g., Announcing our new product launch..."
           value={topic}
@@ -71,17 +71,17 @@ export default function EmailSubjectGenerator() {
       </form>
 
       {error && (
-        <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
+        <div className="mt-4 p-3 bg-red-100 text-red-700 rounded border border-red-300">
           <strong>Error:</strong> {error}
         </div>
       )}
 
       {results.length > 0 && (
         <div className="mt-6">
-          <h2 className="text-2xl font-semibold mb-3">Results:</h2>
-          <ul className="list-disc pl-5 space-y-2 bg-gray-50 p-4 rounded">
+          <h2 className="text-2xl font-semibold mb-3 text-gray-900">Results:</h2>
+          <ul className="list-disc pl-5 space-y-2 bg-white border border-gray-200 p-4 rounded shadow-sm text-gray-900">
             {results.map((result, index) => (
-              <li key={index}>{result}</li>
+              <li key={index} className="text-gray-900">{result}</li>
             ))}
           </ul>
         </div>
