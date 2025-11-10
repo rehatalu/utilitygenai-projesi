@@ -54,9 +54,11 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-blue-600 to-purple-600">
-        <div className="absolute inset-0 opacity-20">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
+        <div className="absolute inset-0">
+          <div className="h-full w-full bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-white/40 via-transparent to-transparent opacity-40" />
         </div>
+        <div className="absolute -top-24 right-0 h-[420px] w-[420px] rounded-full bg-indigo-400/30 blur-3xl" />
+        <div className="absolute -bottom-32 left-16 hidden h-[380px] w-[380px] rounded-full bg-purple-500/25 blur-3xl lg:block" />
         <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-24 text-white lg:flex-row lg:items-center lg:justify-between lg:gap-16">
           <div className="max-w-2xl">
             <span className="mb-3 inline-flex items-center rounded-full bg-white/15 px-4 py-1 text-sm font-medium backdrop-blur">
@@ -71,39 +73,68 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="#tools"
-                className="rounded-full bg-white px-6 py-3 text-base font-semibold text-indigo-600 shadow-lg shadow-indigo-500/30 transition hover:scale-105"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-6 py-3 text-base font-semibold text-indigo-600 shadow-lg shadow-indigo-500/30 transition hover:scale-[1.03]"
               >
-                Browse AI Tools
+                <span className="absolute inset-0 translate-y-[110%] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-80 transition duration-500 group-hover:translate-y-0" />
+                <span className="relative flex items-center gap-2 text-indigo-600 transition group-hover:text-white">
+                  <span>Browse AI Tools</span>
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold text-indigo-600 transition group-hover:bg-white/20 group-hover:text-white">
+                    →
+                  </span>
+                </span>
               </Link>
               <Link
                 href="#newsletter"
-                className="rounded-full border border-white/60 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
               >
                 Get updates
               </Link>
             </div>
           </div>
-          <div className="relative mx-auto max-w-md lg:mx-0">
-            <div className="rounded-3xl bg-white/10 p-6 shadow-2xl shadow-indigo-900/40 backdrop-blur">
-              <div className="rounded-2xl bg-white/90 p-6 text-slate-900 shadow-lg">
-                <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
-                  Featured Tool
-                </p>
-                <h2 className="mt-3 text-2xl font-bold text-slate-900">
-                  Email Subject Line Generator
-                </h2>
-                <p className="mt-2 text-sm text-slate-600">
-                  Turn any campaign idea into high-converting subject lines trained with proven copywriting frameworks.
-                </p>
-                <div className="mt-4 rounded-xl border border-dashed border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
-                  <span className="font-medium text-slate-700">Example:</span> Launching a new product? Get five ready-to-send subject lines in milliseconds.
+          <div className="relative mx-auto max-w-xl lg:mx-0">
+            <div className="relative">
+              <div className="absolute -top-12 -right-6 flex h-12 w-32 items-center justify-center rounded-full bg-white/20 text-sm font-medium text-white/80 backdrop-blur">
+                New tools weekly
+              </div>
+              <div className="animate-float-slow absolute -left-10 top-16 hidden rounded-2xl border border-white/40 bg-white/10 p-4 text-white/80 backdrop-blur md:block">
+                <p className="text-xs uppercase tracking-wide text-white/70">Live stats</p>
+                <p className="mt-1 text-lg font-semibold text-white">2,418 subject lines generated</p>
+              </div>
+              <div className="animate-float-slower absolute -bottom-6 right-0 hidden w-48 rounded-2xl border border-white/40 bg-white/10 p-4 text-white/80 backdrop-blur md:block">
+                <p className="text-xs uppercase tracking-wide text-white/70">Most used tool</p>
+                <p className="mt-2 text-sm font-medium text-white">AI Email Subject Line Generator</p>
+                <span className="mt-3 inline-flex items-center gap-2 text-xs text-white/60">
+                  ★ Rated 4.9/5
+                </span>
+              </div>
+              <div className="rounded-3xl bg-white/10 p-6 shadow-2xl shadow-indigo-900/40 backdrop-blur">
+                <div className="rounded-2xl bg-white p-6 text-slate-900 shadow-lg">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+                      Featured Tool
+                    </p>
+                    <span className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-600">
+                      <span className="h-2 w-2 rounded-full bg-indigo-500" />
+                      Live
+                    </span>
+                  </div>
+                  <h2 className="mt-3 text-2xl font-bold text-slate-900">
+                    Email Subject Line Generator
+                  </h2>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Turn any campaign idea into high-converting subject lines trained with proven copywriting frameworks.
+                  </p>
+                  <div className="mt-4 rounded-xl border border-dashed border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
+                    <span className="font-medium text-slate-700">Example:</span> Launching a new product? Get five ready-to-send subject lines in milliseconds.
+                  </div>
+                  <Link
+                    href="/tools/email-subject-generator"
+                    className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500"
+                  >
+                    Try it now
+                    <span className="text-lg leading-none">→</span>
+                  </Link>
                 </div>
-                <Link
-                  href="/tools/email-subject-generator"
-                  className="mt-6 inline-flex items-center justify-center rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500"
-                >
-                  Try it now
-                </Link>
               </div>
             </div>
           </div>
