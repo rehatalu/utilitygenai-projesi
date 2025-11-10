@@ -93,14 +93,14 @@ export default function Home() {
           </div>
           <div className="relative mx-auto max-w-xl lg:mx-0">
             <div className="relative">
-              <div className="absolute -top-12 -right-6 flex h-12 w-32 items-center justify-center rounded-full bg-white/20 text-sm font-medium text-white/80 backdrop-blur">
+              <div className="absolute -top-12 -right-6 z-20 flex h-12 w-32 items-center justify-center rounded-full bg-white/20 text-sm font-medium text-white/80 backdrop-blur">
                 New tools weekly
               </div>
-              <div className="animate-float-slow absolute -left-10 top-16 hidden rounded-2xl border border-white/40 bg-white/10 p-4 text-white/80 backdrop-blur md:block">
+              <div className="animate-float-slow absolute -left-10 top-16 z-10 hidden rounded-2xl border border-white/40 bg-white/10 p-4 text-white/80 backdrop-blur md:block">
                 <p className="text-xs uppercase tracking-wide text-white/70">Live stats</p>
                 <p className="mt-1 text-lg font-semibold text-white">2,418 subject lines generated</p>
               </div>
-              <div className="animate-float-slower absolute -bottom-6 right-0 hidden w-48 rounded-2xl border border-white/40 bg-white/10 p-4 text-white/80 backdrop-blur md:block">
+              <div className="animate-float-slower absolute -bottom-6 right-0 z-10 hidden w-48 rounded-2xl border border-white/40 bg-white/10 p-4 text-white/80 backdrop-blur md:block">
                 <p className="text-xs uppercase tracking-wide text-white/70">Most used tool</p>
                 <p className="mt-2 text-sm font-medium text-white">AI Email Subject Line Generator</p>
                 <span className="mt-3 inline-flex items-center gap-2 text-xs text-white/60">
