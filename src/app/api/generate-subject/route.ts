@@ -15,10 +15,13 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const topic = typeof body.topic === 'string' && body.topic.trim().length > 0 ? body.topic : 'a generic product launch';
+    const topic =
+      typeof body.topic === 'string' && body.topic.trim().length > 0
+        ? body.topic
+        : 'a generic product launch';
 
     const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-4o-mini',
       messages: [
         {
           role: 'system',
@@ -64,6 +67,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ subjects });
   } catch (error) {
     console.error('Email subject generation error:', error);
+    if (error instanceof Error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
     return NextResponse.json({ error: 'Failed to generate subjects' }, { status: 500 });
   }
 }

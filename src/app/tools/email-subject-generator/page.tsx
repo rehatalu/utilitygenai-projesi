@@ -23,11 +23,11 @@ export default function EmailSubjectGenerator() {
         body: JSON.stringify({ topic }),
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
       const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.error || `Request failed with status ${response.status}`);
+      }
 
       if (data.error) {
         throw new Error(data.error);
@@ -35,11 +35,9 @@ export default function EmailSubjectGenerator() {
 
       setResults(data.subjects);
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unknown error occurred.');
-      }
+      const message =
+        err instanceof Error ? err.message : 'An unknown error occurred.';
+      setError(message);
     }
 
     setIsLoading(false);
