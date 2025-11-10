@@ -6,21 +6,42 @@ export default function EmailSubjectGenerator() {
   const [topic, setTopic] = useState("");
   const [results, setResults] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
+    setResults([]);
 
-    // TODO: Buraya OpenAI API çağrısı gelecek
-    // Şimdilik sahte (fake) bir bekleme ve sonuç ekleyelim
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    const fakeResults = [
-      `Fake Result 1 (based on: ${topic})`,
-      `Fake Result 2 (related to: ${topic})`,
-      `Fake Result 3 (idea for: ${topic})`,
-    ];
-    setResults(fakeResults);
+    try {
+      const response = await fetch('/api/generate-subject', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ topic }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setResults(data.subjects);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unknown error occurred.');
+      }
+    }
+
     setIsLoading(false);
   };
 
@@ -50,6 +71,12 @@ export default function EmailSubjectGenerator() {
           {isLoading ? "Generating..." : "Generate"}
         </button>
       </form>
+
+      {error && (
+        <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
+          <strong>Error:</strong> {error}
+        </div>
+      )}
 
       {results.length > 0 && (
         <div className="mt-6">
