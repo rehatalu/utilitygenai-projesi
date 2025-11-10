@@ -1,14 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
+const apiKey = process.env.OPENAI_API_KEY;
+
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey,
 });
 
 export async function POST(req: NextRequest) {
+  if (!apiKey) {
+    console.error('Missing OPENAI_API_KEY environment variable.');
+    return NextResponse.json({ error: 'API configuration error.' }, { status: 500 });
+  }
+
   try {
     const body = await req.json();
-    const topic = body.topic || 'a generic product launch';
+    const topic = typeof body.topic === 'string' && body.topic.trim().length > 0 ? body.topic : 'a generic product launch';
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
@@ -16,31 +23,47 @@ export async function POST(req: NextRequest) {
         {
           role: 'system',
           content:
-            'You are an expert copywriter specializing in catchy email subject lines. Generate 5 subject lines. Respond ONLY with a JSON array of strings, like ["Subject 1", "Subject 2"].',
+            'You are an expert copywriter specializing in catchy email subject lines. Generate exactly 5 short subject lines. Respond with JSON in the format {"subjects":["Subject 1","Subject 2","Subject 3","Subject 4","Subject 5"]}. Do not include any additional text.',
         },
         {
           role: 'user',
           content: `The topic is: ${topic}`,
         },
       ],
-      response_format: { type: 'json_object' },
+      temperature: 0.7,
+      max_tokens: 256,
     });
 
-    const content = completion.choices[0]?.message?.content;
+    const content = completion.choices[0]?.message?.content ?? '';
 
-    let subjects: string[] = ['Failed to parse AI response.'];
-    if (content) {
-      try {
-        subjects = JSON.parse(content);
-      } catch (e) {
-        console.error('OpenAI JSON parse error:', e);
-        subjects = content.split('\n').filter((s) => s.length > 0);
+    let subjects: string[] = [];
+
+    try {
+      const parsed = JSON.parse(content);
+      if (Array.isArray(parsed)) {
+        subjects = parsed;
+      } else if (Array.isArray(parsed?.subjects)) {
+        subjects = parsed.subjects;
       }
+    } catch (jsonError) {
+      console.error('OpenAI JSON parse error:', jsonError);
+    }
+
+    if (!subjects.length) {
+      subjects = content
+        .split('\n')
+        .map((line) => line.trim().replace(/^\d+\.\s*/, ''))
+        .filter((line) => line.length > 0)
+        .slice(0, 5);
+    }
+
+    if (!subjects.length) {
+      subjects = ['We could not generate subject lines at this time.'];
     }
 
     return NextResponse.json({ subjects });
   } catch (error) {
-    console.error(error);
+    console.error('Email subject generation error:', error);
     return NextResponse.json({ error: 'Failed to generate subjects' }, { status: 500 });
   }
 }
