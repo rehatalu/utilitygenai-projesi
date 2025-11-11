@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+import Footer from "@/components/layout/Footer";
+import WelcomeHub from "@/components/tools/WelcomeHub";
 import EmailSubjectGenerator from "@/components/tools/EmailSubjectGenerator";
 
 const toolComponents = {
@@ -18,13 +20,13 @@ const availableTools = [
 type ToolId = keyof typeof toolComponents;
 
 export default function Workspace() {
-  const [activeToolId, setActiveToolId] = useState<ToolId>("email-generator");
+  const [activeToolId, setActiveToolId] = useState<ToolId | null>(null);
 
-  const ActiveToolComponent = toolComponents[activeToolId];
+  const ActiveToolComponent = activeToolId ? toolComponents[activeToolId] : null;
 
   return (
-    <div className="flex h-screen flex-col bg-slate-100 text-slate-900">
-      <header className="z-10 w-full bg-white shadow-md">
+    <div className="flex min-h-screen flex-col text-slate-900">
+      <header className="sticky top-0 z-10 w-full bg-white/90 shadow-md backdrop-blur-sm">
         <nav className="mx-auto flex max-w-4xl items-center justify-center gap-2 px-4 py-3">
           {availableTools.map((tool) => (
             <button
@@ -42,22 +44,24 @@ export default function Workspace() {
         </nav>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+      <main className="flex-1 w-full px-4 py-6 sm:px-6">
         <div className="mx-auto flex max-w-4xl justify-center">
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeToolId}
+              key={activeToolId ?? "welcome"}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
               className="w-full"
             >
-              {ActiveToolComponent && <ActiveToolComponent />}
+              {ActiveToolComponent ? <ActiveToolComponent /> : <WelcomeHub />}
             </motion.div>
           </AnimatePresence>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
