@@ -20,9 +20,19 @@ const EmailIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const DocumentDuplicateIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-4.5-4.5L18 10.5m-4.5-4.5V8.25A2.25 2.25 0 0 0 15.75 10.5H18M9 12h3m-3 3h3m-3 3h3"
+    />
+  </svg>
+);
+
 const availableTools = [
   { id: "email-generator", name: "Email Subject Generator", icon: EmailIcon },
-  // { id: "paraphraser", name: "Paraphraser", icon: ParaphraserIcon },
+  { id: "paraphraser", name: "Paraphraser Tool", icon: DocumentDuplicateIcon },
 ];
 
 type SidebarProps = {

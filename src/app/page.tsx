@@ -6,10 +6,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import Sidebar from "@/components/layout/Sidebar";
 import WelcomeHub from "@/components/tools/WelcomeHub";
 import EmailSubjectGenerator from "@/components/tools/EmailSubjectGenerator";
+import ParaphraserTool from "@/components/tools/ParaphraserTool";
 
 const toolComponents = {
   "email-generator": EmailSubjectGenerator,
-  // "paraphraser": ParaphraserTool, // Future tool
+  paraphraser: ParaphraserTool,
 };
 
 type ToolId = keyof typeof toolComponents;
