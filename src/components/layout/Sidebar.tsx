@@ -30,9 +30,20 @@ const DocumentDuplicateIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const HashtagIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M9.75 3.75 7.5 20.25M16.5 3.75 14.25 20.25M3.75 9.75h16.5M2.25 14.25h16.5"
+    />
+  </svg>
+);
+
 const availableTools = [
   { id: "email-generator", name: "Email Subject Generator", icon: EmailIcon },
   { id: "paraphraser", name: "Paraphraser Tool", icon: DocumentDuplicateIcon },
+  { id: "social-post", name: "Social Post Generator", icon: HashtagIcon },
 ];
 
 type SidebarProps = {

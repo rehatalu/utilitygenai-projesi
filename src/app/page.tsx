@@ -7,10 +7,12 @@ import Sidebar from "@/components/layout/Sidebar";
 import WelcomeHub from "@/components/tools/WelcomeHub";
 import EmailSubjectGenerator from "@/components/tools/EmailSubjectGenerator";
 import ParaphraserTool from "@/components/tools/ParaphraserTool";
+import SocialPostGenerator from "@/components/tools/SocialPostGenerator";
 
 const toolComponents = {
   "email-generator": EmailSubjectGenerator,
   paraphraser: ParaphraserTool,
+  "social-post": SocialPostGenerator,
 };
 
 type ToolId = keyof typeof toolComponents;
