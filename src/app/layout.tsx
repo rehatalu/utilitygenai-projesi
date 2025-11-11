@@ -17,7 +17,7 @@ const sora = Sora({
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="bg-slate-50 text-slate-900">
+    <html lang="en" className="bg-slate-100 text-slate-900">
       <body className={`${inter.variable} ${sora.variable} antialiased`}>
         {children}
       </body>

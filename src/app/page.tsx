@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Sidebar from "@/components/layout/Sidebar";
+import Footer from "@/components/layout/Footer";
 import WelcomeHub from "@/components/tools/WelcomeHub";
 import EmailSubjectGenerator from "@/components/tools/EmailSubjectGenerator";
 import ParaphraserTool from "@/components/tools/ParaphraserTool";
@@ -26,25 +27,29 @@ export default function Workspace() {
   const ActiveToolComponent = activeToolId ? toolComponents[activeToolId] : null;
 
   return (
-    <div className="flex h-screen w-full">
-      <Sidebar activeToolId={activeToolId} onToolSelect={handleToolSelect} />
+    <div className="flex min-h-screen flex-col">
+      <div className="flex flex-1">
+        <Sidebar activeToolId={activeToolId} onToolSelect={handleToolSelect} />
 
-      <main className="flex-1 overflow-y-auto px-4 py-8 sm:px-8">
-        <div className="mx-auto flex w-full max-w-4xl justify-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeToolId ?? "welcome"}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="w-full"
-            >
-              {ActiveToolComponent ? <ActiveToolComponent /> : <WelcomeHub />}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </main>
+        <main className="w-full flex-1 px-4 py-8 sm:px-8">
+          <div className="mx-auto flex w-full max-w-4xl justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeToolId ?? "welcome"}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className="w-full"
+              >
+                {ActiveToolComponent ? <ActiveToolComponent /> : <WelcomeHub />}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
     </div>
   );
 }

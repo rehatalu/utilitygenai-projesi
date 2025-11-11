@@ -89,11 +89,6 @@ export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
             )}
             {!isCollapsed && <span>Collapse menu</span>}
           </button>
-          {!isCollapsed && (
-            <p className="pt-2 text-center text-xs text-gray-500">
-              &copy; {new Date().getFullYear()} UtilityGenAI
-            </p>
-          )}
         </div>
       </div>
     </aside>
