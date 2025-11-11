@@ -2,14 +2,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-slate-200 bg-white">
+    <footer className="w-full border-t border-slate-700 bg-slate-900/50">
       <div className="mx-auto flex max-w-7xl items-center justify-between p-4 text-xs text-slate-500">
         <p>&copy; {currentYear} UtilityGenAI. All rights reserved.</p>
         <div className="flex gap-4">
-          <a href="#" className="hover:text-slate-800">
+          <a href="#" className="hover:text-slate-300">
             Privacy Policy
           </a>
-          <a href="#" className="hover:text-slate-800">
+          <a href="#" className="hover:text-slate-300">
             Terms of Service
           </a>
         </div>
