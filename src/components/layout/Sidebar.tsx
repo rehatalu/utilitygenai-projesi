@@ -32,13 +32,13 @@ export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
 
   return (
     <aside
-      className={`flex-shrink-0 border-r border-slate-200 bg-white shadow-lg transition-all duration-300 ${
+      className={`flex-shrink-0 bg-gray-900 shadow-lg transition-all duration-300 ${
         isCollapsed ? "w-20" : "w-64"
       }`}
     >
       <div className="flex h-full flex-col">
         <div
-          className={`border-b border-slate-200 p-4 ${
+          className={`border-b border-gray-700 p-4 ${
             isCollapsed ? "flex justify-center" : "flex items-center gap-2"
           }`}
         >
@@ -49,14 +49,12 @@ export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
             <span className="rounded-lg bg-indigo-600 p-2 text-white">
               <HomeIcon className="h-5 w-5" />
             </span>
-            {!isCollapsed && <span className="text-lg font-semibold text-slate-800">UtilityGenAI</span>}
+            {!isCollapsed && <span className="text-lg font-semibold text-white">UtilityGenAI</span>}
           </button>
         </div>
 
         <nav className="flex-1 space-y-1 p-4">
-          {!isCollapsed && (
-            <p className="px-2 text-xs font-semibold uppercase text-slate-400">Tools</p>
-          )}
+          {!isCollapsed && <p className="px-2 text-xs font-semibold uppercase text-gray-500">Tools</p>}
           {availableTools.map((tool) => {
             const isActive = activeToolId === tool.id;
             const Icon = tool.icon;
@@ -65,7 +63,9 @@ export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
                 key={tool.id}
                 onClick={() => onToolSelect(tool.id)}
                 className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
-                  isActive ? "bg-indigo-600 text-white shadow-sm" : "text-slate-600 hover:bg-slate-100"
+                  isActive
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "text-gray-400 hover:bg-gray-800 hover:text-white"
                 } ${isCollapsed ? "justify-center" : ""}`}
               >
                 <Icon className="h-5 w-5 flex-shrink-0" />
@@ -75,22 +75,22 @@ export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
           })}
         </nav>
 
-        <div className={`mt-auto border-t border-slate-200 p-4 ${isCollapsed ? "space-y-2" : ""}`}>
+        <div className={`mt-auto border-t border-gray-700 p-4 ${isCollapsed ? "space-y-2" : ""}`}>
           <button
             onClick={() => setIsCollapsed((prev) => !prev)}
-            className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100"
+            className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white ${
+              isCollapsed ? "justify-center" : ""
+            }`}
           >
             {isCollapsed ? (
-              <ChevronDoubleRightIcon className="mx-auto h-5 w-5" />
+              <ChevronDoubleRightIcon className="h-5 w-5" />
             ) : (
-              <>
-                <ChevronDoubleLeftIcon className="h-5 w-5" />
-                <span>Collapse menu</span>
-              </>
+              <ChevronDoubleLeftIcon className="h-5 w-5" />
             )}
+            {!isCollapsed && <span>Collapse menu</span>}
           </button>
           {!isCollapsed && (
-            <p className="pt-2 text-center text-xs text-slate-500">
+            <p className="pt-2 text-center text-xs text-gray-500">
               &copy; {new Date().getFullYear()} UtilityGenAI
             </p>
           )}
