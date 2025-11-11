@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import Footer from "@/components/layout/Footer";
+import Sidebar from "@/components/layout/Sidebar";
 import WelcomeHub from "@/components/tools/WelcomeHub";
 import EmailSubjectGenerator from "@/components/tools/EmailSubjectGenerator";
 
@@ -12,40 +12,22 @@ const toolComponents = {
   // "paraphraser": ParaphraserTool, // Future tool
 };
 
-const availableTools = [
-  { id: "email-generator", name: "Email Subject Generator" },
-  // { id: "paraphraser", name: "Paraphraser" }, // Future tool
-];
-
 type ToolId = keyof typeof toolComponents;
 
 export default function Workspace() {
   const [activeToolId, setActiveToolId] = useState<ToolId | null>(null);
+  const handleToolSelect = (toolId: string | null) => {
+    setActiveToolId(toolId as ToolId | null);
+  };
 
   const ActiveToolComponent = activeToolId ? toolComponents[activeToolId] : null;
 
   return (
-    <div className="flex min-h-screen flex-col text-slate-900">
-      <header className="sticky top-0 z-10 w-full bg-white/90 shadow-md backdrop-blur-sm">
-        <nav className="mx-auto flex max-w-4xl items-center justify-center gap-2 px-4 py-3">
-          {availableTools.map((tool) => (
-            <button
-              key={tool.id}
-              onClick={() => setActiveToolId(tool.id as ToolId)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                activeToolId === tool.id
-                  ? "bg-indigo-600 text-white shadow-sm"
-                  : "text-slate-600 hover:bg-slate-100"
-              }`}
-            >
-              {tool.name}
-            </button>
-          ))}
-        </nav>
-      </header>
+    <div className="flex h-screen w-full">
+      <Sidebar activeToolId={activeToolId} onToolSelect={handleToolSelect} />
 
-      <main className="flex-1 w-full px-4 py-6 sm:px-6">
-        <div className="mx-auto flex max-w-4xl justify-center">
+      <main className="flex-1 overflow-y-auto px-4 py-8 sm:px-8">
+        <div className="mx-auto flex w-full max-w-4xl justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeToolId ?? "welcome"}
@@ -60,8 +42,6 @@ export default function Workspace() {
           </AnimatePresence>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
