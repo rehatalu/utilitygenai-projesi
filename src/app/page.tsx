@@ -33,11 +33,9 @@ export default function Workspace() {
   const ActiveToolComponent = activeToolId ? toolComponents[activeToolId] : null;
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden">
-      <div className="flex flex-1 overflow-hidden">
-        <div className="flex-shrink-0 overflow-y-auto">
-          <Sidebar activeToolId={activeToolId} onToolSelect={handleToolSelect} />
-        </div>
+    <div className="flex min-h-screen flex-col">
+      <div className="flex flex-1">
+        <Sidebar activeToolId={activeToolId} onToolSelect={handleToolSelect} />
 
         <main className="flex-1 w-full px-4 py-8 sm:px-8 overflow-y-auto">
           <div className="mx-auto flex w-full max-w-4xl justify-center">
@@ -54,10 +52,10 @@ export default function Workspace() {
               </motion.div>
             </AnimatePresence>
           </div>
-
-          <Footer />
         </main>
       </div>
+
+      <Footer />
     </div>
   );
 }
