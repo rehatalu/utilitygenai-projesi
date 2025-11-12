@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 
@@ -30,16 +29,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${inter.variable} ${sora.variable} antialiased bg-slate-950 text-slate-300 relative isolate overflow-hidden`}
-      >
+      <head>
         {/* Google AdSense Doğrulama Kodu */}
-        <Script
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+        ></script>
+      </head>
+      <body
+        className={`${inter.variable} ${sora.variable} antialiased bg-slate-950 text-slate-300 relative isolate overflow-hidden`}
+      >
         {/* Arka Plan "Görsel" (Grid Deseni) */}
         <div
           className="absolute inset-0 -z-10"
