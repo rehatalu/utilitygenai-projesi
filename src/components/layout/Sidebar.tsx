@@ -8,6 +8,7 @@ import {
   ChatBubbleOvalLeftEllipsisIcon,
   MagnifyingGlassIcon,
   CheckCircleIcon,
+  ShoppingCartIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
@@ -29,6 +30,7 @@ const availableTools: ToolItem[] = [
   { id: "social-post", name: "Social Post Generator", icon: ChatBubbleOvalLeftEllipsisIcon },
   { id: "meta-description", name: "Meta Generator", icon: MagnifyingGlassIcon },
   { id: "grammar-check", name: "Grammar Checker", icon: CheckCircleIcon },
+  { id: "product-description", name: "Product Generator", icon: ShoppingCartIcon },
 ];
 
 export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
