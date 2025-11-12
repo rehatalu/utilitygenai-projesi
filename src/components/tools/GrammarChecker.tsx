@@ -63,8 +63,8 @@ export default function GrammarChecker() {
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
-                if (!isLoading && inputText) {
-                  handleSubmit(e as any);
+                if (!isLoading && inputText && e.currentTarget.form) {
+                  e.currentTarget.form.requestSubmit();
                 }
               }
             }}

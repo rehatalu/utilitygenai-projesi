@@ -43,7 +43,7 @@ export default function MetaDescriptionGenerator() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg">
+    <div className="mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg text-left">
       <div className="flex flex-col gap-2 border-b border-slate-700 pb-4">
         <h1 className="text-left text-2xl font-semibold text-white">AI Meta Description Generator</h1>
         <p className="text-left text-sm text-slate-300">
@@ -63,8 +63,8 @@ export default function MetaDescriptionGenerator() {
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
-                if (!isLoading && topic) {
-                  handleSubmit(e as any);
+                if (!isLoading && topic && e.currentTarget.form) {
+                  e.currentTarget.form.requestSubmit();
                 }
               }
             }}

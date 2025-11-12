@@ -63,8 +63,8 @@ export default function EmailSubjectGenerator() {
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
-                if (!isLoading && topic) {
-                  handleSubmit(e as any);
+                if (!isLoading && topic && e.currentTarget.form) {
+                  e.currentTarget.form.requestSubmit();
                 }
               }
             }}
