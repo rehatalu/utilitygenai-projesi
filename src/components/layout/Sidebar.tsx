@@ -7,6 +7,7 @@ import {
   DocumentDuplicateIcon,
   ChatBubbleOvalLeftEllipsisIcon,
   MagnifyingGlassIcon,
+  CheckCircleIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
@@ -27,6 +28,7 @@ const availableTools: ToolItem[] = [
   { id: "paraphraser", name: "Paraphraser Tool", icon: DocumentDuplicateIcon },
   { id: "social-post", name: "Social Post Generator", icon: ChatBubbleOvalLeftEllipsisIcon },
   { id: "meta-description", name: "Meta Description Generator", icon: MagnifyingGlassIcon },
+  { id: "grammar-check", name: "Grammar Checker", icon: CheckCircleIcon },
 ];
 
 export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {

@@ -10,12 +10,14 @@ import EmailSubjectGenerator from "@/components/tools/EmailSubjectGenerator";
 import ParaphraserTool from "@/components/tools/ParaphraserTool";
 import SocialPostGenerator from "@/components/tools/SocialPostGenerator";
 import MetaDescriptionGenerator from "@/components/tools/MetaDescriptionGenerator";
+import GrammarChecker from "@/components/tools/GrammarChecker";
 
 const toolComponents = {
   "email-generator": EmailSubjectGenerator,
   paraphraser: ParaphraserTool,
   "social-post": SocialPostGenerator,
   "meta-description": MetaDescriptionGenerator,
+  "grammar-check": GrammarChecker,
 };
 
 type ToolId = keyof typeof toolComponents;
