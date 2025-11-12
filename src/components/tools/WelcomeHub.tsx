@@ -6,7 +6,7 @@ const AiIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function WelcomeHub() {
   return (
-    <div className="mx-auto max-w-2xl rounded-3xl bg-slate-800/70 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-md">
+    <div className="mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg">
       <div className="flex flex-col items-center gap-4 text-center">
         <AiIcon className="h-12 w-12 text-indigo-400" />
         <h1 className="text-2xl font-semibold text-white">Welcome to UtilityGenAI</h1>
