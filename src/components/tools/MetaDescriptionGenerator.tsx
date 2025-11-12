@@ -44,16 +44,16 @@ export default function MetaDescriptionGenerator() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg text-left">
-      <div className="flex flex-col gap-2 border-b border-slate-700 pb-4 text-left">
-        <h1 className="text-left text-2xl font-semibold text-white">AI Meta Description Generator</h1>
-        <p className="text-left text-sm text-slate-300">
+    <div className="mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg">
+      <div className="flex flex-col gap-2 border-b border-slate-700 pb-4 text-center">
+        <h1 className="text-2xl font-semibold text-white">AI Meta Description Generator</h1>
+        <p className="text-sm text-slate-300">
           Enter your page topic or keywords, and we will generate SEO-friendly meta descriptions (max 160 chars).
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-3 text-left">
-        <label className="block text-left text-sm font-medium text-slate-200">
+      <form onSubmit={handleSubmit} className="mt-6 space-y-3">
+        <label className="block text-sm font-medium text-slate-200 text-center">
           Topic or Keywords
           <textarea
             className="mt-2 w-full rounded-xl border border-slate-600 bg-slate-900/60 p-3 text-sm text-slate-100 shadow-sm transition focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
@@ -87,13 +87,13 @@ export default function MetaDescriptionGenerator() {
       )}
 
       {results.length > 0 && (
-        <div className="mt-6 space-y-3 text-left">
-          <h2 className="text-left text-lg font-semibold text-white">Results</h2>
-          <ul className="space-y-2 rounded-2xl border border-slate-700 bg-slate-900/50 p-4 text-left text-sm text-slate-200">
+        <div className="mt-6 space-y-3">
+          <h2 className="text-lg font-semibold text-white text-center">Results</h2>
+          <ul className="space-y-2 rounded-2xl border border-slate-700 bg-slate-900/50 p-4 text-sm text-slate-200">
             {results.map((result, index) => (
-              <li key={index} className="flex items-start gap-2 text-left">
+              <li key={index} className="flex items-start gap-2">
                 <span className="text-indigo-400">•</span>
-                <span className="text-left">{result}</span>
+                <span>{result}</span>
               </li>
             ))}
           </ul>

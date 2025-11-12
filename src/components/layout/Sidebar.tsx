@@ -27,7 +27,7 @@ const availableTools: ToolItem[] = [
   { id: "email-generator", name: "Email Subject Generator", icon: EnvelopeIcon },
   { id: "paraphraser", name: "Paraphraser Tool", icon: DocumentDuplicateIcon },
   { id: "social-post", name: "Social Post Generator", icon: ChatBubbleOvalLeftEllipsisIcon },
-  { id: "meta-description", name: "Meta Description Generator", icon: MagnifyingGlassIcon },
+  { id: "meta-description", name: "Meta Generator", icon: MagnifyingGlassIcon },
   { id: "grammar-check", name: "Grammar Checker", icon: CheckCircleIcon },
 ];
 
