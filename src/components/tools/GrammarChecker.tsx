@@ -40,6 +40,7 @@ export default function GrammarChecker() {
     }
 
     setIsLoading(false);
+    setInputText("");
   };
 
   return (

@@ -48,6 +48,7 @@ export default function SocialPostGenerator() {
     }
 
     setIsLoading(false);
+    setTopic("");
   };
 
   return (

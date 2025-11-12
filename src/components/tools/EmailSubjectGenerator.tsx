@@ -40,6 +40,7 @@ export default function EmailSubjectGenerator() {
     }
 
     setIsLoading(false);
+    setTopic("");
   };
 
   return (

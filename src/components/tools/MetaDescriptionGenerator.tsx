@@ -40,6 +40,7 @@ export default function MetaDescriptionGenerator() {
     }
 
     setIsLoading(false);
+    setTopic("");
   };
 
   return (
@@ -88,7 +89,7 @@ export default function MetaDescriptionGenerator() {
       {results.length > 0 && (
         <div className="mt-6 space-y-3">
           <h2 className="text-left text-lg font-semibold text-white">Results</h2>
-          <ul className="space-y-2 rounded-2xl border border-slate-700 bg-slate-900/50 p-4 text-sm text-slate-200">
+          <ul className="space-y-2 rounded-2xl border border-slate-700 bg-slate-900/50 p-4 text-left text-sm text-slate-200">
             {results.map((result, index) => (
               <li key={index} className="flex items-start gap-2">
                 <span className="text-indigo-400">•</span>

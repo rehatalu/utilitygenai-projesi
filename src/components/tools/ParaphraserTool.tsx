@@ -40,6 +40,7 @@ export default function ParaphraserTool() {
     }
 
     setIsLoading(false);
+    setInputText("");
   };
 
   return (
