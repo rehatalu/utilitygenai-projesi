@@ -6,6 +6,7 @@ import {
   EnvelopeIcon,
   DocumentDuplicateIcon,
   ChatBubbleOvalLeftEllipsisIcon,
+  MagnifyingGlassIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
@@ -25,6 +26,7 @@ const availableTools: ToolItem[] = [
   { id: "email-generator", name: "Email Subject Generator", icon: EnvelopeIcon },
   { id: "paraphraser", name: "Paraphraser Tool", icon: DocumentDuplicateIcon },
   { id: "social-post", name: "Social Post Generator", icon: ChatBubbleOvalLeftEllipsisIcon },
+  { id: "meta-description", name: "Meta Description Generator", icon: MagnifyingGlassIcon },
 ];
 
 export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {

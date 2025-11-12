@@ -9,11 +9,13 @@ import WelcomeHub from "@/components/tools/WelcomeHub";
 import EmailSubjectGenerator from "@/components/tools/EmailSubjectGenerator";
 import ParaphraserTool from "@/components/tools/ParaphraserTool";
 import SocialPostGenerator from "@/components/tools/SocialPostGenerator";
+import MetaDescriptionGenerator from "@/components/tools/MetaDescriptionGenerator";
 
 const toolComponents = {
   "email-generator": EmailSubjectGenerator,
   paraphraser: ParaphraserTool,
   "social-post": SocialPostGenerator,
+  "meta-description": MetaDescriptionGenerator,
 };
 
 type ToolId = keyof typeof toolComponents;
