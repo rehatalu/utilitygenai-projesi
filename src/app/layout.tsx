@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 
@@ -14,6 +15,16 @@ const sora = Sora({
   weight: ["600", "700"],
   display: "swap",
 });
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | UtilityGenAI",
+    default: "UtilityGenAI - Free AI Tools & Productivity Suite",
+  },
+  description:
+    "A free collection of AI-powered tools (like Email, Paraphraser, Social Post generators) and utilities to boost your productivity. 7-to-70 tools for everyone.",
+  keywords: ["AI tools", "free tools", "productivity", "paraphraser", "generator"],
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
