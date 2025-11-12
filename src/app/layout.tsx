@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 
@@ -32,6 +33,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${inter.variable} ${sora.variable} antialiased bg-slate-950 text-slate-300 relative isolate overflow-hidden`}
       >
+        {/* Google AdSense Doğrulama Kodu */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         {/* Arka Plan "Görsel" (Grid Deseni) */}
         <div
           className="absolute inset-0 -z-10"
