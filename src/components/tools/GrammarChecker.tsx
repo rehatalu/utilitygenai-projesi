@@ -60,6 +60,14 @@ export default function GrammarChecker() {
             placeholder="e.g., I has been working on this project for a long time."
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                if (!isLoading && inputText) {
+                  handleSubmit(e as any);
+                }
+              }
+            }}
           />
         </label>
         <button

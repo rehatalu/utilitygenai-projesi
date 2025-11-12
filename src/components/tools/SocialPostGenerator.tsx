@@ -68,6 +68,14 @@ export default function SocialPostGenerator() {
             placeholder="e.g., Launching our new AI-powered analytics suite..."
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                if (!isLoading && topic) {
+                  handleSubmit(e as any);
+                }
+              }
+            }}
           />
         </label>
         <button

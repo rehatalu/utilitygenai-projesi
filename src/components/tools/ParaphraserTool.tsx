@@ -60,6 +60,14 @@ export default function ParaphraserTool() {
             placeholder="e.g., The quick brown fox jumps over the lazy dog."
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                if (!isLoading && inputText) {
+                  handleSubmit(e as any);
+                }
+              }
+            }}
           />
         </label>
         <button

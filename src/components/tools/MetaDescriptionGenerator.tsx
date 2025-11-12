@@ -45,14 +45,14 @@ export default function MetaDescriptionGenerator() {
   return (
     <div className="mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg">
       <div className="flex flex-col gap-2 border-b border-slate-700 pb-4">
-        <h1 className="text-2xl font-semibold text-white">AI Meta Description Generator</h1>
-        <p className="text-sm text-slate-300">
+        <h1 className="text-left text-2xl font-semibold text-white">AI Meta Description Generator</h1>
+        <p className="text-left text-sm text-slate-300">
           Enter your page topic or keywords, and we will generate SEO-friendly meta descriptions (max 160 chars).
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-3">
-        <label className="block text-sm font-medium text-slate-200">
+        <label className="block text-left text-sm font-medium text-slate-200">
           Topic or Keywords
           <textarea
             className="mt-2 w-full rounded-xl border border-slate-600 bg-slate-900/60 p-3 text-sm text-slate-100 shadow-sm transition focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
@@ -60,6 +60,14 @@ export default function MetaDescriptionGenerator() {
             placeholder="e.g., Best AI tools for productivity..."
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                if (!isLoading && topic) {
+                  handleSubmit(e as any);
+                }
+              }
+            }}
           />
         </label>
         <button
@@ -79,7 +87,7 @@ export default function MetaDescriptionGenerator() {
 
       {results.length > 0 && (
         <div className="mt-6 space-y-3">
-          <h2 className="text-lg font-semibold text-white">Results</h2>
+          <h2 className="text-left text-lg font-semibold text-white">Results</h2>
           <ul className="space-y-2 rounded-2xl border border-slate-700 bg-slate-900/50 p-4 text-sm text-slate-200">
             {results.map((result, index) => (
               <li key={index} className="flex items-start gap-2">

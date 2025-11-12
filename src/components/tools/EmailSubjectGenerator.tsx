@@ -60,6 +60,14 @@ export default function EmailSubjectGenerator() {
             placeholder="e.g., Announcing our new product launch..."
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                if (!isLoading && topic) {
+                  handleSubmit(e as any);
+                }
+              }
+            }}
           />
         </label>
         <button
