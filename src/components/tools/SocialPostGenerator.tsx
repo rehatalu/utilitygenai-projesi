@@ -55,7 +55,7 @@ export default function SocialPostGenerator() {
   return (
     <div
       className={`mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl backdrop-blur-lg transition-all ${
-        isLoading ? "rainbow-border" : "ring-1 ring-slate-700"
+        isLoading ? "animate-glow-border" : "ring-1 ring-slate-700"
       }`}
     >
       <div className="flex flex-col gap-2 border-b border-slate-700 pb-4">
