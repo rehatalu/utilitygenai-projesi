@@ -55,7 +55,8 @@ const tools = {
 
 type ToolId = keyof typeof tools;
 
-export async function generateMetadata({ params }: { params: { toolId: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ toolId: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const tool = tools[params.toolId as ToolId];
   if (!tool) {
     return { title: "Tool Not Found | UtilityGenAI" };
@@ -67,7 +68,8 @@ export async function generateMetadata({ params }: { params: { toolId: string } 
   };
 }
 
-export default function ToolPage({ params }: { params: { toolId: string } }) {
+export default async function ToolPage(props: { params: Promise<{ toolId: string }> }) {
+  const params = await props.params;
   const tool = tools[params.toolId as ToolId];
 
   if (!tool) {
