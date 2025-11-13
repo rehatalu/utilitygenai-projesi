@@ -102,26 +102,24 @@ h3 {
   }
 }
 
-/* Kartın Kendisi (Ön Plan) */
 .animate-rgb-border {
   position: relative;
-  background: #0f172a; /* slate-900 (Kartın zemini) */
-  z-index: 1; /* Kartı öne çıkar */
+  /* Arka planı şeffaf yapıyoruz, rengi ::after verecek */
+  background: transparent !important;
+  z-index: 0;
+  overflow: hidden; /* Köşeleri yuvarlat */
   border-radius: 1.5rem; /* rounded-3xl */
-  /* Border yok, border'ı arkadaki katman yapacak */
 }
 
-/* Arkadaki Dönen Renkli Katman (Çerçeve) */
+/* KATMAN 1: DÖNEN GÖKKUŞAĞI (En altta) */
 .animate-rgb-border::before {
   content: "";
   position: absolute;
-  /* Karttan sadece 3px daha geniş (İnce Çerçeve) */
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  z-index: -1; /* Kartın arkasına at */
-
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
   background: conic-gradient(
     from var(--angle),
     #ff0000,
@@ -130,29 +128,17 @@ h3 {
     #ff00ff,
     #ff0000
   );
-  animation: spin 3s linear infinite;
-  border-radius: 1.6rem;
+  animation: spin 4s linear infinite;
 }
 
-/* Blur Efekti (Hafif Işıma) */
+/* KATMAN 2: MASKE (Ortada) - Kartın asıl rengi */
+/* Bu katman, gökkuşağının üzerini örter ve sadece kenarlarda boşluk bırakır */
 .animate-rgb-border::after {
   content: "";
   position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  z-index: -2;
-  background: conic-gradient(
-    from var(--angle),
-    #ff0000,
-    #00ff00,
-    #0000ff,
-    #ff00ff,
-    #ff0000
-  );
-  animation: spin 3s linear infinite;
-  filter: blur(20px);
-  opacity: 0.6;
-  border-radius: 1.6rem;
+  z-index: -1;
+  /* inset: 3px -> Bu değer ÇERÇEVE KALINLIĞIDIR. İnce olması için 2px-3px idealdir */
+  inset: 3px;
+  background: #0f172a; /* slate-900 (Koyu Kart Rengi) */
+  border-radius: 1.3rem; /* Dışarıdan biraz daha küçük radius */
 }
