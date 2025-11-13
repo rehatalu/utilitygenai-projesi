@@ -12,6 +12,7 @@ import YoutubeIdeaGenerator from "@/components/tools/YoutubeIdeaGenerator";
 import HashtagGenerator from "@/components/tools/HashtagGenerator";
 import BusinessNameGenerator from "@/components/tools/BusinessNameGenerator";
 import CodeExplainer from "@/components/tools/CodeExplainer";
+import TextSummarizer from "@/components/tools/TextSummarizer";
 
 const tools = {
   "email-generator": {
@@ -68,6 +69,11 @@ const tools = {
     component: CodeExplainer,
     title: "AI Code Explainer",
     desc: "Understand complex code snippets instantly with AI explanations.",
+  },
+  "text-summarizer": {
+    component: TextSummarizer,
+    title: "AI Text Summarizer",
+    desc: "Instantly summarize long articles and texts into concise key points.",
   },
 };
 

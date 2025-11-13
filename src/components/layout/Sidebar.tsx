@@ -16,6 +16,7 @@ import {
   HashtagIcon,
   BriefcaseIcon,
   CodeBracketIcon,
+  DocumentTextIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
@@ -38,6 +39,7 @@ const availableTools: ToolItem[] = [
   { id: "hashtag-generator", name: "Hashtag Generator", icon: HashtagIcon },
   { id: "business-name", name: "Business Name Generator", icon: BriefcaseIcon },
   { id: "code-explainer", name: "AI Code Explainer", icon: CodeBracketIcon },
+  { id: "text-summarizer", name: "Text Summarizer", icon: DocumentTextIcon },
 ];
 
 export default function Sidebar() {
