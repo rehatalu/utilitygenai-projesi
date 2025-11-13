@@ -11,6 +11,7 @@ import BlogIdeaGenerator from "@/components/tools/BlogIdeaGenerator";
 import YoutubeIdeaGenerator from "@/components/tools/YoutubeIdeaGenerator";
 import HashtagGenerator from "@/components/tools/HashtagGenerator";
 import BusinessNameGenerator from "@/components/tools/BusinessNameGenerator";
+import CodeExplainer from "@/components/tools/CodeExplainer";
 
 const tools = {
   "email-generator": {
@@ -62,6 +63,11 @@ const tools = {
     component: BusinessNameGenerator,
     title: "AI Business Name Generator",
     desc: "Generate unique and catchy business names for your brand.",
+  },
+  "code-explainer": {
+    component: CodeExplainer,
+    title: "AI Code Explainer",
+    desc: "Understand complex code snippets instantly with AI explanations.",
   },
 };
 

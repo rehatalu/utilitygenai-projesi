@@ -15,6 +15,7 @@ import {
   VideoCameraIcon,
   HashtagIcon,
   BriefcaseIcon,
+  CodeBracketIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
@@ -36,13 +37,13 @@ const availableTools: ToolItem[] = [
   { id: "youtube-ideas", name: "YouTube Idea Generator", icon: VideoCameraIcon },
   { id: "hashtag-generator", name: "Hashtag Generator", icon: HashtagIcon },
   { id: "business-name", name: "Business Name Generator", icon: BriefcaseIcon },
+  { id: "code-explainer", name: "AI Code Explainer", icon: CodeBracketIcon },
 ];
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
 
-  const isHome = pathname === "/";
   const activeToolId = pathname?.startsWith("/tool/") ? pathname.replace("/tool/", "") : null;
 
   return (
