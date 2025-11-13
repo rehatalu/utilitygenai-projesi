@@ -15,6 +15,8 @@ const tools = [
   "youtube-ideas",
   "hashtag-generator",
   "business-name",
+  "code-explainer",
+  "text-summarizer",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
