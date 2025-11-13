@@ -8,7 +8,8 @@ export default function UgaAssistant() {
 
   return (
     <div
-      className="fixed bottom-8 right-8 z-50 flex flex-col items-center cursor-pointer"
+      className="fixed bottom-8 right-8 z-50 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform duration-300"
+      onClick={() => (window.location.href = "/")}
       onMouseEnter={() => setShowBubble(true)}
       onMouseLeave={() => setShowBubble(false)}
     >

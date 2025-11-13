@@ -102,26 +102,26 @@ h3 {
   }
 }
 
-/* RGB Border Sınıfı */
+/* Kartın Kendisi (Ön Plan) */
 .animate-rgb-border {
   position: relative;
-  /* Kartın içi yine koyu kalsın */
-  background: #0f172a; /* slate-900 */
-  z-index: 0;
-  /* Eski border'ları ezmek için */
-  border: none !important;
-  box-shadow: none !important;
+  background: #0f172a; /* slate-900 (Kartın zemini) */
+  z-index: 1; /* Kartı öne çıkar */
+  border-radius: 1.5rem; /* rounded-3xl */
+  /* Border yok, border'ı arkadaki katman yapacak */
 }
 
-/* Arkada dönen renkli katman */
-.animate-rgb-border::before,
-.animate-rgb-border::after {
+/* Arkadaki Dönen Renkli Katman (Çerçeve) */
+.animate-rgb-border::before {
   content: "";
   position: absolute;
-  /* Çerçevenin kalınlığı (ne kadar dışarı taşacağı) */
-  inset: -3px;
-  z-index: -1;
-  /* RGB Gökkuşağı Renkleri */
+  /* Karttan sadece 3px daha geniş (İnce Çerçeve) */
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: -1; /* Kartın arkasına at */
+
   background: conic-gradient(
     from var(--angle),
     #ff0000,
@@ -131,12 +131,28 @@ h3 {
     #ff0000
   );
   animation: spin 3s linear infinite;
-  /* Kartın yuvarlaklığına uyması için */
-  border-radius: 1.5rem; /* rounded-3xl ile aynı */
+  border-radius: 1.6rem;
 }
 
-/* Blur efekti (Işıma/Glow) */
+/* Blur Efekti (Hafif Işıma) */
 .animate-rgb-border::after {
-  filter: blur(15px);
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: -2;
+  background: conic-gradient(
+    from var(--angle),
+    #ff0000,
+    #00ff00,
+    #0000ff,
+    #ff00ff,
+    #ff0000
+  );
+  animation: spin 3s linear infinite;
+  filter: blur(20px);
   opacity: 0.6;
+  border-radius: 1.6rem;
 }
