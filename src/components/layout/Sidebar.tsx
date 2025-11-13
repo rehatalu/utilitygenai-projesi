@@ -14,6 +14,7 @@ import {
   PencilSquareIcon,
   VideoCameraIcon,
   HashtagIcon,
+  BriefcaseIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
@@ -34,6 +35,7 @@ const availableTools: ToolItem[] = [
   { id: "blog-ideas", name: "Blog Ideas", icon: PencilSquareIcon },
   { id: "youtube-ideas", name: "YouTube Idea Generator", icon: VideoCameraIcon },
   { id: "hashtag-generator", name: "Hashtag Generator", icon: HashtagIcon },
+  { id: "business-name", name: "Business Name Generator", icon: BriefcaseIcon },
 ];
 
 export default function Sidebar() {

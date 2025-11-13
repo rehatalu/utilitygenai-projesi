@@ -10,6 +10,7 @@ import ProductDescriptionGenerator from "@/components/tools/ProductDescriptionGe
 import BlogIdeaGenerator from "@/components/tools/BlogIdeaGenerator";
 import YoutubeIdeaGenerator from "@/components/tools/YoutubeIdeaGenerator";
 import HashtagGenerator from "@/components/tools/HashtagGenerator";
+import BusinessNameGenerator from "@/components/tools/BusinessNameGenerator";
 
 const tools = {
   "email-generator": {
@@ -56,6 +57,11 @@ const tools = {
     component: HashtagGenerator,
     title: "AI Hashtag Generator",
     desc: "Generate trending hashtags for Instagram, TikTok, and Twitter.",
+  },
+  "business-name": {
+    component: BusinessNameGenerator,
+    title: "AI Business Name Generator",
+    desc: "Generate unique and catchy business names for your brand.",
   },
 };
 
