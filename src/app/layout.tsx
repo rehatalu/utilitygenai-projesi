@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
+import Sidebar from "@/components/layout/Sidebar";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -60,7 +62,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             }}
           />
         </div>
-        {children}
+        <div className="flex h-screen flex-col">
+          <div className="flex flex-1 overflow-hidden">
+            <div className="flex-shrink-0 overflow-y-auto">
+              <Sidebar />
+            </div>
+            <main className="flex-1 w-full px-4 py-8 sm:px-8 overflow-y-auto">{children}</main>
+          </div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

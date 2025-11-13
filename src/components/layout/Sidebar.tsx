@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, type ComponentType } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   HomeIcon,
   EnvelopeIcon,
@@ -14,11 +16,6 @@ import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
-
-type SidebarProps = {
-  activeToolId: string | null;
-  onToolSelect: (toolId: string | null) => void;
-};
 
 type ToolItem = {
   id: string;
@@ -37,8 +34,12 @@ const availableTools: ToolItem[] = [
   { id: "youtube-ideas", name: "YouTube Idea Generator", icon: VideoCameraIcon },
 ];
 
-export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
+export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const pathname = usePathname();
+
+  const isHome = pathname === "/";
+  const activeToolId = pathname?.startsWith("/tool/") ? pathname.replace("/tool/", "") : null;
 
   return (
     <aside
@@ -52,15 +53,12 @@ export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
             isCollapsed ? "flex justify-center" : "flex items-center gap-2"
           }`}
         >
-          <button
-            onClick={() => onToolSelect(null)}
-            className={`flex w-full items-center gap-2 ${isCollapsed ? "justify-center" : ""}`}
-          >
+          <Link href="/" className={`flex w-full items-center gap-2 ${isCollapsed ? "justify-center" : ""}`}>
             <span className="rounded-lg bg-indigo-600 p-2 text-white">
               <HomeIcon className="h-5 w-5" />
             </span>
             {!isCollapsed && <span className="text-lg font-semibold text-white">UtilityGenAI</span>}
-          </button>
+          </Link>
         </div>
 
         <nav className="flex-1 space-y-1 p-4">
@@ -69,9 +67,9 @@ export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
             const isActive = activeToolId === tool.id;
             const Icon = tool.icon;
             return (
-              <button
+              <Link
                 key={tool.id}
-                onClick={() => onToolSelect(tool.id)}
+                href={`/tool/${tool.id}`}
                 className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
                   isActive
                     ? "bg-indigo-600 text-white shadow-sm"
@@ -80,7 +78,7 @@ export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
               >
                 <Icon className="h-5 w-5 flex-shrink-0" />
                 {!isCollapsed && <span>{tool.name}</span>}
-              </button>
+              </Link>
             );
           })}
         </nav>
