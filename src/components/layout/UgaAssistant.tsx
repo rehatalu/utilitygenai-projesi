@@ -17,13 +17,13 @@ export default function UgaAssistant() {
           Hi, I&apos;m UGA! How can I help?
         </div>
       )}
-      <div className="relative w-24 h-24 animate-float rounded-full bg-slate-800/80 p-2 shadow-2xl ring-2 ring-indigo-500/30 backdrop-blur-md transition-all hover:ring-indigo-500/60 hover:scale-110">
+      <div className="relative w-32 h-32 animate-float transition-all hover:scale-110">
         <Image
           src="/uga.png"
           alt="UGA AI Assistant"
           fill
-          className="rounded-full object-contain"
-          sizes="96px"
+          className="object-contain"
+          sizes="128px"
           priority
         />
       </div>
