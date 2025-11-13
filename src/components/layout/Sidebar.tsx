@@ -10,6 +10,7 @@ import {
   CheckCircleIcon,
   ShoppingCartIcon,
   PencilSquareIcon,
+  VideoCameraIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
@@ -33,6 +34,7 @@ const availableTools: ToolItem[] = [
   { id: "grammar-check", name: "Grammar Checker", icon: CheckCircleIcon },
   { id: "product-description", name: "Product Generator", icon: ShoppingCartIcon },
   { id: "blog-ideas", name: "Blog Ideas", icon: PencilSquareIcon },
+  { id: "youtube-ideas", name: "YouTube Idea Generator", icon: VideoCameraIcon },
 ];
 
 export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
