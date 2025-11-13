@@ -47,9 +47,7 @@ export default function TextSummarizer() {
   return (
     <div
       className={`mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl backdrop-blur-lg transition-all ${
-        isLoading
-          ? "ring-4 ring-indigo-500/50 animate-pulse"
-          : "ring-1 ring-slate-700"
+        isLoading ? "rainbow-border" : "ring-1 ring-slate-700"
       }`}
     >
       <div className="flex flex-col gap-2 border-b border-slate-700 pb-4">

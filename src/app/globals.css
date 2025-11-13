@@ -69,3 +69,28 @@ h3 {
 .animate-float-slower {
   animation: floatSlower 8s ease-in-out infinite;
 }
+
+@keyframes border-flow {
+  0% {
+    border-color: #ef4444;
+    box-shadow: 0 0 10px #ef4444, 0 0 20px rgba(239, 68, 68, 0.5);
+  }
+  33% {
+    border-color: #a855f7;
+    box-shadow: 0 0 10px #a855f7, 0 0 20px rgba(168, 85, 247, 0.5);
+  }
+  66% {
+    border-color: #3b82f6;
+    box-shadow: 0 0 10px #3b82f6, 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  100% {
+    border-color: #ef4444;
+    box-shadow: 0 0 10px #ef4444, 0 0 20px rgba(239, 68, 68, 0.5);
+  }
+}
+
+.rainbow-border {
+  animation: border-flow 3s linear infinite;
+  border-width: 2px;
+  border-style: solid;
+}
