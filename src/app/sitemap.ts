@@ -17,6 +17,7 @@ const tools = [
   "business-name",
   "code-explainer",
   "text-summarizer",
+  "instagram-caption",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

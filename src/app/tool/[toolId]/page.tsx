@@ -13,6 +13,7 @@ import HashtagGenerator from "@/components/tools/HashtagGenerator";
 import BusinessNameGenerator from "@/components/tools/BusinessNameGenerator";
 import CodeExplainer from "@/components/tools/CodeExplainer";
 import TextSummarizer from "@/components/tools/TextSummarizer";
+import InstagramCaptionGenerator from "@/components/tools/InstagramCaptionGenerator";
 
 const tools = {
   "email-generator": {
@@ -74,6 +75,11 @@ const tools = {
     component: TextSummarizer,
     title: "AI Text Summarizer",
     desc: "Instantly summarize long articles and texts into concise key points.",
+  },
+  "instagram-caption": {
+    component: InstagramCaptionGenerator,
+    title: "AI Instagram Caption Generator",
+    desc: "Create engaging Instagram captions with emojis instantly.",
   },
 };
 
