@@ -120,15 +120,27 @@ h3 {
   top: -50%;
   width: 200%;
   height: 200%;
+
+  /* PÜRÜZSÜZ GÖKKUŞAĞI (Tüm ara tonlar eklendi) */
   background: conic-gradient(
     from var(--angle),
-    #ff0000,
-    #00ff00,
-    #0000ff,
-    #ff00ff,
-    #ff0000
+    #ff0000, /* Kırmızı */
+    #ff8000, /* Turuncu */
+    #ffff00, /* Sarı */
+    #80ff00, /* Açık Yeşil */
+    #00ff00, /* Yeşil */
+    #00ff80, /* Turkuazımsı */
+    #00ffff, /* Cyan */
+    #0080ff, /* Açık Mavi */
+    #0000ff, /* Mavi */
+    #8000ff, /* Mor */
+    #ff00ff, /* Magenta */
+    #ff0080, /* Pembe */
+    #ff0000 /* Kırmızıya Dönüş */
   );
-  animation: spin 4s linear infinite;
+
+  /* Hızı biraz artırarak akıcılığı güçlendir */
+  animation: spin 3s linear infinite;
 }
 
 /* KATMAN 2: MASKE (Ortada) - Kartın asıl rengi */
