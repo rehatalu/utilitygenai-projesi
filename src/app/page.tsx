@@ -12,6 +12,7 @@ import SocialPostGenerator from "@/components/tools/SocialPostGenerator";
 import MetaDescriptionGenerator from "@/components/tools/MetaDescriptionGenerator";
 import GrammarChecker from "@/components/tools/GrammarChecker";
 import ProductDescriptionGenerator from "@/components/tools/ProductDescriptionGenerator";
+import BlogIdeaGenerator from "@/components/tools/BlogIdeaGenerator";
 
 const toolComponents = {
   "email-generator": EmailSubjectGenerator,
@@ -20,6 +21,7 @@ const toolComponents = {
   "meta-description": MetaDescriptionGenerator,
   "grammar-check": GrammarChecker,
   "product-description": ProductDescriptionGenerator,
+  "blog-ideas": BlogIdeaGenerator,
 };
 
 type ToolId = keyof typeof toolComponents;

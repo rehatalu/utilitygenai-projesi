@@ -9,6 +9,7 @@ import {
   MagnifyingGlassIcon,
   CheckCircleIcon,
   ShoppingCartIcon,
+  PencilSquareIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
@@ -31,6 +32,7 @@ const availableTools: ToolItem[] = [
   { id: "meta-description", name: "Meta Generator", icon: MagnifyingGlassIcon },
   { id: "grammar-check", name: "Grammar Checker", icon: CheckCircleIcon },
   { id: "product-description", name: "Product Generator", icon: ShoppingCartIcon },
+  { id: "blog-ideas", name: "Blog Ideas", icon: PencilSquareIcon },
 ];
 
 export default function Sidebar({ activeToolId, onToolSelect }: SidebarProps) {
