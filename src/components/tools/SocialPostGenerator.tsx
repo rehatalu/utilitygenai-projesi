@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SparklesIcon } from "@heroicons/react/24/outline";
 
 type SocialPosts = {
   tweet: string;
@@ -52,7 +53,13 @@ export default function SocialPostGenerator() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg">
+    <div
+      className={`mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl backdrop-blur-lg transition-all ${
+        isLoading
+          ? "ring-4 ring-indigo-500/50 animate-pulse"
+          : "ring-1 ring-slate-700"
+      }`}
+    >
       <div className="flex flex-col gap-2 border-b border-slate-700 pb-4">
         <h1 className="text-2xl font-semibold text-white">AI Social Media Post Generator</h1>
         <p className="text-sm text-slate-300">
@@ -84,7 +91,14 @@ export default function SocialPostGenerator() {
           className="inline-flex items-center gap-2 rounded-full bg-indigo-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-400 disabled:cursor-not-allowed disabled:bg-slate-600"
           disabled={isLoading || !topic}
         >
-          {isLoading ? "Generating..." : "Generate Posts"}
+          {isLoading ? (
+            <>
+              <SparklesIcon className="h-4 w-4 animate-spin" />
+              <span>Generating...</span>
+            </>
+          ) : (
+            "Generate Posts"
+          )}
         </button>
       </form>
 

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
+import Ticker from "@/components/layout/Ticker";
 import "./globals.css";
 
 const inter = Inter({
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
             <main className="flex-1 w-full px-4 py-8 sm:px-8 overflow-y-auto">{children}</main>
           </div>
+          <Ticker />
           <Footer />
         </div>
       </body>
