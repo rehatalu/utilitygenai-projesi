@@ -13,6 +13,7 @@ import {
   ShoppingCartIcon,
   PencilSquareIcon,
   VideoCameraIcon,
+  HashtagIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/outline";
@@ -32,6 +33,7 @@ const availableTools: ToolItem[] = [
   { id: "product-description", name: "Product Generator", icon: ShoppingCartIcon },
   { id: "blog-ideas", name: "Blog Ideas", icon: PencilSquareIcon },
   { id: "youtube-ideas", name: "YouTube Idea Generator", icon: VideoCameraIcon },
+  { id: "hashtag-generator", name: "Hashtag Generator", icon: HashtagIcon },
 ];
 
 export default function Sidebar() {

@@ -9,6 +9,7 @@ import GrammarChecker from "@/components/tools/GrammarChecker";
 import ProductDescriptionGenerator from "@/components/tools/ProductDescriptionGenerator";
 import BlogIdeaGenerator from "@/components/tools/BlogIdeaGenerator";
 import YoutubeIdeaGenerator from "@/components/tools/YoutubeIdeaGenerator";
+import HashtagGenerator from "@/components/tools/HashtagGenerator";
 
 const tools = {
   "email-generator": {
@@ -50,6 +51,11 @@ const tools = {
     component: YoutubeIdeaGenerator,
     title: "YouTube Video Idea Generator",
     desc: "Generate viral video ideas and titles for YouTube with AI.",
+  },
+  "hashtag-generator": {
+    component: HashtagGenerator,
+    title: "AI Hashtag Generator",
+    desc: "Generate trending hashtags for Instagram, TikTok, and Twitter.",
   },
 };
 
