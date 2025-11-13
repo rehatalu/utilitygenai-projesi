@@ -104,14 +104,13 @@ h3 {
 
 .animate-rgb-border {
   position: relative;
-  /* Arka planı şeffaf yapıyoruz, rengi ::after verecek */
-  background: transparent !important;
+  background: transparent !important; /* Zemin şeffaf */
   z-index: 0;
-  overflow: hidden; /* Köşeleri yuvarlat */
-  border-radius: 1.5rem; /* rounded-3xl */
+  border-radius: 1.5rem;
+  overflow: hidden;
 }
 
-/* KATMAN 1: DÖNEN GÖKKUŞAĞI (En altta) */
+/* DÖNEN RENKLER (Zemin) */
 .animate-rgb-border::before {
   content: "";
   position: absolute;
@@ -120,37 +119,29 @@ h3 {
   top: -50%;
   width: 200%;
   height: 200%;
-
-  /* PÜRÜZSÜZ GÖKKUŞAĞI (Tüm ara tonlar eklendi) */
   background: conic-gradient(
     from var(--angle),
     #ff0000, /* Kırmızı */
-    #ff8000, /* Turuncu */
     #ffff00, /* Sarı */
-    #80ff00, /* Açık Yeşil */
     #00ff00, /* Yeşil */
-    #00ff80, /* Turkuazımsı */
     #00ffff, /* Cyan */
-    #0080ff, /* Açık Mavi */
     #0000ff, /* Mavi */
-    #8000ff, /* Mor */
     #ff00ff, /* Magenta */
-    #ff0080, /* Pembe */
-    #ff0000 /* Kırmızıya Dönüş */
+    #ff0000  /* Kırmızı (Bitiş = Başlangıç) */
   );
-
-  /* Hızı biraz artırarak akıcılığı güçlendir */
   animation: spin 3s linear infinite;
 }
 
-/* KATMAN 2: MASKE (Ortada) - Kartın asıl rengi */
-/* Bu katman, gökkuşağının üzerini örter ve sadece kenarlarda boşluk bırakır */
+/* İÇ MASKE (Kartın Gövdesi) */
 .animate-rgb-border::after {
   content: "";
   position: absolute;
   z-index: -1;
-  /* inset: 3px -> Bu değer ÇERÇEVE KALINLIĞIDIR. İnce olması için 2px-3px idealdir */
-  inset: 3px;
-  background: #0f172a; /* slate-900 (Koyu Kart Rengi) */
-  border-radius: 1.3rem; /* Dışarıdan biraz daha küçük radius */
+  /* Çerçeve inceliği (2px) */
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: #0f172a; /* Kart rengi */
+  border-radius: 1.4rem;
 }
