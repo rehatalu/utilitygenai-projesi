@@ -4,7 +4,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://utilitygenai.com';
 
   const tools = [
-    'uga-chat',
+    'email-generator',
+    'paraphraser',
+    'social-post',
+    'meta-description',
+    'grammar-check',
+    'product-description',
+    'blog-ideas',
+    'youtube-ideas',
+    'hashtag-generator',
+    'business-name',
+    'code-explainer',
+    'text-summarizer',
+    'instagram-caption',
   ];
 
   const toolPages = tools.map((tool) => ({
