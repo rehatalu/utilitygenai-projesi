@@ -25,10 +25,15 @@ export default function MetaDescriptionGenerator() {
       setDescriptions([err.message || 'Failed to generate descriptions']);
     }
     setIsLoading(false);
+    setInput(""); // Kutu temizleme
   };
 
   return (
-    <div className={`mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg text-left ${isLoading ? 'animate-rgb-border' : ''}`}>
+    <div className={`mx-auto max-w-2xl rounded-3xl p-6 transition-all duration-300 text-left ${
+      isLoading 
+        ? 'animate-rgb-border' 
+        : 'bg-slate-900/80 ring-1 ring-slate-700 backdrop-blur-lg shadow-2xl'
+    }`}>
       <h1 className="text-2xl font-semibold text-white mb-4 text-left">SEO Meta Description Generator</h1>
       <p className="text-sm text-slate-400 mb-6 text-left">Boost your SEO with AI-generated meta descriptions.</p>
 

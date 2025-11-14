@@ -51,7 +51,11 @@ export default function UgaChatbot() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg">
+    <div className={`mx-auto max-w-2xl rounded-3xl p-6 transition-all duration-300 ${
+      isLoading 
+        ? 'animate-rgb-border' 
+        : 'bg-slate-900/80 ring-1 ring-slate-700 backdrop-blur-lg shadow-2xl'
+    }`}>
       <h1 className="text-2xl font-semibold text-white mb-4 text-left">Chat with UGA</h1>
       
       {/* Sohbet Geçmişi */}

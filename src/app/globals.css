@@ -40,3 +40,53 @@ body {
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+/* Rainbow Border Animation (Adım 67/68) */
+@keyframes rgb-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-rgb-border {
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+}
+
+.animate-rgb-border::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  z-index: -2;
+  background: conic-gradient(
+    from 0deg,
+    #ff0080,
+    #ff8000,
+    #ffff00,
+    #80ff00,
+    #00ff80,
+    #00ffff,
+    #0080ff,
+    #8000ff,
+    #ff0080
+  );
+  animation: rgb-border 4s linear infinite;
+  filter: blur(10px);
+  opacity: 0.6;
+}
+
+.animate-rgb-border::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  z-index: -1;
+  background: #0f172a;
+  border-radius: 1.5rem;
+}
