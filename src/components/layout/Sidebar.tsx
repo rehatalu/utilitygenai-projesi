@@ -18,7 +18,6 @@ import {
   CommandLineIcon, // Code Explainer
   DocumentTextIcon, // Summarizer
   CameraIcon, // Instagram
-  SparklesIcon, // UGA Chat
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from '@heroicons/react/24/outline';
@@ -38,7 +37,6 @@ const availableTools = [
   { id: 'code-explainer', name: 'AI Code Explainer', icon: CommandLineIcon },
   { id: 'text-summarizer', name: 'Text Summarizer', icon: DocumentTextIcon },
   { id: 'instagram-caption', name: 'Instagram Caption Generator', icon: CameraIcon },
-  { id: 'uga-chat', name: 'Chat with UGA', icon: SparklesIcon },
 ];
 
 export default function Sidebar() {

@@ -16,7 +16,7 @@ import { Metadata } from 'next';
 // import CodeExplainer from '@/components/tools/CodeExplainer';
 // import TextSummarizer from '@/components/tools/TextSummarizer';
 // import InstagramCaptionGenerator from '@/components/tools/InstagramCaptionGenerator';
-import UgaChatbot from '@/components/tools/UgaChatbot'; // Artık var olduğu için import edebiliriz
+// UGA Chat artık pop up olduğu için tool olarak kaldırıldı
 
 type Props = {
   params: Promise<{ toolId: string }>;
@@ -37,7 +37,7 @@ const tools: Record<string, { component: React.ComponentType; title: string; des
   // 'code-explainer': { component: CodeExplainer, title: 'AI Code Explainer', desc: 'Understand complex code snippets instantly with AI explanations.' },
   // 'text-summarizer': { component: TextSummarizer, title: 'AI Text Summarizer', desc: 'Instantly summarize long articles and texts into concise key points.' },
   // 'instagram-caption': { component: InstagramCaptionGenerator, title: 'AI Instagram Caption Generator', desc: 'Create engaging Instagram captions with emojis instantly.' },
-  'uga-chat': { component: UgaChatbot, title: 'Chat with UGA', desc: 'Chat with our AI mascot UGA about our tools.' },
+  // 'uga-chat' kaldırıldı - artık pop up
 };
 
 type ToolId = keyof typeof tools;
@@ -60,20 +60,8 @@ export default async function ToolPage({ params }: Props) {
   }
   const ActiveComponent = tool.component;
 
-  // Düzeltme: 'use client' olan `AnimatePresence`
-  // 'async' (sunucu) bir sayfada çalışmaz. 
-  // 'motion.div'i ekleyelim (Animasyon için)
   return (
     <div className="mx-auto flex w-full max-w-4xl justify-center">
-        {/* 'motion.div' 'use client' gerektirebilir, 
-            eğer bu da hata verirse, 'motion.div'i kaldırıp 
-            sadece '<ActiveComponent />' yazacağız. 
-            Şimdilik animasyonu deneyelim:
-        */}
-        {/* Düzeltme: Animasyon (motion.div) 'use client' gerektirdiği için 
-            ve bu sayfa 'async' (sunucu) olduğu için ÇALIŞMAZ. 
-            Animasyonu kaldırıp SADECE bileşeni çağırıyoruz:
-        */}
         <ActiveComponent />
     </div>
   );

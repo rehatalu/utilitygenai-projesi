@@ -3,6 +3,8 @@ import { Inter, Sora } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 import UgaAssistant from "@/components/layout/UgaAssistant";
+import Footer from "@/components/layout/Footer";
+import Sidebar from "@/components/layout/Sidebar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["600", "700"], display: "swap" });
@@ -52,10 +54,23 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         </div>
         
-        {/* 'children' (yani 'page.tsx' veya 'tool/[toolId]/page.tsx') buraya gelecek */}
-        {children} 
-
-        {/* UGA'yı kabuğun en dışına koyduk */}
+        {/* NİHAİ MİMARİ ÇERÇEVESİ (Hata 4'ü çözer) */}
+        <div className="flex h-screen flex-col overflow-hidden">
+          <div className="flex flex-1 overflow-hidden">
+            {/* Sidebar (Layout'a dahil) */}
+            <div className="flex-shrink-0 overflow-y-auto bg-gray-900">
+              <Sidebar /> 
+            </div>
+            {/* Ana Sahne (Kaydırılabilir) */}
+            <main className="flex-1 w-full px-4 py-8 sm:px-8 overflow-y-auto">
+              {children} {/* Ana Sayfa veya Araç Sayfası buraya gelecek */}
+            </main>
+          </div>
+          {/* Footer (Layout'a dahil) */}
+          <Footer />
+        </div>
+        
+        {/* UGA (Layout'a dahil) */}
         <UgaAssistant />
       </body>
     </html>
