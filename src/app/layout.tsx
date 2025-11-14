@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
-
-// Adım 63'te eklediğimiz UGA Asistanı
 import UgaAssistant from "@/components/layout/UgaAssistant";
+import Sidebar from "@/components/layout/Sidebar";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -71,10 +71,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         </div>
         
-        {/* Ana İçerik */}
-        {children}
-
-        {/* Adım 63'te eklediğimiz UGA Asistanı */}
+        {/* NİHAİ MİMARİ ÇERÇEVESİ (Adım 42'deki SAĞLAM KOD) */}
+        <div className="flex h-screen flex-col overflow-hidden">
+          <div className="flex flex-1 overflow-hidden">
+            <div className="flex-shrink-0 overflow-y-auto">
+              {/* Sidebar'ı 'children' değil, 'layout'un parçası yap */}
+              <Sidebar /> 
+            </div>
+            <main className="flex-1 w-full px-4 py-8 sm:px-8 overflow-y-auto">
+              {children} {/* 404 veya page.tsx burada görünecek */}
+            </main>
+          </div>
+          <Footer />
+        </div>
+        
         <UgaAssistant />
       </body>
     </html>
