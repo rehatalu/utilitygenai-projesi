@@ -14,7 +14,8 @@ export default function UgaAssistant() {
       {/* SOHBET POP-UP'I (Sadece 'isChatOpen' true ise görünür) */}
       {isChatOpen && (
         // DÜZELTME: "çok büyük" olmasın diye max-w-sm (küçük) yaptık
-        <div className="fixed bottom-24 right-8 z-50 w-full max-w-sm">
+        // ve 'bottom-24' (UGA'nın üstü) yerine 'bottom-8' (en alt köşe)
+        <div className="fixed bottom-8 right-8 z-50 w-full max-w-sm">
           
           {/* Kapatma Butonu */}
           <button 
@@ -48,7 +49,7 @@ export default function UgaAssistant() {
             className="relative w-32 h-32 animate-float hover:scale-110 transition-transform duration-300"
           >
             <Image
-              src="/uga.png"
+              src="/uga.png" 
               alt="UGA AI Assistant"
               fill
               className="object-contain"

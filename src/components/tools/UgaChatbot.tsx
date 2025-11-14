@@ -51,7 +51,7 @@ export default function UgaChatbot() {
   };
 
   return (
-    <div className={`w-full rounded-3xl p-6 transition-all duration-300 ${
+    <div className={`w-full max-w-sm rounded-3xl p-6 transition-all duration-300 ${
       isLoading 
         ? 'animate-rgb-border' 
         : 'bg-slate-900/80 ring-1 ring-slate-700 backdrop-blur-lg shadow-2xl'

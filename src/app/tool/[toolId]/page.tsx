@@ -1,4 +1,5 @@
 "use client"; // 'usePathname' ve 'AnimatePresence' için 'use client' GEREKLİ
+import WorkspaceLayout from "@/components/layout/WorkspaceLayout"; // YENİ ÇERÇEVEYİ import et
 import { motion, AnimatePresence } from 'framer-motion';
 import { notFound, usePathname } from 'next/navigation';
 
@@ -50,22 +51,25 @@ export default function ToolPage() {
 
   // Not: Dinamik SEO (generateMetadata) 'use client' dosyasında çalışmaz.
   // Bu, Adsense onayı için BÜYÜK bir sorundur.
-  // 404'ü çözdükten sonra "Adım 78"de buna DÖNMEK ZORUNDAYIZ.
+  // "Adım 78"de buna DÖNMEK ZORUNDAYIZ.
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl justify-center">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={toolId} // Animasyonun değişmesi için 'key'
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.2 }}
-          className="w-full"
-        >
-          <ActiveComponent />
-        </motion.div>
-      </AnimatePresence>
-    </div>
+    // DÜZELTME: 'WorkspaceLayout' (Sol Menü + Footer) ile sarmala
+    <WorkspaceLayout>
+      <div className="mx-auto flex w-full max-w-4xl justify-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={toolId} // Animasyonun değişmesi için 'key'
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="w-full"
+          >
+            <ActiveComponent />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </WorkspaceLayout>
   );
 }
