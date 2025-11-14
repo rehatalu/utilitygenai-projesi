@@ -1,27 +1,35 @@
 "use client";
-
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function UgaAssistant() {
   const [showBubble, setShowBubble] = useState(false);
+  const router = useRouter();
+
+  const handleUgaClick = () => {
+    // Tıklandığında "Sohbet" aracına git
+    router.push('/tool/uga-chat');
+  };
 
   return (
     <div
-      className="fixed bottom-8 right-8 z-50 cursor-pointer transition-all hover:scale-110 animate-float"
+      className="fixed bottom-8 right-8 z-50 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform duration-300"
+      onClick={handleUgaClick}
       onMouseEnter={() => setShowBubble(true)}
       onMouseLeave={() => setShowBubble(false)}
-      onClick={() => (window.location.href = '/')}
     >
+      {/* Baloncuk */}
       {showBubble && (
-        <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-slate-800 text-white text-sm rounded-lg shadow-lg whitespace-nowrap">
-          Click me to go home!
+        <div className="absolute -top-12 right-12 bg-slate-800 text-white text-sm px-3 py-1 rounded-md shadow-lg whitespace-nowrap">
+          Hi, I'm UGA! How can I help?
         </div>
       )}
-      <div className="relative w-32 h-32">
+      {/* Resim */}
+      <div className="relative w-32 h-32 animate-float">
         <Image
           src="/uga.png"
-          alt="UGA Assistant"
+          alt="UGA AI Assistant"
           fill
           className="object-contain"
           sizes="128px"

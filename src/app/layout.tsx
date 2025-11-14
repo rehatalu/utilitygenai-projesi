@@ -52,9 +52,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         </div>
         
-        {/* ANA ÇERÇEVE (Sidebar + Footer + Ana Sahne) */}
+        {/* 'children' (yani 'page.tsx' veya 'tool/[toolId]/page.tsx') buraya gelecek */}
         {children} 
 
+        {/* UGA'yı kabuğun en dışına koyduk */}
         <UgaAssistant />
       </body>
     </html>
