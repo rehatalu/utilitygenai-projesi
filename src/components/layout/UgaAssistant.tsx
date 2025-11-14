@@ -13,8 +13,8 @@ export default function UgaAssistant() {
     <>
       {/* SOHBET POP-UP'I (Sadece 'isChatOpen' true ise görünür) */}
       {isChatOpen && (
-        // DÜZELTME: "çok büyük" olmasın diye max-w-sm (küçük) yaptık
-        <div className="fixed bottom-24 right-8 z-50 w-full max-w-sm">
+        // DÜZELTME: "mikro" boyut için w-80 (20rem) yaptık
+        <div className="fixed bottom-24 right-8 z-50 w-80">
           
           {/* Kapatma Butonu */}
           <button 
