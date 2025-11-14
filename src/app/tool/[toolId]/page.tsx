@@ -1,8 +1,10 @@
-import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
+"use client";
+import WorkspaceLayout from "@/components/layout/WorkspaceLayout";
+import { motion, AnimatePresence } from 'framer-motion';
+import { notFound, usePathname } from 'next/navigation';
 
-// Araç Haritasını (tools map) 'Adım 50'den kopyala (GEREKLİ)
-// Not: Component'ler henüz oluşturulmadığı için şimdilik sadece UGA Chat aktif
+// Araç Haritasını (tools map) 'Adım 73'ten kopyala (GEREKLİ)
+// Not: Component'ler henüz oluşturulmadığı için şimdilik yorum satırı
 // import EmailSubjectGenerator from '@/components/tools/EmailSubjectGenerator';
 // import ParaphraserTool from '@/components/tools/ParaphraserTool';
 // import SocialPostGenerator from '@/components/tools/SocialPostGenerator';
@@ -16,13 +18,10 @@ import { Metadata } from 'next';
 // import CodeExplainer from '@/components/tools/CodeExplainer';
 // import TextSummarizer from '@/components/tools/TextSummarizer';
 // import InstagramCaptionGenerator from '@/components/tools/InstagramCaptionGenerator';
-// UGA Chat artık pop up olduğu için tool olarak kaldırıldı
+// UGA Chatbot'u BURADAN SİL (artık bir "araç" değil)
 
-type Props = {
-  params: Promise<{ toolId: string }>;
-};
-
-// Araç Haritası
+// Araç Haritası (UGA olmadan)
+// Şimdilik boş, component'ler oluşturulduğunda aktif hale getirilecek
 const tools: Record<string, { component: React.ComponentType; title: string; desc: string }> = {
   // 'email-generator': { component: EmailSubjectGenerator, title: 'AI Email Subject Generator', desc: 'Generate catchy email subject lines instantly.' },
   // 'paraphraser': { component: ParaphraserTool, title: 'AI Paraphrasing Tool', desc: 'Rewrite text professionally with AI.' },
@@ -37,33 +36,38 @@ const tools: Record<string, { component: React.ComponentType; title: string; des
   // 'code-explainer': { component: CodeExplainer, title: 'AI Code Explainer', desc: 'Understand complex code snippets instantly with AI explanations.' },
   // 'text-summarizer': { component: TextSummarizer, title: 'AI Text Summarizer', desc: 'Instantly summarize long articles and texts into concise key points.' },
   // 'instagram-caption': { component: InstagramCaptionGenerator, title: 'AI Instagram Caption Generator', desc: 'Create engaging Instagram captions with emojis instantly.' },
-  // 'uga-chat' kaldırıldı - artık pop up
 };
 
 type ToolId = keyof typeof tools;
 
-// Adım 50'deki "Dinamik SEO" fonksiyonu
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { toolId } = await params;
-  const tool = tools[toolId as ToolId];
-  if (!tool) return { title: 'Tool Not Found' };
-  return { title: `${tool.title} | UtilityGenAI`, description: tool.desc };
-}
+export default function ToolPage() {
+  const pathname = usePathname();
+  const toolId = pathname?.split('/').pop() as ToolId; // URL'den toolId'yi al
 
-// "Adım 50"deki "Dinamik Sayfa"
-export default async function ToolPage({ params }: Props) {
-  const { toolId } = await params;
-  const tool = tools[toolId as ToolId];
+  const tool = tools[toolId];
 
   if (!tool) {
+    // 404 hatasını manuel olarak tetikle
     notFound();
   }
   const ActiveComponent = tool.component;
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl justify-center">
-        <ActiveComponent />
-    </div>
+    <WorkspaceLayout>
+      <div className="mx-auto flex w-full max-w-4xl justify-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={toolId} // Animasyonun değişmesi için 'key'
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="w-full"
+          >
+            <ActiveComponent />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </WorkspaceLayout>
   );
 }
-

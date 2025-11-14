@@ -9,17 +9,13 @@ export default function UgaAssistant() {
   // YENİ STATE: Sohbet penceresi açık mı?
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  const handleUgaClick = () => {
-    setIsChatOpen(true); // Tıklayınca "pop up"ı aç
-    setShowBubble(false); // Baloncuğu gizle
-  };
-
   return (
     <>
       {/* SOHBET POP-UP'I (Sadece 'isChatOpen' true ise görünür) */}
       {isChatOpen && (
-        <div className="fixed bottom-24 right-8 z-50 w-full max-w-md">
+        <div className="fixed bottom-24 right-8 z-50 w-full max-w-sm">
           {/* Bu, "Adım 73"te (Bölüm 1) oluşturduğumuz Chatbot bileşenidir */}
+          {/* DÜZELTME: "çok büyük" olmasın diye max-w-sm (küçük) yaptık */}
           <UgaChatbot />
           
           {/* Kapatma Butonu */}
@@ -35,8 +31,7 @@ export default function UgaAssistant() {
       {/* UGA İKONU (Sadece sohbet kapalıysa görünür) */}
       {!isChatOpen && (
         <div
-          className="fixed bottom-8 right-8 z-40 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform duration-300"
-          onClick={handleUgaClick}
+          className="fixed bottom-8 right-8 z-40 flex flex-col items-center"
           onMouseEnter={() => setShowBubble(true)}
           onMouseLeave={() => setShowBubble(false)}
         >
@@ -46,8 +41,11 @@ export default function UgaAssistant() {
               Hi, I'm UGA! How can I help?
             </div>
           )}
-          {/* Resim (Değişmedi) */}
-          <div className="relative w-32 h-32 animate-float">
+          {/* Tıklanabilir Resim */}
+          <button 
+            onClick={() => setIsChatOpen(true)} // Tıklayınca "pop up"ı aç
+            className="relative w-32 h-32 animate-float hover:scale-110 transition-transform duration-300"
+          >
             <Image
               src="/uga.png"
               alt="UGA AI Assistant"
@@ -56,7 +54,7 @@ export default function UgaAssistant() {
               sizes="128px"
               priority
             />
-          </div>
+          </button>
         </div>
       )}
     </>
