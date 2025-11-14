@@ -13,18 +13,20 @@ export default function UgaAssistant() {
     <>
       {/* SOHBET POP-UP'I (Sadece 'isChatOpen' true ise görünür) */}
       {isChatOpen && (
-        <div className="fixed bottom-24 right-8 z-50 w-full max-w-sm">
-          {/* Bu, "Adım 73"te (Bölüm 1) oluşturduğumuz Chatbot bileşenidir */}
-          {/* DÜZELTME: "çok büyük" olmasın diye max-w-sm (küçük) yaptık */}
-          <UgaChatbot />
+        // DÜZELTME: "çok büyük" olmasın diye max-w-sm (küçük) yaptık
+        // ve 'bottom-24' (UGA'nın üstü) yerine 'bottom-8' (en alt köşe)
+        <div className="fixed bottom-8 right-8 z-50 w-full max-w-sm">
           
           {/* Kapatma Butonu */}
           <button 
             onClick={() => setIsChatOpen(false)}
-            className="absolute -top-2 -right-2 p-1 bg-red-600 rounded-full text-white shadow-lg hover:bg-red-700"
+            className="absolute -top-3 -right-3 p-1 bg-red-600 rounded-full text-white shadow-lg hover:bg-red-700 z-10"
           >
             <XMarkIcon className="w-5 h-5" />
           </button>
+
+          {/* Bu, "Adım 73"te (Bölüm 1) oluşturduğumuz Chatbot bileşenidir */}
+          <UgaChatbot />
         </div>
       )}
 
