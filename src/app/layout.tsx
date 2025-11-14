@@ -3,37 +3,18 @@ import { Inter, Sora } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 import UgaAssistant from "@/components/layout/UgaAssistant";
-import Sidebar from "@/components/layout/Sidebar";
-import Footer from "@/components/layout/Footer";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["600", "700"], display: "swap" });
 
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  weight: ["600", "700"],
-  display: "swap",
-});
-
-// Adım 43'teki SEO Meta Verimiz
 export const metadata: Metadata = {
-  title: {
-    template: '%s | UtilityGenAI',
-    default: 'UtilityGenAI - Free AI Tools & Productivity Suite',
-  },
-  description: 'A free collection of AI-powered tools (like Email, Paraphraser, Social Post) to boost your productivity. 7-to-70 tools for everyone.',
-  keywords: ['AI tools', 'free tools', 'productivity', 'paraphraser', 'generator'],
+  title: { template: '%s | UtilityGenAI', default: 'UtilityGenAI - Free AI Tools' },
+  description: 'A free collection of AI-powered tools (Email, Paraphraser, etc) to boost your productivity.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    // Adım 29'daki "Zengin Arka Plan"
     <html lang="en" className="dark">
-      {/* Adım 46'daki Google'ın istediği "AdSense Kodu" */}
       <head>
         <script 
           async 
@@ -47,7 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         bg-slate-950 text-slate-300
         relative isolate overflow-hidden`} 
       >
-        {/* Adım 29'daki "Görsel Grid/Blur" Arka Planı */}
+        {/* Zengin Arka Plan */}
         <div 
           className="absolute inset-0 -z-10" 
           aria-hidden="true"
@@ -71,20 +52,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         </div>
         
-        {/* NİHAİ MİMARİ ÇERÇEVESİ (Adım 42'deki SAĞLAM KOD) */}
-        <div className="flex h-screen flex-col overflow-hidden">
-          <div className="flex flex-1 overflow-hidden">
-            <div className="flex-shrink-0 overflow-y-auto">
-              {/* Sidebar'ı 'children' değil, 'layout'un parçası yap */}
-              <Sidebar /> 
-            </div>
-            <main className="flex-1 w-full px-4 py-8 sm:px-8 overflow-y-auto">
-              {children} {/* 404 veya page.tsx burada görünecek */}
-            </main>
-          </div>
-          <Footer />
-        </div>
-        
+        {/* ANA ÇERÇEVE (Sidebar + Footer + Ana Sahne) */}
+        {children} 
+
         <UgaAssistant />
       </body>
     </html>
