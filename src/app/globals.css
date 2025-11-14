@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-sora);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,141 +17,10 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-  body {
-    background-color: #0b1120;
-    color: var(--foreground);
-  }
 }
 
 body {
-  background-color: #f8fafc;
+  background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-h1,
-h2,
-h3 {
-  font-family: var(--font-heading), var(--font-sans), sans-serif;
-  letter-spacing: -0.015em;
-}
-
-@keyframes floatSlow {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes floatSlower {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-18px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.animate-float-slow {
-  animation: floatSlow 6s ease-in-out infinite;
-}
-
-.animate-float-slower {
-  animation: floatSlower 8s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Dönen açı değişkeni için */
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes spin {
-  from {
-    --angle: 0deg;
-  }
-  to {
-    --angle: 360deg;
-  }
-}
-
-.animate-rgb-border {
-  position: relative;
-  /* Kartın içi hep koyu kalsın */
-  background: #0f172a !important;
-  z-index: 0;
-  overflow: hidden;
-  border-radius: 1.5rem; /* rounded-3xl */
-}
-
-/* KATMAN 1: DÖNEN RENKLER (PÜRÜZSÜZLEŞTİRİLMİŞ) */
-.animate-rgb-border::before {
-  content: "";
-  position: absolute;
-  z-index: -2;
-  left: -50%;
-  top: -50%;
-  width: 200%;
-  height: 200%;
-
-  /* Pürüzsüz Geçiş İçin Pastel/Soft Renkler ve Tam Döngü */
-  background: conic-gradient(
-    from var(--angle),
-    #ff4545, /* Soft Kırmızı */
-    #ffa534, /* Soft Turuncu */
-    #ffdd00, /* Soft Sarı */
-    #42ff58, /* Soft Yeşil */
-    #34b3ff, /* Soft Mavi */
-    #a64dff, /* Soft Mor */
-    #ff4545  /* Soft Kırmızı (Bitiş = Başlangıç) */
-  );
-
-  /* RENKLERİ KAYNAŞTIRMAK İÇİN BLUR EKLİYORUZ */
-  filter: blur(10px);
-
-  animation: spin 4s linear infinite;
-}
-
-/* KATMAN 2: İÇ MASKE (Kartın Gövdesi) */
-/* Bu katman, bulanık renklerin üzerine oturarak net bir kenar oluşturur */
-.animate-rgb-border::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  /* Çerçeve kalınlığı (2px - İnce) */
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-
-  /* Kart Rengi (Maske) */
-  background: #0f172a;
-  border-radius: 1.4rem; /* Dışarıdan azıcık küçük */
+  font-family: Arial, Helvetica, sans-serif;
 }

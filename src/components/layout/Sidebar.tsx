@@ -15,11 +15,9 @@ import {
   VideoCameraIcon,
   HashtagIcon,
   BriefcaseIcon,
-  CodeBracketIcon,
-  DocumentTextIcon,
-  CameraIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
+  SparklesIcon,
 } from "@heroicons/react/24/outline";
 
 type ToolItem = {
@@ -39,15 +37,14 @@ const availableTools: ToolItem[] = [
   { id: "youtube-ideas", name: "YouTube Idea Generator", icon: VideoCameraIcon },
   { id: "hashtag-generator", name: "Hashtag Generator", icon: HashtagIcon },
   { id: "business-name", name: "Business Name Generator", icon: BriefcaseIcon },
-  { id: "code-explainer", name: "AI Code Explainer", icon: CodeBracketIcon },
-  { id: "text-summarizer", name: "Text Summarizer", icon: DocumentTextIcon },
-  { id: "instagram-caption", name: "Instagram Caption Generator", icon: CameraIcon },
+  { id: "uga-chat", name: "Chat with UGA", icon: SparklesIcon },
 ];
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
 
+  const isHome = pathname === "/";
   const activeToolId = pathname?.startsWith("/tool/") ? pathname.replace("/tool/", "") : null;
 
   return (

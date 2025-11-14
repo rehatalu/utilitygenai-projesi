@@ -1,44 +1,27 @@
-import { MetadataRoute } from "next";
-
-// Alan adımız
-const baseUrl = "https://utilitygenai.com";
-
-// Araç listemiz (URL'lerini oluşturmak için)
-const tools = [
-  "email-generator",
-  "paraphraser",
-  "social-post",
-  "meta-description",
-  "grammar-check",
-  "product-description",
-  "blog-ideas",
-  "youtube-ideas",
-  "hashtag-generator",
-  "business-name",
-  "code-explainer",
-  "text-summarizer",
-  "instagram-caption",
-];
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // 1. Ana Sayfa
-  const routes = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "daily" as const,
-      priority: 1,
-    },
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://utilitygenai.com';
+
+  const tools = [
+    'uga-chat',
   ];
 
-  // 2. Araç Sayfaları (Döngü ile ekle)
-  const toolRoutes = tools.map((tool) => ({
+  const toolPages = tools.map((tool) => ({
     url: `${baseUrl}/tool/${tool}`,
     lastModified: new Date(),
-    changeFrequency: "weekly" as const,
+    changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
 
-  return [...routes, ...toolRoutes];
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1,
+    },
+    ...toolPages,
+  ];
 }
 
