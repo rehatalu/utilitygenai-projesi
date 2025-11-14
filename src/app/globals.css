@@ -104,13 +104,14 @@ h3 {
 
 .animate-rgb-border {
   position: relative;
-  background: transparent !important; /* Zemin şeffaf */
+  /* Kartın içi hep koyu kalsın */
+  background: #0f172a !important;
   z-index: 0;
-  border-radius: 1.5rem;
   overflow: hidden;
+  border-radius: 1.5rem; /* rounded-3xl */
 }
 
-/* DÖNEN RENKLER (Zemin) */
+/* KATMAN 1: DÖNEN RENKLER (PÜRÜZSÜZLEŞTİRİLMİŞ) */
 .animate-rgb-border::before {
   content: "";
   position: absolute;
@@ -119,29 +120,38 @@ h3 {
   top: -50%;
   width: 200%;
   height: 200%;
+
+  /* Pürüzsüz Geçiş İçin Pastel/Soft Renkler ve Tam Döngü */
   background: conic-gradient(
     from var(--angle),
-    #ff0000, /* Kırmızı */
-    #ffff00, /* Sarı */
-    #00ff00, /* Yeşil */
-    #00ffff, /* Cyan */
-    #0000ff, /* Mavi */
-    #ff00ff, /* Magenta */
-    #ff0000  /* Kırmızı (Bitiş = Başlangıç) */
+    #ff4545, /* Soft Kırmızı */
+    #ffa534, /* Soft Turuncu */
+    #ffdd00, /* Soft Sarı */
+    #42ff58, /* Soft Yeşil */
+    #34b3ff, /* Soft Mavi */
+    #a64dff, /* Soft Mor */
+    #ff4545  /* Soft Kırmızı (Bitiş = Başlangıç) */
   );
-  animation: spin 3s linear infinite;
+
+  /* RENKLERİ KAYNAŞTIRMAK İÇİN BLUR EKLİYORUZ */
+  filter: blur(10px);
+
+  animation: spin 4s linear infinite;
 }
 
-/* İÇ MASKE (Kartın Gövdesi) */
+/* KATMAN 2: İÇ MASKE (Kartın Gövdesi) */
+/* Bu katman, bulanık renklerin üzerine oturarak net bir kenar oluşturur */
 .animate-rgb-border::after {
   content: "";
   position: absolute;
   z-index: -1;
-  /* Çerçeve inceliği (2px) */
+  /* Çerçeve kalınlığı (2px - İnce) */
   top: 2px;
   left: 2px;
   right: 2px;
   bottom: 2px;
-  background: #0f172a; /* Kart rengi */
-  border-radius: 1.4rem;
+
+  /* Kart Rengi (Maske) */
+  background: #0f172a;
+  border-radius: 1.4rem; /* Dışarıdan azıcık küçük */
 }
