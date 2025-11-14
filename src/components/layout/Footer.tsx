@@ -14,6 +14,9 @@ export default function Footer() {
           <Link href="/contact" className="hover:text-white transition">
             Contact Us
           </Link>
+          <Link href="/about" className="hover:text-white transition">
+            About Us
+          </Link>
         </div>
         <div className="text-center sm:text-right">
           <p>&copy; {new Date().getFullYear()} UtilityGenAI. All rights reserved.</p>
