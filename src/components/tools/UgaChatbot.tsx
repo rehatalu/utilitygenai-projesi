@@ -51,7 +51,7 @@ export default function UgaChatbot() {
   };
 
   return (
-    <div className={`w-full max-w-sm rounded-3xl p-6 transition-all duration-300 ${
+    <div className={`w-full rounded-3xl p-6 transition-all duration-300 ${
       isLoading 
         ? 'animate-rgb-border' 
         : 'bg-slate-900/80 ring-1 ring-slate-700 backdrop-blur-lg shadow-2xl'
@@ -59,7 +59,7 @@ export default function UgaChatbot() {
       <h1 className="text-2xl font-semibold text-white mb-4 text-left">Chat with UGA</h1>
       
       {/* Sohbet Geçmişi */}
-      <div className="h-96 overflow-y-auto mb-4 space-y-4 p-4 bg-slate-800/50 rounded-lg">
+      <div className="h-64 overflow-y-auto mb-4 space-y-4 p-4 bg-slate-800/50 rounded-lg">
         {messages.map((msg, index) => (
           <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div 
