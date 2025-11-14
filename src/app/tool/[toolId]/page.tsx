@@ -1,4 +1,5 @@
 "use client";
+import WorkspaceLayout from "@/components/layout/WorkspaceLayout";
 import { motion, AnimatePresence } from 'framer-motion';
 import { notFound, usePathname } from 'next/navigation';
 
@@ -48,25 +49,26 @@ export default function ToolPage() {
   }
   const ActiveComponent = tool.component;
 
-  // Not: 'generateMetadata' 'use client' dosyasında çalışmaz.
-  // SEO için (AdSense onayı sonrası) 
-  // bu 'tools' objesini 'layout.tsx'a taşımamız gerekecek. 
-  // ŞİMDİLİK 404'ü çözelim.
+  // Not: Dinamik SEO (generateMetadata) 'use client' dosyasında çalışmaz.
+  // Bu, Adsense onayı için BÜYÜK bir sorundur.
+  // 404'ü çözdükten sonra "Adım 78"de buna DÖNMEK ZORUNDAYIZ.
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl justify-center">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={toolId} // Animasyonun değişmesi için 'key'
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.2 }}
-          className="w-full"
-        >
-          <ActiveComponent />
-        </motion.div>
-      </AnimatePresence>
-    </div>
+    <WorkspaceLayout>
+      <div className="mx-auto flex w-full max-w-4xl justify-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={toolId} // Animasyonun değişmesi için 'key'
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="w-full"
+          >
+            <ActiveComponent />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </WorkspaceLayout>
   );
 }
