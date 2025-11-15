@@ -29,10 +29,10 @@ export default function EmailSubjectGenerator() {
   };
 
   return (
-    <div className={`mx-auto max-w-2xl rounded-3xl p-6 transition-all duration-300 text-left ${
+    <div className={`mx-auto max-w-2xl rounded-3xl p-6 transition-all duration-300 text-left backdrop-blur-lg ${
       isLoading 
-        ? 'animate-rgb-border' 
-        : 'bg-slate-900/80 ring-1 ring-slate-700 backdrop-blur-lg shadow-2xl'
+        ? 'animate-rgb-border' // Yüklenirken (globals.css'teki SAĞLAM maskeli RGB)
+        : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
     }`}>
       <h1 className="text-2xl font-semibold text-white mb-4 text-left">AI Email Subject Generator</h1>
       <p className="text-sm text-slate-400 mb-6 text-left">Generate catchy email subject lines instantly.</p>
