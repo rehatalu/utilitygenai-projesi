@@ -1,85 +1,130 @@
 "use client";
-import { useState } from 'react';
-import { SparklesIcon } from '@heroicons/react/24/solid';
+
+import { useState } from "react";
+import { SparklesIcon } from '@heroicons/react/24/outline'; // "Düşünen Yıldız" için import et
 
 export default function EmailSubjectGenerator() {
-  const [input, setInput] = useState("");
-  const [subjects, setSubjects] = useState<string[]>([]);
+  const [topic, setTopic] = useState("");
+  const [results, setResults] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
-
     setIsLoading(true);
+    setError(null);
+    setResults([]);
+
     try {
-      const response = await fetch('/api/email-generator', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: input }),
+      const response = await fetch("/api/generate-subject", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ topic }),
       });
+
       const data = await response.json();
-      if (data.error) throw new Error(data.error);
-      setSubjects(data.subjects || []);
-    } catch (err: any) {
-      setSubjects([err.message || 'Failed to generate subjects']);
+
+      if (!response.ok) {
+        throw new Error(data?.error || `Request failed with status ${response.status}`);
+      }
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setResults(data.subjects); // "Sonuç Gösterme"
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "An unknown error occurred.";
+      setError(message);
     }
+
     setIsLoading(false);
-    setInput(""); // Kutu temizleme
+    setTopic(""); // "Kutu Temizleme"
   };
 
   return (
-    <div className={`mx-auto max-w-2xl rounded-3xl p-6 transition-all duration-300 text-left backdrop-blur-lg ${
-      isLoading 
-        ? 'animate-rgb-border' // Yüklenirken (main.css'teki SAĞLAM maskeli RGB)
-        : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
-    }`}>
-      <h1 className="text-2xl font-semibold text-white mb-4 text-left">AI Email Subject Generator</h1>
-      <p className="text-sm text-slate-400 mb-6 text-left">Generate catchy email subject lines instantly.</p>
-
-      <form onSubmit={handleSubmit} className="text-left">
-        <label htmlFor="input" className="block text-sm font-medium text-slate-300 mb-2 text-left">
-          Topic or keywords:
-        </label>
-        <textarea
-          id="input"
-          className="w-full p-3 border rounded-lg shadow-sm bg-slate-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-left"
-          rows={3}
-          placeholder="e.g., Product launch, Newsletter, Sale announcement..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault(); 
-              if (e.currentTarget.form) {
-                e.currentTarget.form.requestSubmit();
-              }
-            }
-          }}
-        />
-        <button
-          type="submit"
-          className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-500 disabled:bg-gray-400 flex items-center gap-2"
-          disabled={isLoading || !input.trim()}
-        >
-          {isLoading && <SparklesIcon className="w-5 h-5 animate-spin" />}
-          {isLoading ? 'Generating...' : 'Generate Subjects'}
-        </button>
-      </form>
-
-      {subjects.length > 0 && (
-        <div className="mt-6 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3 text-left">Generated Subjects:</h2>
-          <ul className="space-y-2 text-left">
-            {subjects.map((subject, idx) => (
-              <li key={idx} className="p-3 bg-slate-800 rounded-lg text-slate-200 text-left">
-                {subject}
-              </li>
-            ))}
-          </ul>
+    // YENİ (SAĞLAM RGB'Lİ) CLASSNAME
+    <div
+      className={`mx-auto max-w-2xl rounded-3xl backdrop-blur-lg
+      ${
+        isLoading
+          ? 'animate-rgb-border' // Yüklenirken (main.css'teki SAĞLAM maskeli RGB)
+          : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
+      }
+    `}
+    >
+      <div className="p-6">
+        {/* YENİ (KOYU TEMA + SOLA DAYALI) */}
+        <div className="flex flex-col gap-2 border-b border-slate-700 pb-4 text-left">
+          <h1 className="text-2xl font-semibold text-white">
+            AI Email Subject Line Generator
+          </h1>
+          <p className="text-sm text-slate-400">
+            Enter the topic or main idea of your email, and we will generate
+            compelling subject lines for you.
+          </p>
         </div>
-      )}
+
+        <form onSubmit={handleSubmit} className="mt-6 space-y-3 text-left">
+          <label className="block text-sm font-medium text-slate-300">
+            Topic or keywords:
+            {/* YENİ (KOYU TEMA + ENTER İLE GÖNDER) */}
+            <textarea
+              className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-800 p-3 text-sm text-white shadow-sm transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
+              rows={3}
+              placeholder="e.g., Product launch, Newsletter, Sale announcement..."
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  if (e.currentTarget.form) {
+                    e.currentTarget.form.requestSubmit();
+                  }
+                }
+              }}
+            />
+          </label>
+          <button
+            type="submit"
+            className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:bg-slate-500"
+            disabled={isLoading || !topic}
+          >
+            {/* YENİ (DÜŞÜNEN YILDIZ) */}
+            {isLoading ? (
+              <>
+                <SparklesIcon className="w-4 h-4 animate-spin" />
+                <span>Generating...</span>
+              </>
+            ) : (
+              'Generate Subjects'
+            )}
+          </button>
+        </form>
+
+        {error && (
+          // YENİ (KOYU TEMA HATA RENKLERİ)
+          <div className="mt-6 rounded-xl border border-red-400 bg-red-900/30 p-4 text-sm text-red-300">
+            <strong className="font-semibold text-red-200">Error:</strong> {error}
+          </div>
+        )}
+
+        {results.length > 0 && (
+          <div className="mt-6 space-y-3 text-left">
+            {/* YENİ (KOYU TEMA) */}
+            <h2 className="text-lg font-semibold text-white">Results</h2>
+            <ul className="space-y-2 rounded-2xl border border-slate-700 bg-slate-800/50 p-4 text-sm text-slate-300">
+              {results.map((result, index) => (
+                <li key={index} className="flex items-start gap-2">
+                  <span className="text-indigo-400">❖</span>
+                  <span>{result}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
-
