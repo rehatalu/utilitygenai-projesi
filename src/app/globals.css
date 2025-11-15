@@ -41,52 +41,49 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Rainbow Border Animation (Adım 67/68) */
-@keyframes rgb-border {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* Rainbow Border Animation (Adım 68 - Pürüzsüz Akış ve Yumuşak Işık) */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
 }
 
 .animate-rgb-border {
   position: relative;
-  background: transparent;
+  background: transparent !important; /* Zemin şeffaf */
+  z-index: 0;
+  border-radius: 1.5rem;
   overflow: hidden;
 }
 
+/* DÖNEN RENKLER (Zemin) */
 .animate-rgb-border::before {
-  content: '';
+  content: "";
   position: absolute;
-  inset: -3px;
   z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
   background: conic-gradient(
-    from 0deg,
-    #ff0080,
-    #ff8000,
-    #ffff00,
-    #80ff00,
-    #00ff80,
-    #00ffff,
-    #0080ff,
-    #8000ff,
-    #ff0080
+    from var(--angle),
+    #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000
   );
-  animation: rgb-border 4s linear infinite;
-  filter: blur(10px);
-  opacity: 0.6;
+  animation: spin 3s linear infinite;
 }
 
+/* İÇ MASKE (Kartın Gövdesi) */
 .animate-rgb-border::after {
-  content: '';
+  content: "";
   position: absolute;
-  inset: 3px;
   z-index: -1;
-  background: #0f172a;
-  border-radius: 1.5rem;
+  /* Çerçeve inceliği (2px) */
+  top: 2px; left: 2px; right: 2px; bottom: 2px; 
+  background: #0f172a; /* Kart rengi */
+  border-radius: 1.4rem;
 }
