@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import { ReactNode } from "react";
-import "./globals.css";
+import "./styles.css";
 import UgaAssistant from "@/components/layout/UgaAssistant";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
