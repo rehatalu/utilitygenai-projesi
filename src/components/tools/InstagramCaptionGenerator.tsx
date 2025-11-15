@@ -50,8 +50,10 @@ export default function InstagramCaptionGenerator() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault();
-              if (!isLoading && input.trim()) handleSubmit(e as any);
+              e.preventDefault(); 
+              if (e.currentTarget.form) {
+                e.currentTarget.form.requestSubmit();
+              }
             }
           }}
         />

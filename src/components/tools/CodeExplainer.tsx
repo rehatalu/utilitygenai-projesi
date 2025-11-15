@@ -49,9 +49,11 @@ export default function CodeExplainer() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-              e.preventDefault();
-              if (!isLoading && input.trim()) handleSubmit(e as any);
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault(); 
+              if (e.currentTarget.form) {
+                e.currentTarget.form.requestSubmit();
+              }
             }
           }}
         />

@@ -20,7 +20,12 @@ export default function ProductDescriptionGenerator() {
       });
       const data = await response.json();
       if (data.error) throw new Error(data.error);
-      setResult(data.description || '');
+      // API 'descriptions' array döndürüyor, ilkini al veya hepsini birleştir
+      if (Array.isArray(data.descriptions) && data.descriptions.length > 0) {
+        setResult(data.descriptions.join('\n\n'));
+      } else {
+        setResult(data.description || '');
+      }
     } catch (err: any) {
       setResult(err.message || 'Failed to generate description');
     }
@@ -50,8 +55,10 @@ export default function ProductDescriptionGenerator() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault();
-              if (!isLoading && input.trim()) handleSubmit(e as any);
+              e.preventDefault(); 
+              if (e.currentTarget.form) {
+                e.currentTarget.form.requestSubmit();
+              }
             }
           }}
         />
