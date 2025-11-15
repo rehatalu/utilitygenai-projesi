@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       
       <body 
         className={`${inter.variable} ${sora.variable} antialiased 
-        bg-slate-950 text-slate-300
+        text-slate-300
         relative isolate overflow-hidden`} 
       >
         {/* "Görsel Grid Desenli" Arka Plan (Adım 29) */}

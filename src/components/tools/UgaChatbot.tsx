@@ -56,7 +56,6 @@ export default function UgaChatbot() {
           : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
         }
       `}
-      style={isLoading ? { position: 'relative', zIndex: 0 } : {}}
     >
       {/* İçerik maske üstünde görünmeli (z-index: 1) */}
       <div className="relative z-10">
