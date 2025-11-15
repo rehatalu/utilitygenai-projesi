@@ -9,14 +9,18 @@ const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["600",
 
 export const metadata: Metadata = {
   title: { template: '%s | UtilityGenAI', default: 'UtilityGenAI - Free AI Tools' },
-  description: 'A free collection of AI-powered tools...',
+  description: 'A free collection of AI-powered tools (Email, Paraphraser, etc) to boost your productivity.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark">
       <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128" crossOrigin="anonymous"></script>
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       
       <body 
