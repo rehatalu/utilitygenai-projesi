@@ -56,11 +56,11 @@ export default function UgaChatbot() {
           : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
         }
       `}
+      style={isLoading ? { position: 'relative', zIndex: 0 } : {}}
     >
-      {/* O "iç" `div` silindiği için, içerik artık doğrudan bu 
-         'animate-rgb-border' çerçevesinin içinde yaşayacak */}
-      
-      <h1 className="text-base font-semibold text-white mb-3 text-left">Chat with UGA</h1>
+      {/* İçerik maske üstünde görünmeli (z-index: 1) */}
+      <div className="relative z-10">
+        <h1 className="text-base font-semibold text-white mb-3 text-left">Chat with UGA</h1>
       
       <div className="h-48 overflow-y-auto mb-3 space-y-3 p-3 bg-slate-800/50 rounded-lg">
         {messages.map((msg, index) => (
@@ -111,6 +111,7 @@ export default function UgaChatbot() {
           )}
         </button>
       </form>
+      </div>
     </div>
   );
 }

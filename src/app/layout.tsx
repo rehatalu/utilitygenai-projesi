@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         bg-slate-950 text-slate-300
         relative isolate overflow-hidden`} 
       >
-        {/* Zengin Arka Plan */}
+        {/* "Görsel Grid Desenli" Arka Plan (Adım 29) */}
         <div 
           className="absolute inset-0 -z-10" 
           aria-hidden="true"
@@ -52,10 +52,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         </div>
         
-        {/* 'children' (yani 'page.tsx' veya 'tool/[toolId]/page.tsx') buraya gelecek */}
         {children} 
-
-        {/* UGA'yı kabuğun en dışına koyduk */}
         <UgaAssistant />
       </body>
     </html>
