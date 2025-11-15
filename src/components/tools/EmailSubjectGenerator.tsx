@@ -44,16 +44,8 @@ export default function EmailSubjectGenerator() {
   };
 
   return (
-    // YENİ (SAĞLAM RGB'Lİ) CLASSNAME
-    <div
-      className={`mx-auto max-w-2xl rounded-3xl backdrop-blur-lg
-      ${
-        isLoading
-          ? 'animate-rgb-border' // Yüklenirken (main.css'teki SAĞLAM maskeli RGB)
-          : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
-      }
-    `}
-    >
+    // GÜVENLİ MOD: RGB border kaldırıldı
+    <div className="mx-auto max-w-2xl rounded-3xl backdrop-blur-lg bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl">
       <div className="p-6">
         {/* YENİ (KOYU TEMA + SOLA DAYALI) */}
         <div className="flex flex-col gap-2 border-b border-slate-700 pb-4 text-left">

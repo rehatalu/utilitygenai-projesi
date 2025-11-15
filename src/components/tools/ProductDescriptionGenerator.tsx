@@ -34,11 +34,7 @@ export default function ProductDescriptionGenerator() {
   };
 
   return (
-    <div className={`mx-auto max-w-2xl rounded-3xl p-6 transition-all duration-300 text-left ${
-      isLoading 
-        ? 'animate-rgb-border' 
-        : 'bg-slate-900/80 ring-1 ring-slate-700 backdrop-blur-lg shadow-2xl'
-    }`}>
+    <div className="mx-auto max-w-2xl rounded-3xl p-6 transition-all duration-300 text-left bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl backdrop-blur-lg">
       <h1 className="text-2xl font-semibold text-white mb-4 text-left">Product Description Generator</h1>
       <p className="text-sm text-slate-400 mb-6 text-left">Write persuasive product descriptions for e-commerce.</p>
 
