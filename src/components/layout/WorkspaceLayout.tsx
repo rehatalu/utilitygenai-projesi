@@ -13,7 +13,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true); // Bu state artık hem mobili hem masaüstünü kontrol edecek
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-100">
+    <div className="flex h-screen bg-transparent text-slate-100">
       
       {/* 1. MOBİL Menü Arka Planı (Overlay) */}
       {/* Bu hala sadece mobilde (md:hidden) çalışmalı */}

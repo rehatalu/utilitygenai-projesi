@@ -29,6 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           style={{
             backgroundImage: 'linear-gradient(to right, rgba(51, 65, 85, 0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(51, 65, 85, 0.5) 1px, transparent 1px)',
             backgroundSize: '3rem 3rem',
+            backgroundPosition: '0 0',
           }}
           aria-hidden="true"
         />
