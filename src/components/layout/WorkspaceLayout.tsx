@@ -10,7 +10,7 @@ interface WorkspaceLayoutProps {
 }
 
 export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
-  const [sidebarOpen, setSidebarOpen] = useState(false); // Bu state artık hem mobili hem masaüstünü kontrol edecek
+  const [sidebarOpen, setSidebarOpen] = useState(true); // Bu state artık hem mobili hem masaüstünü kontrol edecek
 
   return (
     <div className="flex h-screen bg-slate-950 text-slate-100">
