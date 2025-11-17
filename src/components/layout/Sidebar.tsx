@@ -39,7 +39,11 @@ const availableTools = [
   { id: 'instagram-caption', name: 'Instagram Caption Generator', icon: CameraIcon },
 ];
 
-export default function Sidebar() {
+interface SidebarProps {
+  closeSidebar: () => void;
+}
+
+export default function Sidebar({ closeSidebar }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   
   // URL'yi oku (Adres çubuğu)
@@ -56,6 +60,7 @@ export default function Sidebar() {
         <div className={`p-4 border-b border-gray-700 ${isCollapsed ? 'flex justify-center' : 'flex items-center gap-2'}`}>
           <Link
             href="/" // Artık 'onClick' değil, 'Link'
+            onClick={closeSidebar}
             className={`flex items-center gap-2 w-full ${isCollapsed ? 'justify-center' : ''}`}
           >
             <span className="p-2 bg-indigo-600 rounded-lg text-white">
@@ -81,6 +86,7 @@ export default function Sidebar() {
               <Link
                 key={tool.id}
                 href={`/tool/${tool.id}`} // Artık 'onClick' değil, 'Link'
+                onClick={closeSidebar}
                 className={`flex items-center gap-3 w-full rounded-lg px-3 py-2.5 text-sm font-medium transition
                   ${isActive
                     ? 'bg-indigo-600 text-white shadow-sm'
