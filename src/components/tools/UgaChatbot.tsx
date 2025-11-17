@@ -47,15 +47,16 @@ export default function UgaChatbot() {
   };
 
   return (
-    <div className="w-full text-left transition-all duration-300">
-      <div 
-        className={`rounded-3xl ${isLoading 
-            ? 'animate-rgb-border p-[2px]' // Yüklenirken: RGB maskeleme + ince padding
-            : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl backdrop-blur-lg'
-          }`}
-      >
-        {/* İçerik maske üstünde görünmeli - z-index ile */}
-        <div className="relative z-10 rounded-[1.4rem] bg-slate-900/90 p-4">
+    <div 
+      className={`w-full rounded-3xl p-4 transition-all duration-300 text-left
+        ${isLoading 
+          ? 'animate-rgb-border' // Yüklenirken (main.css'teki SAĞLAM maskeli RGB) - backdrop-blur YOK
+          : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl backdrop-blur-lg' // Normal hali
+        }
+      `}
+    >
+      {/* İçerik maske üstünde görünmeli - z-index ile */}
+      <div className="relative z-10 text-left">
         <h1 className="text-base font-semibold text-white mb-3 text-left">Chat with UGA</h1>
       
         <div className="h-48 overflow-y-auto mb-3 space-y-3 p-3 bg-slate-800/50 rounded-lg">
@@ -109,7 +110,6 @@ export default function UgaChatbot() {
         </form>
       </div>
     </div>
-  </div>
   );
 }
 
