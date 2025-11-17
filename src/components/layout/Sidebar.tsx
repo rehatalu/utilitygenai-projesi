@@ -3,21 +3,21 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { HiHome, HiX } from 'react-icons/hi';
-// import ThemeSwitcher from '@/components/ui/ThemeSwitcher'; // "ThemeSwitcher" kaldırıldı
+// import ThemeSwitcher from '@/components/ui/ThemeSwitcher'; // "ThemeSwitcher" SİLİNDİ
 import {
   EnvelopeIcon,
   DocumentDuplicateIcon,
   ChatBubbleOvalLeftEllipsisIcon,
-  TagIcon, // Meta
-  CheckCircleIcon, // Grammar
-  ShoppingCartIcon, // Product
-  LightBulbIcon, // Blog Ideas
-  VideoCameraIcon, // YouTube
-  HashtagIcon, // Hashtag
-  BriefcaseIcon, // Business Name
-  CommandLineIcon, // Code Explainer
-  DocumentTextIcon, // Summarizer
-  CameraIcon, // Instagram
+  TagIcon,
+  CheckCircleIcon,
+  ShoppingCartIcon,
+  LightBulbIcon,
+  VideoCameraIcon,
+  HashtagIcon,
+  BriefcaseIcon,
+  CommandLineIcon,
+  DocumentTextIcon,
+  CameraIcon,
 } from '@heroicons/react/24/outline';
 
 // Araçların listesi (ikonlarla birlikte)
@@ -50,9 +50,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
 
   return (
     // GERİ ALMA: Sadece "inattı" karanlık tema
-    <div className="flex flex-col h-full 
-                    bg-slate-900 text-slate-300 
-                    border-r border-slate-800">
+    <div className="flex flex-col h-full bg-slate-900 text-slate-300 border-r border-slate-800">
       
       {/* BÖLÜM 1: Logo ve Kontrol Butonları */}
       <div className="flex items-center justify-between h-16 px-4 border-b border-slate-800 flex-shrink-0">
@@ -65,7 +63,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
 
         {/* KONTROL GRUBU (TEMA + KAPAT) */}
         <div className="flex items-center gap-2">
-          {/* "ThemeSwitcher" kaldırıldı */}
+          {/* "ThemeSwitcher" SİLİNDİ */}
           <button
             type="button"
             onClick={closeSidebar}
@@ -86,13 +84,11 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
               <Link
                 href={`/tool/${tool.slug}`}
                 onClick={closeSidebar} 
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium
-                            transition-colors duration-150
-                            ${
-                              isActive(tool.slug)
-                                ? 'bg-indigo-600 text-white' // Aktif
-                                : 'text-slate-300 hover:bg-slate-800 hover:text-white' // Pasif
-                            }`}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors duration-150 ${
+                  isActive(tool.slug)
+                    ? 'bg-indigo-600 text-white' // Aktif
+                    : 'text-slate-300 hover:bg-slate-800 hover:text-white' // Pasif
+                }`}
               >
                 <tool.icon className="h-5 w-5 flex-shrink-0" />
                 <span>{tool.name}</span>
@@ -101,7 +97,6 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
           ))}
         </ul>
       </nav>
-
     </div>
   );
 }

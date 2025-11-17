@@ -14,13 +14,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    // GERİ ALMA: `className="dark"` geri eklendi.
+    // GERİ ALMA: "className='dark'" geri eklendi.
     <html lang="en" className="dark"> 
       <head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128" crossOrigin="anonymous"></script>
       </head>
       
-      {/* GERİ ALMA: "inattı" karanlık tema geri eklendi. */}
       <body 
         className={`${inter.variable} ${sora.variable} antialiased bg-slate-950 text-slate-300 relative isolate overflow-hidden`} 
       >
@@ -35,9 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           {/* GERİ ALMA: Sadece karanlık opacity */}
           <div 
-            className="aspect-[1097/845] w-[68.5625rem] 
-            bg-gradient-radial from-[#4f46e5] via-transparent to-transparent 
-            opacity-20"
+            className="aspect-[1097/845] w-[68.5625rem] bg-gradient-radial from-[#4f46e5] via-transparent to-transparent opacity-20"
             style={{
               clipPath:
                 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
