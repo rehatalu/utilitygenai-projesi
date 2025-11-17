@@ -25,20 +25,12 @@
 }
 
 /* Grid Pattern - Aydınlık ve Karanlık Mod */
-.grid-pattern-light {
+.grid-pattern {
   background-image: linear-gradient(to right, rgba(229, 231, 235, 1) 1px, transparent 1px), 
                     linear-gradient(to bottom, rgba(229, 231, 235, 1) 1px, transparent 1px);
 }
 
-.dark .grid-pattern-light {
-  background-image: none;
-}
-
-.grid-pattern-dark {
-  background-image: none;
-}
-
-.dark .grid-pattern-dark {
+.dark .grid-pattern {
   background-image: linear-gradient(to right, rgba(51, 65, 85, 0.5) 1px, transparent 1px), 
                     linear-gradient(to bottom, rgba(51, 65, 85, 0.5) 1px, transparent 1px);
 }

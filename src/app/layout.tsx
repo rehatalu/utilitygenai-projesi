@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* "Görsel Grid Desenli" Arka Plan (Adım 29) */}
         {/* Bu div artık aydınlıkta açık gri, karanlıkta koyu gri olacak */}
         <div 
-          className="absolute inset-0 -z-10 grid-pattern-light dark:grid-pattern-dark"
+          className="absolute inset-0 -z-10 grid-pattern"
           style={{
             backgroundSize: '3rem 3rem',
           }}
