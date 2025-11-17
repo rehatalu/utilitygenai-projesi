@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import Sidebar from './Sidebar';
-import Footer from './Footer';
 
 interface WorkspaceLayoutProps {
   children: React.ReactNode;
@@ -57,8 +56,6 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         <div className="px-4 py-8 sm:px-8">
           {children}
         </div>
-        
-        <Footer />
       </main>
     </div>
   );
