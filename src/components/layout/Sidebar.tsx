@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { HiHome, HiX } from 'react-icons/hi';
+import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 import {
-  HomeIcon,
   EnvelopeIcon,
   DocumentDuplicateIcon,
   ChatBubbleOvalLeftEllipsisIcon,
@@ -17,7 +18,6 @@ import {
   CommandLineIcon, // Code Explainer
   DocumentTextIcon, // Summarizer
   CameraIcon, // Instagram
-  XMarkIcon, // Kapatma butonu için
 } from '@heroicons/react/24/outline';
 
 // Araçların listesi (ikonlarla birlikte)
@@ -52,23 +52,31 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
   return (
     <div className="flex flex-col h-full bg-slate-900 text-slate-300">
       
-      {/* BÖLÜM 1: Logo ve Kapatma Tuşu */}
+      {/* BÖLÜM 1: Logo ve Kontrol Butonları */}
       <div className="flex items-center justify-between h-16 px-4 border-b border-slate-800 flex-shrink-0">
+        {/* Logo/Başlık */}
         <Link href="/" className="flex items-center gap-2" onClick={closeSidebar}>
           <div className="bg-indigo-600 p-2 rounded-lg">
-            <HomeIcon className="h-6 w-6 text-white" />
+            <HiHome className="h-6 w-6 text-white" />
           </div>
           <span className="text-xl font-bold text-white">UtilityGenAI</span>
         </Link>
-        {/* Kapatma Butonu (artık hep görünür) */}
-        <button
-          type="button"
-          onClick={closeSidebar}
-          className="text-slate-400 hover:text-white"
-          aria-label="Close sidebar"
-        >
-          <XMarkIcon className="h-6 w-6" />
-        </button>
+
+        {/* KONTROL GRUBU (TEMA + KAPAT) - YENİ (Görev 10.2) */}
+        <div className="flex items-center gap-2">
+          {/* Tema Değiştirici Butonumuz */}
+          <ThemeSwitcher /> 
+
+          {/* Kapatma Butonu (Görev 9'dan) */}
+          <button
+            type="button"
+            onClick={closeSidebar}
+            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+            aria-label="Close sidebar"
+          >
+            <HiX className="h-6 w-6" />
+          </button>
+        </div>
       </div>
 
       {/* BÖLÜM 2: KAYDIRILABİLİR ARAÇ LİSTESİ (ÖNEMLİ DÜZELTME) */}
