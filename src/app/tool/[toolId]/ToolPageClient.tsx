@@ -597,6 +597,164 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       )
     },
   ],
+
+  // --- 11. AI Code Explainer (YENİ) ---
+  'code-explainer': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Understand complex code snippets in plain English. Perfect for students, developers, and tech enthusiasts.</p>
+          <ol>
+            <li><strong>Paste Your Code:</strong> Copy and paste any code snippet (Python, JavaScript, C++, etc.).</li>
+            <li><strong>Specify Language (Optional):</strong> Helps the AI, but it&apos;s very good at auto-detecting.</li>
+            <li><strong>Generate:</strong> The AI will provide a step-by-step, line-by-line explanation of what the code does.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Demystify any code:</p>
+          <ul>
+            <li><strong>Input (Python):</strong> `names = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]<br/>upper_names = [name.upper() for name in names]` <br />
+              <strong>→ Output:</strong> &quot;This is a Python list comprehension. It creates a *new* list called `upper_names` by looping through each `name` in the original `names` list and applying the `.upper()` (uppercase) function to it.&quot;</li>
+            <li><strong>Input (JavaScript):</strong> `const a = b ?? &apos;default&apos;;` <br />
+              <strong>→ Output:</strong> &quot;This JavaScript code uses the &apos;Nullish Coalescing&apos; operator (??). It means `a` will be set to the value of `b` *only if* `b` is not `null` or `undefined`. If `b` *is* `null` or `undefined`, then `a` will be set to the string &apos;default&apos;.&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Who is this tool for?</h2>
+          <ul>
+            <li><strong>Student Programmers:</strong> To understand homework, lecture examples, or code you find online.</li>
+            <li><strong>Professional Developers:</strong> To quickly understand a new library or a colleague&apos;s legacy code.</li>
+            <li><strong>Technical Managers:</strong> To get a high-level overview of a code&apos;s function without reading it.</li>
+          </ul>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>Can it find bugs in my code?</dt>
+            <dd>While its explanation might help you *spot* a bug, this is not a debugger. It&apos;s an &quot;explainer.&quot; Its main job is to tell you *what the code is trying to do*, not if it&apos;s doing it perfectly.</dd>
+            <dt>What programming languages are supported?</dt>
+            <dd>The AI is trained on virtually all modern and legacy languages, including Python, JavaScript, TypeScript, Java, C#, C++, Ruby, PHP, Swift, Go, and even SQL.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
+
+  // --- 12. Text Summarizer (YENİ) ---
+  'text-summarizer': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Condense long articles, reports, or documents into key bullet points. Understand the main idea in a fraction of the time.</p>
+          <ol>
+            <li><strong>Paste Your Text:</strong> Copy and paste the full article, essay, or report.</li>
+            <li><strong>Select Length (Optional):</strong> Choose &quot;Short&quot; (a few sentences) or &quot;Medium&quot; (bullet points).</li>
+            <li><strong>Generate:</strong> The AI will read the entire text and extract the most important information.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <ul>
+            <li><strong>Input:</strong> A 2,000-word news article about a new scientific discovery. <br />
+              <strong>→ Output:</strong> A 5-bullet-point summary covering: 1. What was discovered, 2. Who discovered it, 3. Why it&apos;s important, 4. The main challenge, 5. What&apos;s next.</li>
+            <li><strong>Input:</strong> A long, confusing work email. <br />
+              <strong>→ Output:</strong> &quot;Main point: The project deadline has been moved to Friday. They need the &apos;X&apos; report by 3 PM.&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Who is this tool for?</h2>
+          <ul>
+            <li><strong>Students:</strong> To quickly get the main points from long reading assignments.</li>
+            <li><strong>Professionals:</strong> To stay on top of industry reports, long emails, and meeting notes.</li>
+            <li><strong>Researchers:</strong> To quickly sift through abstracts and articles to find relevant papers.</li>
+          </ul>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>Is there a word limit?</dt>
+            <dd>The tool is designed to handle several thousand words at once, which covers most articles and reports. For an entire book, you may need to summarize chapter by chapter.</dd>
+            <dt>How accurate is the summary?</dt>
+            <dd>Very accurate. The AI doesn&apos;t just &quot;pick sentences.&quot; It reads and *understands* the context to generate a new, concise summary that captures the original author&apos;s main points.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
+
+  // --- 13. Instagram Caption (YENİ) ---
+  'instagram-caption': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Write captivating captions for your Instagram posts. This tool helps you create the perfect blend of storytelling, emojis, and hashtags.</p>
+          <ol>
+            <li><strong>Describe Your Photo:</strong> What&apos;s happening in the image? (e.g., &quot;Me drinking coffee in Paris,&quot; &quot;My new product launch&quot;).</li>
+            <li><strong>Select Tone:</strong> &quot;Inspirational,&quot; &quot;Funny,&quot; &quot;Salesy,&quot; &quot;Casual.&quot;</li>
+            <li><strong>Generate:</strong> Get several caption options, complete with emojis and relevant hashtags.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <ul>
+            <li><strong>Input Photo:</strong> &quot;My dog sleeping in a sunbeam&quot; | <strong>Tone:</strong> &quot;Casual&quot; <br />
+              <strong>→ Output:</strong> &quot;Chasing those sunbeams ☀️🐶. Pretty sure this is what &apos;living the dream&apos; looks like. What&apos;s your furry friend up to today? #doglife #dogsofinstagram #lazysunday&quot;</li>
+            <li><strong>Input Photo:</strong> &quot;New handmade jewelry&quot; | <strong>Tone:</strong> &quot;Salesy&quot; <br />
+              <strong>→ Output:</strong> &quot;✨ New collection is LIVE! ✨ Each piece is handmade with love. We&apos;re obsessed with these new designs, and we know you will be too. Tap the link in our bio to shop! #handmadejewelry #smallbusiness #newlaunch #shoplocal&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Is this different from the Social Post Generator?</h2>
+          <p>Yes, very. The <a href="/tool/social-post">Social Post Generator</a> is for text-first platforms like LinkedIn/Twitter. This tool is for Instagram, which means it focuses on <strong>visual storytelling</strong>, <strong>emoji use</strong>, and <strong>community-building hashtags</strong>.</p>
+          <h2>Does it include a &apos;Link in Bio&apos; call-to-action?</h2>
+          <p>Yes. If you select a &quot;Salesy&quot; or &quot;Business&quot; tone, the AI will often automatically include a &quot;Call to Action&quot; (CTA) like &quot;Tap the link in our bio!&quot; or &quot;Comment below!&quot; to drive engagement.</p>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>Can I generate captions in other languages?</dt>
+            <dd>Yes, the AI is highly capable of generating captions in many languages. Just write your photo description in the language you want.</dd>
+            <dt>How many hashtags does it include?</dt>
+            <dd>It typically suggests 5-10 highly relevant hashtags. For a deeper dive on hashtags, you can also use our dedicated <a href="/tool/hashtag-generator">Hashtag Generator</a>.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
 };
 
 export default function ToolPageClient({ toolId }: ToolPageClientProps) {
