@@ -31,17 +31,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* "Görsel Grid Desenli" Arka Plan (Adım 29) */}
         {/* Bu div artık aydınlıkta açık gri, karanlıkta koyu gri olacak */}
         <div 
-          className="absolute inset-0 -z-10"
+          className="absolute inset-0 -z-10 grid-pattern-light dark:grid-pattern-dark"
           style={{
-            backgroundImage: 'linear-gradient(to right, rgba(229, 231, 235, 1) 1px, transparent 1px), linear-gradient(to bottom, rgba(229, 231, 235, 1) 1px, transparent 1px)',
-            backgroundSize: '3rem 3rem',
-          }}
-          aria-hidden="true"
-        />
-        <div 
-          className="absolute inset-0 -z-10 dark:block hidden"
-          style={{
-            backgroundImage: 'linear-gradient(to right, rgba(51, 65, 85, 0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(51, 65, 85, 0.5) 1px, transparent 1px)',
             backgroundSize: '3rem 3rem',
           }}
           aria-hidden="true"
