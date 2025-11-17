@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
+import ClipboardButton from '@/components/ui/ClipboardButton';
 
 export default function ParaphraserTool() {
   const [input, setInput] = useState("");
@@ -63,14 +64,40 @@ export default function ParaphraserTool() {
         </button>
       </form>
 
-      {result && (
-        <div className="mt-6 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3 text-left">Paraphrased Text:</h2>
-          <div className="p-4 bg-slate-800 rounded-lg text-slate-200 whitespace-pre-wrap text-left">
-            {result}
-          </div>
+      {isLoading && (
+        <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+          Paraphrasing...
         </div>
       )}
+
+      {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
+      {result && (
+        <div className="mt-6 space-y-3 text-left">
+          <h2 className="text-lg font-semibold text-white mb-3">Paraphrased Text:</h2>
+          {(result.split('\n').filter(line => line.trim() !== '').length > 0 
+            ? result.split('\n').filter(line => line.trim() !== '')
+            : [result]
+          ).map((line, index) => (
+            <div 
+              key={index}
+              className="relative flex items-center justify-between 
+                         p-4 bg-slate-800 rounded-lg 
+                         transition-all group"
+            >
+              {/* Sonuç Metni (Ana içerik) */}
+              <p className="pr-12 text-slate-200 whitespace-pre-wrap">
+                {line}
+              </p>
+              
+              {/* Kopyalama Butonu (Sağ üst köşe) */}
+              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ClipboardButton textToCopy={line} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
     </div>
   );
 }

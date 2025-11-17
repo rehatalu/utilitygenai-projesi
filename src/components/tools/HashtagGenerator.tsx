@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
+import ClipboardButton from '@/components/ui/ClipboardButton';
 
 export default function HashtagGenerator() {
   const [input, setInput] = useState("");
@@ -63,18 +64,36 @@ export default function HashtagGenerator() {
         </button>
       </form>
 
+      {isLoading && (
+        <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+          Generating hashtags...
+        </div>
+      )}
+
+      {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {hashtags.length > 0 && (
-        <div className="mt-6 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3 text-left">Generated Hashtags:</h2>
-          <div className="flex flex-wrap gap-2 text-left">
-            {hashtags.map((tag, idx) => (
-              <span key={idx} className="px-3 py-1 bg-indigo-600 text-white rounded-full text-sm">
-                #{tag}
-              </span>
-            ))}
+        <div className="mt-6 space-y-3 text-left">
+          <h2 className="text-lg font-semibold text-white mb-3">Generated Hashtags:</h2>
+          <div className="relative flex items-center justify-between 
+                         p-4 bg-slate-800 rounded-lg 
+                         transition-all group">
+            {/* Hashtag Listesi */}
+            <div className="flex flex-wrap gap-2 pr-12">
+              {hashtags.map((tag, idx) => (
+                <span key={idx} className="px-3 py-1 bg-indigo-600 text-white rounded-full text-sm">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+            
+            {/* Kopyalama Butonu (Tüm hashtagleri kopyala) */}
+            <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+              <ClipboardButton textToCopy={hashtags.map(tag => `#${tag}`).join(' ')} />
+            </div>
           </div>
         </div>
       )}
+      {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
     </div>
   );
 }

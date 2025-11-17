@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SparklesIcon } from '@heroicons/react/24/outline'; // "Düşünen Yıldız" için import et
+import ClipboardButton from '@/components/ui/ClipboardButton';
 
 export default function EmailSubjectGenerator() {
   const [topic, setTopic] = useState("");
@@ -101,20 +102,37 @@ export default function EmailSubjectGenerator() {
           </div>
         )}
 
-        {results.length > 0 && (
-          <div className="mt-6 space-y-3 text-left">
-            {/* YENİ (KOYU TEMA) */}
-            <h2 className="text-lg font-semibold text-white">Results</h2>
-            <ul className="space-y-2 rounded-2xl border border-slate-700 bg-slate-800/50 p-4 text-sm text-slate-300">
-              {results.map((result, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <span className="text-indigo-400">❖</span>
-                  <span>{result}</span>
-                </li>
-              ))}
-            </ul>
+        {isLoading && (
+          <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+            Generating ideas...
           </div>
         )}
+
+        {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
+        {results.length > 0 && (
+          <div className="mt-6 space-y-3 text-left">
+            <h2 className="text-lg font-semibold text-white">Results</h2>
+            {results.map((result, index) => (
+              <div 
+                key={index}
+                className="relative flex items-center justify-between 
+                           p-4 bg-slate-800 rounded-lg 
+                           transition-all group"
+              >
+                {/* Sonuç Metni (Ana içerik) */}
+                <p className="pr-12 text-slate-200">
+                  {result}
+                </p>
+                
+                {/* Kopyalama Butonu (Sağ üst köşe) */}
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ClipboardButton textToCopy={result} />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
       </div>
     </div>
   );

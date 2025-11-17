@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
+import ClipboardButton from '@/components/ui/ClipboardButton';
 
 export default function YoutubeIdeaGenerator() {
   const [input, setInput] = useState("");
@@ -63,18 +64,37 @@ export default function YoutubeIdeaGenerator() {
         </button>
       </form>
 
-      {ideas.length > 0 && (
-        <div className="mt-6 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3 text-left">Video Ideas:</h2>
-          <ul className="space-y-2 text-left">
-            {ideas.map((idea, idx) => (
-              <li key={idx} className="p-3 bg-slate-800 rounded-lg text-slate-200 text-left">
-                {idea}
-              </li>
-            ))}
-          </ul>
+      {isLoading && (
+        <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+          Generating ideas...
         </div>
       )}
+
+      {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
+      {ideas.length > 0 && (
+        <div className="mt-6 space-y-3 text-left">
+          <h2 className="text-lg font-semibold text-white mb-3">Video Ideas:</h2>
+          {ideas.map((idea, idx) => (
+            <div 
+              key={idx}
+              className="relative flex items-center justify-between 
+                         p-4 bg-slate-800 rounded-lg 
+                         transition-all group"
+            >
+              {/* Sonuç Metni (Ana içerik) */}
+              <p className="pr-12 text-slate-200">
+                {idea}
+              </p>
+              
+              {/* Kopyalama Butonu (Sağ üst köşe) */}
+              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ClipboardButton textToCopy={idea} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
     </div>
   );
 }

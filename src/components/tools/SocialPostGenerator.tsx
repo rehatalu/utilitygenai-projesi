@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
+import ClipboardButton from '@/components/ui/ClipboardButton';
 
 export default function SocialPostGenerator() {
   const [input, setInput] = useState("");
@@ -63,18 +64,37 @@ export default function SocialPostGenerator() {
         </button>
       </form>
 
-      {posts.length > 0 && (
-        <div className="mt-6 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3 text-left">Generated Posts:</h2>
-          <ul className="space-y-3 text-left">
-            {posts.map((post, idx) => (
-              <li key={idx} className="p-4 bg-slate-800 rounded-lg text-slate-200 whitespace-pre-wrap text-left">
-                {post}
-              </li>
-            ))}
-          </ul>
+      {isLoading && (
+        <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+          Generating posts...
         </div>
       )}
+
+      {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
+      {posts.length > 0 && (
+        <div className="mt-6 space-y-3 text-left">
+          <h2 className="text-lg font-semibold text-white mb-3">Generated Posts:</h2>
+          {posts.map((post, idx) => (
+            <div 
+              key={idx}
+              className="relative flex items-center justify-between 
+                         p-4 bg-slate-800 rounded-lg 
+                         transition-all group"
+            >
+              {/* Sonuç Metni (Ana içerik) */}
+              <p className="pr-12 text-slate-200 whitespace-pre-wrap">
+                {post}
+              </p>
+              
+              {/* Kopyalama Butonu (Sağ üst köşe) */}
+              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ClipboardButton textToCopy={post} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
     </div>
   );
 }

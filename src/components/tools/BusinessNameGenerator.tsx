@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
+import ClipboardButton from '@/components/ui/ClipboardButton';
 
 export default function BusinessNameGenerator() {
   const [input, setInput] = useState("");
@@ -63,18 +64,37 @@ export default function BusinessNameGenerator() {
         </button>
       </form>
 
-      {names.length > 0 && (
-        <div className="mt-6 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3 text-left">Business Name Suggestions:</h2>
-          <ul className="space-y-2 text-left">
-            {names.map((name, idx) => (
-              <li key={idx} className="p-3 bg-slate-800 rounded-lg text-slate-200 text-left">
-                {name}
-              </li>
-            ))}
-          </ul>
+      {isLoading && (
+        <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+          Generating names...
         </div>
       )}
+
+      {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
+      {names.length > 0 && (
+        <div className="mt-6 space-y-3 text-left">
+          <h2 className="text-lg font-semibold text-white mb-3">Business Name Suggestions:</h2>
+          {names.map((name, idx) => (
+            <div 
+              key={idx}
+              className="relative flex items-center justify-between 
+                         p-4 bg-slate-800 rounded-lg 
+                         transition-all group"
+            >
+              {/* Sonuç Metni (Ana içerik) */}
+              <p className="pr-12 text-slate-200">
+                {name}
+              </p>
+              
+              {/* Kopyalama Butonu (Sağ üst köşe) */}
+              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ClipboardButton textToCopy={name} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
     </div>
   );
 }
