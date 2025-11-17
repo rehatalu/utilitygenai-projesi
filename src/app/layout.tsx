@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google"; // 'Sora'yı geri getirdik
+import { Inter, Sora } from "next/font/google";
 import { ReactNode } from "react";
-import "./main.css"; // 'globals.css' yerine 'main.css' (Adım 104'teki gibi)
+import "./main.css";
 import UgaAssistant from "@/components/layout/UgaAssistant";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -19,7 +19,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128" crossOrigin="anonymous"></script>
       </head>
       
-      {/* "GÜVENLİ MOD" KALDIRILDI. "ZENGİN ARKA PLAN" GERİ GELDİ. */}
       <body 
         className={`${inter.variable} ${sora.variable} antialiased 
         /* Varsayılan (Aydınlık) Tema stilleri */
@@ -28,21 +27,21 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         dark:bg-slate-950 dark:text-slate-300
         relative isolate overflow-hidden transition-colors duration-300`} 
       >
-        {/* "Görsel Grid Desenli" Arka Plan (Adım 29) */}
-        {/* Bu div artık aydınlıkta açık gri, karanlıkta koyu gri olacak */}
+        {/* "Görsel Grid Desenli" Arka Plan */}
         <div 
-          className="absolute inset-0 -z-10 grid-pattern"
-          style={{
-            backgroundSize: '3rem 3rem',
-          }}
+          className="absolute inset-0 -z-10 
+                     
+                     /* HATA DÜZELTİLDİ: "length" yerine "size" */
+                     bg-[size:3rem_3rem] 
+                     
+                     bg-[linear-gradient(to_right,rgba(229,231,235,1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,1)_1px,transparent_1px)]
+                     dark:bg-[linear-gradient(to_right,rgba(51,65,85,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,65,85,0.5)_1px,transparent_1px)]"
           aria-hidden="true"
         />
         <div 
           className="absolute left-1/2 top-0 -z-10 -translate-x-1/2"
           aria-hidden="true"
         >
-          {/* Bu parlaklık aydınlık modda görünmesin (opacity-0), 
-              sadece karanlık modda (dark:opacity-20) görünsün */}
           <div 
             className="aspect-[1097/845] w-[68.5625rem] 
             bg-gradient-radial from-[#4f46e5] via-transparent to-transparent 
@@ -56,7 +55,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         
         {children} 
         
-        {/* "UGA ASSISTANT" (SİZİN İSTEĞİNİZ ÜZERİNE KALDIRILMIŞTI) GERİ GELDİ. */}
         <UgaAssistant />
       </body>
     </html>
