@@ -48,7 +48,7 @@ export default function UgaChatbot() {
 
   return (
     <div 
-      className={`w-full rounded-3xl backdrop-blur-lg p-4 transition-all duration-300
+      className={`w-full rounded-3xl backdrop-blur-lg transition-all duration-300
         ${isLoading 
           ? 'animate-rgb-border' // Yüklenirken (main.css'teki SAĞLAM maskeli RGB)
           : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
@@ -56,7 +56,7 @@ export default function UgaChatbot() {
       `}
     >
       {/* İçerik maske üstünde görünmeli */}
-      <div className="relative z-10">
+      <div className="relative z-10 p-4">
         <h1 className="text-base font-semibold text-white mb-3 text-left">Chat with UGA</h1>
       
       <div className="h-48 overflow-y-auto mb-3 space-y-3 p-3 bg-slate-800/50 rounded-lg">
