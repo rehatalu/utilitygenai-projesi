@@ -52,7 +52,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
   return (
     <div className="flex flex-col h-full bg-slate-900 text-slate-300">
       
-      {/* BÖLÜM 1: Logo ve Mobil Kapatma Tuşu */}
+      {/* BÖLÜM 1: Logo ve Kapatma Tuşu */}
       <div className="flex items-center justify-between h-16 px-4 border-b border-slate-800 flex-shrink-0">
         <Link href="/" className="flex items-center gap-2" onClick={closeSidebar}>
           <div className="bg-indigo-600 p-2 rounded-lg">
@@ -60,11 +60,11 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
           </div>
           <span className="text-xl font-bold text-white">UtilityGenAI</span>
         </Link>
-        {/* Sadece mobilde görünen X (Kapat) butonu */}
+        {/* Kapatma Butonu (artık hep görünür) */}
         <button
           type="button"
           onClick={closeSidebar}
-          className="md:hidden text-slate-400 hover:text-white"
+          className="text-slate-400 hover:text-white"
           aria-label="Close sidebar"
         >
           <XMarkIcon className="h-6 w-6" />
