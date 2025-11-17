@@ -50,7 +50,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Using our AI Email Subject Line Generator is simple. Just follow these steps to get catchy, professional subjects in seconds.</p>
           <ol>
             <li><strong>Enter Your Topic:</strong> Briefly describe your email&apos;s content (e.g., &quot;20% flash sale,&quot; &quot;new blog post,&quot; &quot;meeting follow-up&quot;).</li>
@@ -65,7 +65,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>See how simple inputs create powerful results for different needs:</p>
           <ul>
             <li><strong>Input Topic:</strong> &quot;Flash sale 25% off this weekend&quot; | <strong>Tone:</strong> &quot;Urgent&quot; <br />
@@ -82,7 +82,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Who Should Use This?</h2>
           <ul>
             <li><strong>Marketing Teams:</strong> To increase newsletter open rates and A/B test different subject lines.</li>
@@ -121,7 +121,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Our Paraphraser Tool helps you rewrite any text to make it unique, clearer, or more formal. Avoid plagiarism and improve your writing clarity.</p>
           <ol>
             <li><strong>Paste Your Text:</strong> Enter the original sentence or paragraph into the input box.</li>
@@ -136,7 +136,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Transform your writing for any situation:</p>
           <ul>
             <li><strong>Original (Clumsy):</strong> &quot;The reason I am writing this email is because I want to ask for the report.&quot; <br />
@@ -151,7 +151,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Who is this tool for?</h2>
           <ul>
             <li><strong>Students:</strong> To avoid plagiarism and better understand source materials by rephrasing them.</li>
@@ -176,7 +176,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Create engaging posts for Twitter (X), LinkedIn, or Facebook in seconds. Stop staring at a blank screen!</p>
           <ol>
             <li><strong>Enter Your Topic:</strong> What&apos;s the post about? (e.g., &quot;new AI blog post,&quot; &quot;25% off sale,&quot; &quot;hiring a new developer&quot;).</li>
@@ -191,7 +191,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>See how the AI adapts to different platforms:</p>
           <ul>
             <li><strong>Input Topic:</strong> &quot;New blog post about AI in marketing&quot; | <strong>Platform:</strong> &quot;LinkedIn&quot; <br />
@@ -206,7 +206,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Does this tool generate hashtags?</h2>
           <p>Yes, our AI will often suggest 3-5 relevant hashtags to increase your post&apos;s visibility. (We also have a separate, dedicated <a href="/tool/hashtag-generator">Hashtag Generator</a> for more advanced needs).</p>
           <h2>Can I use this for Instagram?</h2>
@@ -229,7 +229,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Write compelling, SEO-friendly meta descriptions that increase your click-through rate (CTR) from Google search results.</p>
           <ol>
             <li><strong>Enter Page Topic/Keywords:</strong> What is your web page about? (e.g., &quot;Brooklyn bakery,&quot; &quot;guide to hiking in Alps,&quot; &quot;our pricing page&quot;).</li>
@@ -243,7 +243,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>From broad topics to specific pages:</p>
           <ul>
             <li><strong>Input Topic:</strong> &quot;Homepage for a custom bicycle shop&quot; <br />
@@ -258,7 +258,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>What is a Meta Description? Why does it matter?</h2>
           <p>A meta description is the short snippet of text (approx. 155-160 characters) that appears under your page title in Google search results. A good description acts like an &quot;ad&quot; for your page, convincing users to click your link instead of someone else&apos;s.</p>
           <h2>Will this guarantee I rank #1 on Google?</h2>
@@ -281,7 +281,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Instantly check your text for spelling, grammar, and punctuation errors. Write clearer, more professional emails, articles, and reports.</p>
           <ol>
             <li><strong>Paste Your Text:</strong> Copy and paste the text you want to check into the input box.</li>
@@ -296,7 +296,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Catches common and complex errors:</p>
           <ul>
             <li><strong>Original:</strong> &quot;Its a nice day. I am going to there office.&quot; <br />
@@ -313,7 +313,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Who Should Use This?</h2>
           <ul>
             <li><strong>Students:</strong> To proofread essays and assignments before submission.</li>
@@ -341,7 +341,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Create persuasive, SEO-friendly descriptions for your e-commerce products. Convert more visitors into customers!</p>
           <ol>
             <li><strong>Enter Product Name:</strong> Be specific (e.g., &quot;Handmade Leather Wallet&quot;).</li>
@@ -356,7 +356,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>From simple features to compelling copy:</p>
           <ul>
             <li><strong>Input Product:</strong> &quot;Scented Soy Candle&quot; | <strong>Features:</strong> &quot;Lavender scent, 40-hour burn, natural soy wax&quot; <br />
@@ -371,7 +371,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Who is this tool for?</h2>
           <p>This tool is a game-changer for <strong>E-commerce store owners</strong>, <strong>Shopify/Etsy sellers</strong>, <strong>Amazon FBA sellers</strong>, and <strong>digital marketing agencies</strong> managing product pages.</p>
           <h2>Are the descriptions SEO-friendly?</h2>
@@ -394,7 +394,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Never run out of content ideas again. Generate viral, relevant, and SEO-friendly blog post titles based on your topic.</p>
           <ol>
             <li><strong>Enter Your Main Topic:</strong> Be broad but clear (e.g., &quot;digital marketing,&quot; &quot;vegan cooking,&quot; &quot;Next.js development&quot;).</li>
@@ -409,7 +409,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Turn a single keyword into a full content calendar:</p>
           <ul>
             <li><strong>Input Topic:</strong> &quot;Vegan Cooking&quot; <br />
@@ -424,7 +424,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Who is this for?</h2>
           <p><strong>Bloggers</strong>, <strong>Content Marketers</strong>, <strong>SEO Specialists</strong>, and <strong>small business owners</strong> who need to maintain an active blog for their content marketing strategy.</p>
           <h2>Are these ideas SEO-friendly?</h2>
@@ -447,7 +447,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Instantly find viral video ideas for your YouTube channel. Stop wondering what to film next!</p>
           <ol>
             <li><strong>Enter Your Niche/Topic:</strong> What is your channel about? (e.g., &quot;Home Cooking,&quot; &quot;Coding Tutorials,&quot; &quot;Fitness Challenges&quot;).</li>
@@ -461,7 +461,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Turn a niche into engaging content:</p>
           <ul>
             <li><strong>Input Topic:</strong> &quot;Home Cooking&quot; <br />
@@ -476,7 +476,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Who is this tool for?</h2>
           <p><strong>YouTubers</strong>, <strong>Content Creators</strong>, and <strong>Social Media Managers</strong> who need a steady stream of fresh, engaging video ideas.</p>
           <h2>Are these ideas &quot;SEO-friendly&quot;?</h2>
@@ -499,7 +499,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Find the best hashtags to increase your post&apos;s reach and engagement on Instagram, Twitter, and LinkedIn.</p>
           <ol>
             <li><strong>Enter a Single Topic:</strong> Be specific. (e.g., &quot;Small Business,&quot; &quot;Digital Marketing,&quot; &quot;Fitness Motivation&quot;).</li>
@@ -513,7 +513,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Get the right mix of hashtags:</p>
           <ul>
             <li><strong>Input Topic:</strong> &quot;Fitness&quot; <br />
@@ -529,7 +529,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Why do I need a &quot;mix&quot; of hashtags?</h2>
           <p>Using only &quot;Broad&quot; hashtags (like #fitness) means your post will be lost in millions of others. Using &quot;Niche&quot; hashtags helps you reach a smaller, more engaged audience. A good strategy (especially on Instagram) uses a mix of all three.</p>
           <h2>How many hashtags should I use?</h2>
@@ -552,7 +552,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Find a creative, brandable name for your new business or project. This is a high-value tool for entrepreneurs.</p>
           <ol>
             <li><strong>Enter Keywords:</strong> Describe your business. (e.g., &quot;Eco-friendly coffee,&quot; &quot;AI marketing consultant,&quot; &quot;handmade jewelry&quot;).</li>
@@ -566,7 +566,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>From a concept to a brand:</p>
           <ul>
             <li><strong>Input Topic:</strong> &quot;Eco-friendly coffee shop&quot; <br />
@@ -581,7 +581,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Who is this tool for?</h2>
           <p><strong>Entrepreneurs</strong>, <strong>startups</strong>, <strong>freelancers</strong>, and anyone launching a new product, service, or side-project who needs a catchy name.</p>
           <h2>Are these names available? (Important!)</h2>
@@ -604,7 +604,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Understand complex code snippets in plain English. Perfect for students, developers, and tech enthusiasts.</p>
           <ol>
             <li><strong>Paste Your Code:</strong> Copy and paste any code snippet (Python, JavaScript, C++, etc.).</li>
@@ -618,7 +618,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Demystify any code:</p>
           <ul>
             <li><strong>Input (Python):</strong> `names = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]<br/>upper_names = [name.upper() for name in names]` <br />
@@ -633,7 +633,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Who is this tool for?</h2>
           <ul>
             <li><strong>Student Programmers:</strong> To understand homework, lecture examples, or code you find online.</li>
@@ -658,7 +658,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Condense long articles, reports, or documents into key bullet points. Understand the main idea in a fraction of the time.</p>
           <ol>
             <li><strong>Paste Your Text:</strong> Copy and paste the full article, essay, or report.</li>
@@ -672,7 +672,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <ul>
             <li><strong>Input:</strong> A 2,000-word news article about a new scientific discovery. <br />
               <strong>→ Output:</strong> A 5-bullet-point summary covering: 1. What was discovered, 2. Who discovered it, 3. Why it&apos;s important, 4. The main challenge, 5. What&apos;s next.</li>
@@ -686,7 +686,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Who is this tool for?</h2>
           <ul>
             <li><strong>Students:</strong> To quickly get the main points from long reading assignments.</li>
@@ -711,7 +711,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'how-to',
       label: 'How to Use?',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <p>Write captivating captions for your Instagram posts. This tool helps you create the perfect blend of storytelling, emojis, and hashtags.</p>
           <ol>
             <li><strong>Describe Your Photo:</strong> What&apos;s happening in the image? (e.g., &quot;Me drinking coffee in Paris,&quot; &quot;My new product launch&quot;).</li>
@@ -725,7 +725,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'examples',
       label: 'Usage Examples',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <ul>
             <li><strong>Input Photo:</strong> &quot;My dog sleeping in a sunbeam&quot; | <strong>Tone:</strong> &quot;Casual&quot; <br />
               <strong>→ Output:</strong> &quot;Chasing those sunbeams ☀️🐶. Pretty sure this is what &apos;living the dream&apos; looks like. What&apos;s your furry friend up to today? #doglife #dogsofinstagram #lazysunday&quot;</li>
@@ -739,7 +739,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       id: 'details-faq',
       label: 'Details & FAQ',
       content: (
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose prose-invert max-w-none">
           <h2>Is this different from the Social Post Generator?</h2>
           <p>Yes, very. The <a href="/tool/social-post">Social Post Generator</a> is for text-first platforms like LinkedIn/Twitter. This tool is for Instagram, which means it focuses on <strong>visual storytelling</strong>, <strong>emoji use</strong>, and <strong>community-building hashtags</strong>.</p>
           <h2>Does it include a &apos;Link in Bio&apos; call-to-action?</h2>
@@ -794,11 +794,11 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
                   transition={{ duration: 0.3, delay: 0.1 }}
                   className="w-full px-4 mt-8" // "mt-8" ile aracın altına boşluk ekledik
                 >
+                  {/* GERİ ALMA: "inattı" karanlık tema geri yüklendi. */}
                   <div className="rounded-xl 
-                                  bg-gray-100 dark:bg-slate-900/50 
-                                  ring-1 ring-inset ring-gray-200 dark:ring-0
-                                  p-6 md:p-8
-                                  transition-colors duration-300">
+                                  bg-slate-900/50 
+                                  ring-1 ring-slate-700
+                                  p-6 md:p-8">
                     <AnimatedTabs tabs={currentTabs} initialTabId="how-to" />
                   </div>
                 </motion.div>

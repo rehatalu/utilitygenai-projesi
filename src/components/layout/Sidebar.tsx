@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { HiHome, HiX } from 'react-icons/hi';
-import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
+// import ThemeSwitcher from '@/components/ui/ThemeSwitcher'; // "ThemeSwitcher" kaldırıldı
 import {
   EnvelopeIcon,
   DocumentDuplicateIcon,
@@ -44,38 +44,32 @@ interface SidebarProps {
 export default function Sidebar({ closeSidebar }: SidebarProps) {
   const pathname = usePathname();
 
-  // Aktif linki belirlemek için yardımcı fonksiyon
   const isActive = (slug: string) => {
     return pathname === `/tool/${slug}`;
   };
 
   return (
+    // GERİ ALMA: Sadece "inattı" karanlık tema
     <div className="flex flex-col h-full 
-                    bg-white text-slate-900 
-                    dark:bg-slate-900 dark:text-slate-300 
-                    border-r border-gray-200 dark:border-slate-800
-                    transition-colors duration-300">
+                    bg-slate-900 text-slate-300 
+                    border-r border-slate-800">
       
       {/* BÖLÜM 1: Logo ve Kontrol Butonları */}
-      <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200 dark:border-slate-800 flex-shrink-0">
-        {/* Logo/Başlık */}
+      <div className="flex items-center justify-between h-16 px-4 border-b border-slate-800 flex-shrink-0">
         <Link href="/" className="flex items-center gap-2" onClick={closeSidebar}>
           <div className="bg-indigo-600 p-2 rounded-lg">
             <HiHome className="h-6 w-6 text-white" />
           </div>
-          <span className="text-xl font-bold text-slate-900 dark:text-white">UtilityGenAI</span>
+          <span className="text-xl font-bold text-white">UtilityGenAI</span>
         </Link>
 
-        {/* KONTROL GRUBU (TEMA + KAPAT) - YENİ (Görev 10.2) */}
+        {/* KONTROL GRUBU (TEMA + KAPAT) */}
         <div className="flex items-center gap-2">
-          {/* Tema Değiştirici Butonumuz */}
-          <ThemeSwitcher /> 
-
-          {/* Kapatma Butonu (Görev 9'dan) */}
+          {/* "ThemeSwitcher" kaldırıldı */}
           <button
             type="button"
             onClick={closeSidebar}
-            className="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-gray-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800"
+            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
             aria-label="Close sidebar"
           >
             <HiX className="h-6 w-6" />
@@ -83,21 +77,21 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
         </div>
       </div>
 
-      {/* BÖLÜM 2: KAYDIRILABİLİR ARAÇ LİSTESİ (ÖNEMLİ DÜZELTME) */}
+      {/* BÖLÜM 2: KAYDIRILABİLİR ARAÇ LİSTESİ */}
       <nav className="flex-1 overflow-y-auto py-4 space-y-1">
-        <span className="px-4 text-xs font-semibold uppercase text-slate-500 dark:text-slate-500">Tools</span>
+        <span className="px-4 text-xs font-semibold uppercase text-slate-500">Tools</span>
         <ul className="px-2">
           {tools.map((tool) => (
             <li key={tool.slug}>
               <Link
                 href={`/tool/${tool.slug}`}
-                onClick={closeSidebar} // Linke tıklayınca mobil menüyü kapat
+                onClick={closeSidebar} 
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium
                             transition-colors duration-150
                             ${
                               isActive(tool.slug)
                                 ? 'bg-indigo-600 text-white' // Aktif
-                                : 'text-slate-600 hover:bg-gray-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white' // Pasif
+                                : 'text-slate-300 hover:bg-slate-800 hover:text-white' // Pasif
                             }`}
               >
                 <tool.icon className="h-5 w-5 flex-shrink-0" />
@@ -111,4 +105,3 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
     </div>
   );
 }
-
