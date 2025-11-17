@@ -13,7 +13,7 @@ export default function UgaAssistant() {
         onClick={() => setIsChatOpen(!isChatOpen)}
         className="fixed bottom-8 right-8 z-50 cursor-pointer transition-all hover:scale-110"
       >
-        <div className="relative w-32 h-32 animate-float">
+        <div className="relative w-32 h-32 animate-float animate-rgb-border-icon rounded-full">
           <Image
             src="/uga.png"
             alt="UGA Assistant"
