@@ -22,26 +22,31 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       {/* "GÜVENLİ MOD" KALDIRILDI. "ZENGİN ARKA PLAN" GERİ GELDİ. */}
       <body 
         className={`${inter.variable} ${sora.variable} antialiased 
-        bg-slate-950 text-slate-300
-        relative isolate overflow-hidden`} 
+        /* Varsayılan (Aydınlık) Tema stilleri */
+        bg-white text-slate-900 
+        /* Karanlık Tema (dark: önekiyle) stilleri */
+        dark:bg-slate-950 dark:text-slate-300
+        relative isolate overflow-hidden transition-colors duration-300`} 
       >
         {/* "Görsel Grid Desenli" Arka Plan (Adım 29) */}
+        {/* Bu div artık aydınlıkta açık gri, karanlıkta koyu gri olacak */}
         <div 
-          className="absolute inset-0 -z-10" 
+          className="absolute inset-0 -z-10 
+                     bg-[length:3rem_3rem]
+                     bg-[linear-gradient(to_right,rgba(229,231,235,1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,1)_1px,transparent_1px)]
+                     dark:bg-[linear-gradient(to_right,rgba(51,65,85,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,65,85,0.5)_1px,transparent_1px)]"
           aria-hidden="true"
-          style={{
-            backgroundImage:
-              'linear-gradient(to right, rgba(30, 41, 59, 0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(30, 41, 59, 0.5) 1px, transparent 1px)',
-            backgroundSize: '3rem 3rem',
-          }}
         />
         <div 
           className="absolute left-1/2 top-0 -z-10 -translate-x-1/2"
           aria-hidden="true"
         >
+          {/* Bu parlaklık aydınlık modda görünmesin (opacity-0), 
+              sadece karanlık modda (dark:opacity-20) görünsün */}
           <div 
             className="aspect-[1097/845] w-[68.5625rem] 
-            bg-gradient-radial from-[#4f46e5] via-transparent to-transparent opacity-20"
+            bg-gradient-radial from-[#4f46e5] via-transparent to-transparent 
+            opacity-0 dark:opacity-20"
             style={{
               clipPath:
                 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
