@@ -15,7 +15,11 @@ function useTheme() {
     if (savedTheme) {
       // Hafızada (localStorage) ne varsa onu uygula
       setTheme(savedTheme);
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     } else {
       // STRATEJİ DEĞİŞİKLİĞİ 2: Hafızada bir şey yoksa, 'dark' uygula
       setTheme('dark');
@@ -23,12 +27,18 @@ function useTheme() {
     }
   }, []); // Boş dependency array, sadece ilk yüklemede çalışır
 
-  // Temayı değiştiren fonksiyon (Bu kod doğru, aynı kalıyor)
+  // Temayı değiştiren fonksiyon
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    
+    // Daha güvenilir yöntem: önce kaldır, sonra ekle
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   return { theme, toggleTheme };
