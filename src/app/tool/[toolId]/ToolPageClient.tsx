@@ -440,6 +440,163 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       )
     },
   ],
+
+  // --- 8. YouTube Video Idea Generator (YENİ) ---
+  'youtube-ideas': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Instantly find viral video ideas for your YouTube channel. Stop wondering what to film next!</p>
+          <ol>
+            <li><strong>Enter Your Niche/Topic:</strong> What is your channel about? (e.g., &quot;Home Cooking,&quot; &quot;Coding Tutorials,&quot; &quot;Fitness Challenges&quot;).</li>
+            <li><strong>Generate:</strong> The AI will brainstorm a list of compelling, high-CTR (Click-Through Rate) video titles and concepts.</li>
+            <li><strong>Get Inspired:</strong> Use these ideas directly or as inspiration for your next video series.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Turn a niche into engaging content:</p>
+          <ul>
+            <li><strong>Input Topic:</strong> &quot;Home Cooking&quot; <br />
+              <strong>→ Outputs:</strong> &quot;I Made a 3-Course Meal Using Only $10,&quot; &quot;Ranking My Grandma&apos;s Secret Recipes (Will She Approve?),&quot; &quot;The 5 Biggest Mistakes You&apos;re Making With Your Cast Iron Pan.&quot;</li>
+            <li><strong>Input Topic:</strong> &quot;Coding Tutorials&quot; <br />
+              <strong>→ Outputs:</strong> &quot;I Cloned Netflix in 10 Hours (Watch Me Code),&quot; &quot;5 Python Libraries That Feel Like Cheating,&quot; &quot;From Zero to Full-Stack: The REALITY of Learning to Code.&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Who is this tool for?</h2>
+          <p><strong>YouTubers</strong>, <strong>Content Creators</strong>, and <strong>Social Media Managers</strong> who need a steady stream of fresh, engaging video ideas.</p>
+          <h2>Are these ideas &quot;SEO-friendly&quot;?</h2>
+          <p>Yes. The AI is trained to think in terms of &quot;viral&quot; formats that answer specific questions (&quot;How to...&quot;), create curiosity (&quot;The 5 Biggest...&quot;), or follow popular trends (&quot;I Tried...&quot;). This is exactly what the YouTube algorithm looks for.</p>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>How does this work?</dt>
+            <dd>The AI understands popular YouTube formats (challenges, tutorials, reviews, vlogs) and applies them to your specific niche, generating titles that spark interest.</dd>
+            <dt>Can I generate ideas for Shorts?</dt>
+            <dd>Yes! Just add &quot;YouTube Shorts&quot; to your topic (e.g., &quot;Fitness YouTube Shorts&quot;) and the AI will generate quick, catchy ideas.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
+
+  // --- 9. Hashtag Generator (YENİ) ---
+  'hashtag-generator': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Find the best hashtags to increase your post&apos;s reach and engagement on Instagram, Twitter, and LinkedIn.</p>
+          <ol>
+            <li><strong>Enter a Single Topic:</strong> Be specific. (e.g., &quot;Small Business,&quot; &quot;Digital Marketing,&quot; &quot;Fitness Motivation&quot;).</li>
+            <li><strong>Generate:</strong> The AI will generate a list of relevant hashtags, often grouped by popularity (Niche, Medium, Broad).</li>
+            <li><strong>Copy & Use:</strong> Copy the list of hashtags to paste directly into your social media post.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Get the right mix of hashtags:</p>
+          <ul>
+            <li><strong>Input Topic:</strong> &quot;Fitness&quot; <br />
+              <strong>→ Output:</strong> 
+              <br /><strong>Broad (High Competition):</strong> #fitness #health #workout
+              <br /><strong>Medium:</strong> #fitnessmotivation #gymlife #fitfam
+              <br /><strong>Niche (High Engagement):</strong> #bodyweightworkout #homefitness #fitnesstips</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Why do I need a &quot;mix&quot; of hashtags?</h2>
+          <p>Using only &quot;Broad&quot; hashtags (like #fitness) means your post will be lost in millions of others. Using &quot;Niche&quot; hashtags helps you reach a smaller, more engaged audience. A good strategy (especially on Instagram) uses a mix of all three.</p>
+          <h2>How many hashtags should I use?</h2>
+          <p>It depends on the platform. <strong>Instagram:</strong> 10-20 hashtags is common. <strong>Twitter (X) & LinkedIn:</strong> 2-3 relevant hashtags is best practice.</p>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>Is this different from the Social Post Generator?</dt>
+            <dd>Yes. The <a href="/tool/social-post">Social Post Generator</a> creates the *entire post* and suggests 2-3 hashtags. This tool is *specialized* in finding 20-30 different hashtag *ideas* for you to choose from.</dd>
+            <dt>Is this free?</dt>
+            <dd>Yes, 100% free.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
+
+  // --- 10. Business Name Generator (YENİ) ---
+  'business-name': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Find a creative, brandable name for your new business or project. This is a high-value tool for entrepreneurs.</p>
+          <ol>
+            <li><strong>Enter Keywords:</strong> Describe your business. (e.g., &quot;Eco-friendly coffee,&quot; &quot;AI marketing consultant,&quot; &quot;handmade jewelry&quot;).</li>
+            <li><strong>Select Style (Optional):</strong> Choose a style like &quot;Modern,&quot; &quot;Elegant,&quot; or &quot;Techy.&quot;</li>
+            <li><strong>Generate:</strong> The AI will brainstorm unique, catchy, and professional name ideas.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>From a concept to a brand:</p>
+          <ul>
+            <li><strong>Input Topic:</strong> &quot;Eco-friendly coffee shop&quot; <br />
+              <strong>→ Outputs:</strong> &quot;Evergreen Brews,&quot; &quot;EarthBean Coffee,&quot; &quot;SustainaCafe,&quot; &quot;The Green Grind&quot;</li>
+            <li><strong>Input Topic:</strong> &quot;AI marketing consultant&quot; <br />
+              <strong>→ Outputs:</strong> &quot;MomentumAI,&quot; &quot;LeadGenius AI,&quot; &quot;Synapse Metrics,&quot; &quot;QuantumReach&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Who is this tool for?</h2>
+          <p><strong>Entrepreneurs</strong>, <strong>startups</strong>, <strong>freelancers</strong>, and anyone launching a new product, service, or side-project who needs a catchy name.</p>
+          <h2>Are these names available? (Important!)</h2>
+          <p><strong>This tool is for inspiration only.</strong> We do NOT check domain availability or existing trademarks. When you find a name you love, you MUST check yourself if the .com domain is available and if it is trademarked.</p>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>Why is this tool valuable?</dt>
+            <dd>Coming up with a good brand name is difficult and can cost hundreds or thousands of dollars with a branding agency. This tool gives you high-quality ideas for free, which is why it&apos;s one of the highest value (High CPC) tools for advertisers.</dd>
+            <dt>Can I get more ideas?</dt>
+            <dd>Yes. Just hit &quot;Generate&quot; again or slightly change your keywords to get a new batch of creative ideas.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
 };
 
 export default function ToolPageClient({ toolId }: ToolPageClientProps) {
