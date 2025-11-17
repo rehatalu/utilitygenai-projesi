@@ -274,6 +274,172 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       )
     },
   ],
+
+  // --- 5. Grammar Checker (YENİ) ---
+  'grammar-check': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Instantly check your text for spelling, grammar, and punctuation errors. Write clearer, more professional emails, articles, and reports.</p>
+          <ol>
+            <li><strong>Paste Your Text:</strong> Copy and paste the text you want to check into the input box.</li>
+            <li><strong>Generate:</strong> The AI will analyze your text. Errors will be highlighted, and suggestions will be provided.</li>
+            <li><strong>Review & Accept:</strong> Go through the suggestions. Click to accept a change or ignore it.</li>
+            <li><strong>Copy Corrected Text:</strong> Once finished, copy your polished, error-free text.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Catches common and complex errors:</p>
+          <ul>
+            <li><strong>Original:</strong> &quot;Its a nice day. I am going to there office.&quot; <br />
+              <strong>→ Corrected:</strong> &quot;<strong>It&apos;s</strong> a nice day. I am going to <strong>their</strong> office.&quot;</li>
+            <li><strong>Original:</strong> &quot;He dont like apples, oranges or bananas.&quot; (Comma Splice) <br />
+              <strong>→ Corrected:</strong> &quot;He <strong>doesn&apos;t</strong> like apples, oranges, <strong>or</strong> bananas.&quot;</li>
+            <li><strong>Original:</strong> &quot;The data strongly suggest the hypothesis is correct.&quot; (Subject-Verb) <br />
+              <strong>→ Corrected:</strong> &quot;The data strongly <strong>suggests</strong> the hypothesis is correct.&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Who Should Use This?</h2>
+          <ul>
+            <li><strong>Students:</strong> To proofread essays and assignments before submission.</li>
+            <li><strong>Professionals:</strong> To ensure emails, reports, and presentations are error-free.</li>
+            <li><strong>Bloggers & Writers:</strong> To polish articles before publishing.</li>
+            <li><strong>ESL Speakers:</strong> To improve confidence and fluency in written English.</li>
+          </ul>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>Is this better than the checker in Word/Google Docs?</dt>
+            <dd>Yes. This tool is powered by a generative AI trained on billions of parameters. It not only catches simple spelling errors but also complex contextual grammar, style, and tone issues that older checkers miss.</dd>
+            <dt>What languages does it support?</dt>
+            <dd>It is most accurate for English but has a strong understanding of grammar in many major languages.</dd>
+            <dt>Does the AI rewrite my entire text?</dt>
+            <dd>No. This is a &quot;checker,&quot; not a paraphraser. It will only suggest corrections for specific errors. If you want to rewrite your text, please use our <a href="/tool/paraphraser">Paraphraser Tool</a>.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
+
+  // --- 6. Product Description Generator (YENİ) ---
+  'product-description': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Create persuasive, SEO-friendly descriptions for your e-commerce products. Convert more visitors into customers!</p>
+          <ol>
+            <li><strong>Enter Product Name:</strong> Be specific (e.g., &quot;Handmade Leather Wallet&quot;).</li>
+            <li><strong>List Key Features:</strong> Add important details (e.g., &quot;Full-grain leather, 6 card slots, RFID blocking, minimalist design&quot;).</li>
+            <li><strong>Select Tone:</strong> Choose a tone that matches your brand (&quot;Luxury,&quot; &quot;Playful,&quot; &quot;Persuasive&quot;).</li>
+            <li><strong>Generate:</strong> Get several high-converting descriptions ready to be used on Shopify, Amazon, or your own site.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>From simple features to compelling copy:</p>
+          <ul>
+            <li><strong>Input Product:</strong> &quot;Scented Soy Candle&quot; | <strong>Features:</strong> &quot;Lavender scent, 40-hour burn, natural soy wax&quot; <br />
+              <strong>→ Output:</strong> &quot;Unwind with our Lavender Bliss candle. Crafted from 100% natural soy wax, this long-lasting (40-hour!) candle fills your home with the calming scent of lavender. The perfect way to de-stress. <strong>Shop Now.</strong>&quot;</li>
+            <li><strong>Input Product:</strong> &quot;Running Shoes&quot; | <strong>Features:</strong> &quot;Lightweight, mesh upper, extra cushion&quot; | <strong>Tone:</strong> &quot;Excited&quot; <br />
+              <strong>→ Output:</strong> &quot;Fly past your limits! Our new running shoe features a feather-light design with a breathable mesh upper and extra-plush cushioning. Feel the difference on your next run. <strong>Get yours!</strong>&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Who is this tool for?</h2>
+          <p>This tool is a game-changer for <strong>E-commerce store owners</strong>, <strong>Shopify/Etsy sellers</strong>, <strong>Amazon FBA sellers</strong>, and <strong>digital marketing agencies</strong> managing product pages.</p>
+          <h2>Are the descriptions SEO-friendly?</h2>
+          <p>Yes. The AI is trained to naturally weave your key features (which should include your keywords) into readable and persuasive copy, which is exactly what Google wants. It helps avoid duplicate content penalties.</p>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>How many descriptions can I create?</dt>
+            <dd>As many as you need. Our tool is 100% free.</dd>
+            <dt>What&apos;s the best &quot;tone&quot; to choose?</dt>
+            <dd>&quot;Persuasive&quot; is a great default for sales. &quot;Luxury&quot; works for high-end items. &quot;Playful&quot; is good for brands with a strong personality. Experiment and see what fits your brand voice!</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
+
+  // --- 7. Blog Post Idea Generator (YENİ) ---
+  'blog-ideas': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Never run out of content ideas again. Generate viral, relevant, and SEO-friendly blog post titles based on your topic.</p>
+          <ol>
+            <li><strong>Enter Your Main Topic:</strong> Be broad but clear (e.g., &quot;digital marketing,&quot; &quot;vegan cooking,&quot; &quot;Next.js development&quot;).</li>
+            <li><strong>Generate:</strong> The AI will instantly provide you with a list of 5-10 compelling blog post ideas.</li>
+            <li><strong>Refine (Optional):</strong> Don&apos;t like the first batch? Hit generate again!</li>
+            <li><strong>Start Writing:</strong> Copy your favorite idea and start drafting your post.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Turn a single keyword into a full content calendar:</p>
+          <ul>
+            <li><strong>Input Topic:</strong> &quot;Vegan Cooking&quot; <br />
+              <strong>→ Outputs:</strong> &quot;10 High-Protein Vegan Dinners You Can Make in 20 Minutes,&quot; &quot;The Ultimate Guide to Replacing Eggs in Baking,&quot; &quot;Is a Vegan Diet *Really* Healthier? We Investigate.&quot;</li>
+            <li><strong>Input Topic:</strong> &quot;Digital Marketing&quot; <br />
+              <strong>→ Outputs:</strong> &quot;5 AI Tools That Will Change Your SEO Strategy in 2026,&quot; &quot;Why Your B2B Business Needs to Be on TikTok (And How to Do It),&quot; &quot;The Death of the Third-Party Cookie: What Marketers Do Now.&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Who is this for?</h2>
+          <p><strong>Bloggers</strong>, <strong>Content Marketers</strong>, <strong>SEO Specialists</strong>, and <strong>small business owners</strong> who need to maintain an active blog for their content marketing strategy.</p>
+          <h2>Are these ideas SEO-friendly?</h2>
+          <p>Yes. The AI is trained to generate titles that are &quot;problem-aware&quot; or &quot;list-based&quot; (e.g., &quot;How to...&quot;, &quot;10 Best...&quot;, &quot;The Ultimate Guide...&quot;), which historically perform very well in search results.</p>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>Are these ideas truly unique?</dt>
+            <dd>The ideas are generated by AI, so they are &quot;unique&quot; in their combination. More importantly, they are excellent *starting points*. Your unique take on the idea is what will make the final article stand out.</dd>
+            <dt>Can I generate ideas for any niche?</dt>
+            <dd>Absolutely. From highly technical topics (like &quot;Kubernetes&quot;) to lifestyle niches (&quot;Home Gardening&quot;), the AI can generate relevant ideas.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
 };
 
 export default function ToolPageClient({ toolId }: ToolPageClientProps) {
