@@ -42,15 +42,10 @@ interface ToolPageClientProps {
   toolId: ToolId;
 }
 
-export default function ToolPageClient({ toolId }: ToolPageClientProps) {
-  const ActiveComponent = toolComponents[toolId];
-
-  if (!ActiveComponent) {
-    return null;
-  }
-
-  // email-generator için sekme verisi
-  const tabsData = toolId === 'email-generator' ? [
+// Dev İçerik Haritası - Tüm araçlar için sekme içeriği
+const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; content: React.ReactNode }>> = {
+  // --- 1. Email Subject Generator (Mevcut) ---
+  'email-generator': [
     {
       id: 'how-to',
       label: 'How to Use?',
@@ -118,7 +113,178 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
         </div>
       )
     },
-  ] : [];
+  ],
+
+  // --- 2. Paraphraser Tool (YENİ) ---
+  'paraphraser': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Our Paraphraser Tool helps you rewrite any text to make it unique, clearer, or more formal. Avoid plagiarism and improve your writing clarity.</p>
+          <ol>
+            <li><strong>Paste Your Text:</strong> Enter the original sentence or paragraph into the input box.</li>
+            <li><strong>Select a Mode (Optional):</strong> Choose a tone like &quot;Formal,&quot; &quot;Simple,&quot; or &quot;Creative&quot; to guide the AI.</li>
+            <li><strong>Generate:</strong> The AI will analyze the context and provide you with an alternative version.</li>
+            <li><strong>Review & Copy:</strong> Read the new text, ensure it meets your needs, and copy it.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Transform your writing for any situation:</p>
+          <ul>
+            <li><strong>Original (Clumsy):</strong> &quot;The reason I am writing this email is because I want to ask for the report.&quot; <br />
+              <strong>→ Output (Formal):</strong> &quot;I am writing to formally request the report.&quot;</li>
+            <li><strong>Original (Complex):</strong> &quot;The epistemological dichotomy in the text suggests a post-structuralist critique.&quot; <br />
+              <strong>→ Output (Simple):</strong> &quot;The text discusses a conflict in how we know things, questioning older ideas about truth.&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Who is this tool for?</h2>
+          <ul>
+            <li><strong>Students:</strong> To avoid plagiarism and better understand source materials by rephrasing them.</li>
+            <li><strong>Writers & Bloggers:</strong> To overcome writer&apos;s block and find new ways to express ideas.</li>
+            <li><strong>ESL Speakers:</strong> To improve sentence structure and sound more fluent in English.</li>
+          </ul>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>Is this just a &quot;spinner&quot;? Will it be flagged for plagiarism?</dt>
+            <dd>No. This is not a simple word-swapper. It uses an advanced AI to understand the *meaning* and rewrite it contextually. However, you should always cite your original sources for academic work.</dd>
+            <dt>Is there a word limit?</dt>
+            <dd>For best results, we recommend paraphrasing a few paragraphs at a time (around 500-1000 words). This ensures the highest quality and context retention.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
+
+  // --- 3. Social Post Generator (YENİ) ---
+  'social-post': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Create engaging posts for Twitter (X), LinkedIn, or Facebook in seconds. Stop staring at a blank screen!</p>
+          <ol>
+            <li><strong>Enter Your Topic:</strong> What&apos;s the post about? (e.g., &quot;new AI blog post,&quot; &quot;25% off sale,&quot; &quot;hiring a new developer&quot;).</li>
+            <li><strong>Choose the Platform:</strong> Select &quot;LinkedIn&quot; (more professional) or &quot;Twitter&quot; (short and catchy).</li>
+            <li><strong>Select a Tone:</strong> &quot;Excited,&quot; &quot;Professional,&quot; &quot;Informative.&quot;</li>
+            <li><strong>Generate:</strong> Get multiple post options, often including relevant emojis and hashtags.</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>See how the AI adapts to different platforms:</p>
+          <ul>
+            <li><strong>Input Topic:</strong> &quot;New blog post about AI in marketing&quot; | <strong>Platform:</strong> &quot;LinkedIn&quot; <br />
+              <strong>→ Output:</strong> &quot;Just published a new article on how AI is fundamentally changing the marketing landscape. We dive into data-driven strategies and future trends. A must-read for C-suite leaders. #AI #Marketing #DigitalTransformation [Link]&quot;</li>
+            <li><strong>Input Topic:</strong> &quot;Flash sale 25% off all t-shirts&quot; | <strong>Platform:</strong> &quot;Twitter (X)&quot; <br />
+              <strong>→ Output:</strong> &quot;🚨 FLASH SALE! 🚨 Get 25% OFF all our t-shirts for the next 24 hours only! Don&apos;t miss out. 👕🔥 #sale #fashion #discount [Link]&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>Does this tool generate hashtags?</h2>
+          <p>Yes, our AI will often suggest 3-5 relevant hashtags to increase your post&apos;s visibility. (We also have a separate, dedicated <a href="/tool/hashtag-generator">Hashtag Generator</a> for more advanced needs).</p>
+          <h2>Can I use this for Instagram?</h2>
+          <p>This tool is optimized for text-based platforms (LinkedIn/Twitter). For image-based platforms, we recommend our dedicated <a href="/tool/instagram-caption">Instagram Caption Generator</a> which focuses more on storytelling and visual description.</p>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>Is it free to use?</dt>
+            <dd>Yes, all our tools are 100% free, supported by advertising.</dd>
+            <dt>How many posts can I generate?</dt>
+            <dd>Unlimited. Feel free to generate as many options as you need to find the perfect post.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
+
+  // --- 4. Meta Description Generator (YENİ) ---
+  'meta-description': [
+    {
+      id: 'how-to',
+      label: 'How to Use?',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>Write compelling, SEO-friendly meta descriptions that increase your click-through rate (CTR) from Google search results.</p>
+          <ol>
+            <li><strong>Enter Page Topic/Keywords:</strong> What is your web page about? (e.g., &quot;Brooklyn bakery,&quot; &quot;guide to hiking in Alps,&quot; &quot;our pricing page&quot;).</li>
+            <li><strong>Enter Your Brand/Site Name:</strong> (Optional) This helps the AI include your brand naturally.</li>
+            <li><strong>Generate:</strong> The AI will create several description options optimized for length (under 160 characters).</li>
+          </ol>
+        </div>
+      )
+    },
+    {
+      id: 'examples',
+      label: 'Usage Examples',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <p>From broad topics to specific pages:</p>
+          <ul>
+            <li><strong>Input Topic:</strong> &quot;Homepage for a custom bicycle shop&quot; <br />
+              <strong>→ Output:</strong> &quot;Build your dream bike. We offer custom-built bicycles, expert repairs, and premium gear. Visit our shop and start your cycling journey today.&quot;</li>
+            <li><strong>Input Topic:</strong> &quot;Blog post about &apos;best 10 sci-fi books&apos;&quot; <br />
+              <strong>→ Output:</strong> &quot;Looking for your next read? Discover our list of the 10 best sci-fi books of all time, from classic epics to modern masterpieces.&quot;</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'details-faq',
+      label: 'Details & FAQ',
+      content: (
+        <div className="prose prose-invert max-w-none">
+          <h2>What is a Meta Description? Why does it matter?</h2>
+          <p>A meta description is the short snippet of text (approx. 155-160 characters) that appears under your page title in Google search results. A good description acts like an &quot;ad&quot; for your page, convincing users to click your link instead of someone else&apos;s.</p>
+          <h2>Will this guarantee I rank #1 on Google?</h2>
+          <p>No. Meta descriptions do not *directly* influence your ranking. However, a good description *indirectly* helps your SEO by increasing your Click-Through Rate (CTR). A high CTR signals to Google that your page is a good result for that query.</p>
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <dl>
+            <dt>How long should my description be?</dt>
+            <dd>Google typically truncates descriptions after 155-160 characters. Our AI is optimized to stay within this limit to ensure your full message is visible.</dd>
+            <dt>Should I use this for *every* page?</dt>
+            <dd>Yes. Every important, indexable page on your site (homepage, blog posts, product pages, service pages) should have a unique, compelling meta description.</dd>
+          </dl>
+        </div>
+      )
+    },
+  ],
+};
+
+export default function ToolPageClient({ toolId }: ToolPageClientProps) {
+  const ActiveComponent = toolComponents[toolId];
+
+  if (!ActiveComponent) {
+    return null;
+  }
+
+  // toolId'ye göre doğru sekme verisini TOOL_CONTENT_MAP'ten al
+  const currentTabs = TOOL_CONTENT_MAP[toolId as keyof typeof TOOL_CONTENT_MAP];
 
   return (
     <WorkspaceLayout>
@@ -134,18 +300,21 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
           >
             <ActiveComponent />
             
-            {/* email-generator için animasyonlu sekmeler */}
-            {toolId === 'email-generator' && tabsData.length > 0 && (
+            {/* YENİ AKILLI SEKMELER BÖLÜMÜ:
+              'currentTabs' (o anki toolId'ye ait içerik) varsa, 
+              AnimatedTabs bileşenini o içerikle render et.
+            */}
+            {currentTabs && (
               <div className="mx-auto flex w-full max-w-4xl justify-center">
                 <motion.div
-                  key="email-generator-tabs"
+                  key={`${toolId}-tabs`} // Anahtarı dinamik hale getirdik
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.1 }}
-                  className="w-full px-4 mt-8"
+                  className="w-full px-4 mt-8" // "mt-8" ile aracın altına boşluk ekledik
                 >
                   <div className="rounded-xl bg-slate-900/50 p-6 md:p-8">
-                    <AnimatedTabs tabs={tabsData} initialTabId="how-to" />
+                    <AnimatedTabs tabs={currentTabs} initialTabId="how-to" />
                   </div>
                 </motion.div>
               </div>
