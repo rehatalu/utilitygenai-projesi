@@ -7,9 +7,10 @@ const AiIcon = (props: React.SVGProps<SVGSVGElement>) => (
 export default function WelcomeHub() {
   return (
     <div className="mx-auto max-w-2xl rounded-3xl 
-                    bg-gray-100 dark:bg-slate-900/80 
+                    bg-gray-100 text-slate-900 
+                    dark:bg-slate-900/50 dark:text-white
                     p-6 shadow-2xl 
-                    ring-1 ring-inset ring-gray-200 dark:ring-1 dark:ring-slate-700 
+                    ring-1 ring-inset ring-gray-200 dark:ring-0
                     backdrop-blur-lg
                     transition-colors duration-300">
       <div className="flex flex-col items-center gap-4 text-center">
