@@ -48,66 +48,66 @@ export default function UgaChatbot() {
 
   return (
     <div 
-      className={`w-full rounded-3xl backdrop-blur-lg transition-all duration-300
+      className={`w-full rounded-3xl backdrop-blur-lg p-4 transition-all duration-300
         ${isLoading 
           ? 'animate-rgb-border' // Yüklenirken (main.css'teki SAĞLAM maskeli RGB)
           : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
         }
       `}
     >
-      {/* İçerik maske üstünde görünmeli */}
-      <div className="relative z-10 p-4">
+      {/* İçerik maske üstünde görünmeli - z-index ile */}
+      <div className="relative z-10">
         <h1 className="text-base font-semibold text-white mb-3 text-left">Chat with UGA</h1>
       
-      <div className="h-48 overflow-y-auto mb-3 space-y-3 p-3 bg-slate-800/50 rounded-lg">
-        {messages.map((msg, index) => (
-          <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div 
-              className={`max-w-[85%] px-3 py-2 rounded-lg text-xs text-left
-                ${msg.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-slate-700 text-slate-200'}
-              `}
-            >
-              {msg.content}
+        <div className="h-48 overflow-y-auto mb-3 space-y-3 p-3 bg-slate-800/50 rounded-lg">
+          {messages.map((msg, index) => (
+            <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div 
+                className={`max-w-[85%] px-3 py-2 rounded-lg text-xs text-left
+                  ${msg.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-slate-700 text-slate-200'}
+                `}
+              >
+                {msg.content}
+              </div>
             </div>
-          </div>
-        ))}
-        <div ref={messagesEndRef} /> 
-      </div>
-      
-      <form onSubmit={handleSubmit} className="text-left">
-        <label htmlFor="chatInput" className="block text-xs font-medium text-slate-300 mb-1">
-          Your message:
-        </label>
-        <textarea
-          id="chatInput"
-          className="w-full p-2 border rounded-lg shadow-sm bg-slate-800 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          rows={2}
-          placeholder="Ask UGA about a tool..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault();
-              if (!isLoading && input) handleSubmit(e as any);
-            }
-          }}
-        />
-        {/* "Düşünen Yıldız" (Bu zaten çalışıyordu) */}
-        <button
-          type="submit"
-          className="mt-2 px-3 py-1.5 bg-indigo-600 text-white text-xs rounded-full hover:bg-indigo-500 disabled:bg-gray-400 flex items-center justify-center gap-2"
-          disabled={isLoading || !input}
-        >
-          {isLoading ? (
-            <>
-              <SparklesIcon className="w-4 h-4 animate-spin" />
-              <span>UGA is thinking...</span>
-            </>
-          ) : (
-            "Send Message"
-          )}
-        </button>
-      </form>
+          ))}
+          <div ref={messagesEndRef} /> 
+        </div>
+        
+        <form onSubmit={handleSubmit} className="text-left">
+          <label htmlFor="chatInput" className="block text-xs font-medium text-slate-300 mb-1">
+            Your message:
+          </label>
+          <textarea
+            id="chatInput"
+            className="w-full p-2 border rounded-lg shadow-sm bg-slate-800 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            rows={2}
+            placeholder="Ask UGA about a tool..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                if (!isLoading && input) handleSubmit(e as any);
+              }
+            }}
+          />
+          {/* "Düşünen Yıldız" (Bu zaten çalışıyordu) */}
+          <button
+            type="submit"
+            className="mt-2 px-3 py-1.5 bg-indigo-600 text-white text-xs rounded-full hover:bg-indigo-500 disabled:bg-gray-400 flex items-center justify-center gap-2"
+            disabled={isLoading || !input}
+          >
+            {isLoading ? (
+              <>
+                <SparklesIcon className="w-4 h-4 animate-spin" />
+                <span>UGA is thinking...</span>
+              </>
+            ) : (
+              "Send Message"
+            )}
+          </button>
+        </form>
       </div>
     </div>
   );
