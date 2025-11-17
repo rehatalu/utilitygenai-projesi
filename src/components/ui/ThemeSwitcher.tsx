@@ -5,7 +5,7 @@ import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi';
 
 // Temayı yönetmek için özel bir hook (yardımcı fonksiyon)
 function useTheme() {
-  // STRATEJİ DEĞİŞİKLİĞİ 1: Varsayılan state 'dark' oldu.
+  // Strateji: Varsayılan state 'dark' oldu (Görev 10.5 isteği)
   const [theme, setTheme] = useState('dark');
 
   // Bu useEffect SADECE ilk yüklendiğinde çalışır (client-side)
@@ -15,30 +15,20 @@ function useTheme() {
     if (savedTheme) {
       // Hafızada (localStorage) ne varsa onu uygula
       setTheme(savedTheme);
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
     } else {
-      // STRATEJİ DEĞİŞİKLİĞİ 2: Hafızada bir şey yoksa, 'dark' uygula
+      // Hafızada bir şey yoksa, 'dark' uygula
       setTheme('dark');
       document.documentElement.classList.add('dark');
     }
   }, []); // Boş dependency array, sadece ilk yüklemede çalışır
 
-  // Temayı değiştiren fonksiyon
+  // Temayı değiştiren fonksiyon (Bu kod doğru)
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    
-    // Daha güvenilir yöntem: önce kaldır, sonra ekle
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
 
   return { theme, toggleTheme };
@@ -49,13 +39,11 @@ function useTheme() {
 export default function ThemeSwitcher({ className = '' }: { className?: string }) {
   const { theme, toggleTheme } = useTheme();
 
-  // 'useEffect' tamamlanana kadar (hidrasyon) butonu göstermemek için
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    // Sunucu tarafında veya hidrasyon tamamlanmadan önce butonun yerini doldur
-    // (Görsel kaymayı engeller - CLS)
+    // Görsel kaymayı engeller (CLS)
     return <div className={`h-[36px] w-[36px] ${className}`} />;
   }
 
@@ -69,7 +57,7 @@ export default function ThemeSwitcher({ className = '' }: { className?: string }
                   ${className}`}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {/* STRATEJİ DEĞİŞİKLİĞİ 3: Düzeltilmiş İkon Mantığı */}
+      {/* Düzeltilmiş İkon Mantığı */}
       {theme === 'dark' ? (
         <HiOutlineSun className="h-5 w-5" /> // Karanlıktayız, Güneş'i (Aydınlığa Geç) göster
       ) : (
