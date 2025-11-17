@@ -29,7 +29,11 @@ export default function ParaphraserTool() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl rounded-3xl p-6 transition-all duration-300 text-left bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl backdrop-blur-lg">
+    <div className={`mx-auto max-w-2xl rounded-3xl p-6 transition-all duration-300 text-left backdrop-blur-lg ${
+      isLoading 
+        ? 'animate-rgb-border' // Yüklenirken (main.css'teki SAĞLAM maskeli RGB)
+        : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
+    }`}>
       <h1 className="text-2xl font-semibold text-white mb-4 text-left">AI Paraphrasing Tool</h1>
       <p className="text-sm text-slate-400 mb-6 text-left">Rewrite text professionally with AI.</p>
 

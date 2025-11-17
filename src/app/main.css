@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* "UGA SÜZÜLME" EFEKTİ GERİ GELDİ */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* "SAĞLAM RGB" (Maskeleme) KODU GERİ GELDİ */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spin {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
+}
+.animate-rgb-border {
+  position: relative;
+  background: transparent !important; 
+  z-index: 0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.animate-rgb-border::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from var(--angle),
+    #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000
+  );
+  animation: spin 3s linear infinite;
+}
+.animate-rgb-border::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 2px; left: 2px; right: 2px; bottom: 2px; 
+  background: #0f172a; /* Kart rengi (slate-900) */
+  border-radius: 1.4rem;
+}
+
