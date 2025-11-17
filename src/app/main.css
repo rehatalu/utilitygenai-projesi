@@ -70,8 +70,9 @@ body {
   content: "";
   position: absolute;
   z-index: -1;
-  top: 2px; left: 2px; right: 2px; bottom: 2px; 
-  background: #0f172a; /* Kart rengi (slate-900) */
+  top: 3px; left: 3px; right: 3px; bottom: 3px; 
+  background: rgba(15, 23, 42, 0.8); /* Kart rengi (slate-900/80) - UGA uyumlu */
   border-radius: 1.4rem;
+  backdrop-filter: blur(16px);
 }
 
