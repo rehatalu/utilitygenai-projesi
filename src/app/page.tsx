@@ -46,10 +46,10 @@ export default function HomePage() {
           transition={{ duration: 0.2, delay: 0.1 }}
           className="w-full px-4 mt-12 mb-8"
         >
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-2xl font-bold text-white mb-4">
             Explore Your AI Workspace
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 mb-6">
+          <p className="text-slate-300 mb-6">
             We&apos;ve built 13 specialized AI tools to handle specific tasks. From writing email subjects to explaining complex code, your free utility belt is ready.
           </p>
           
@@ -60,14 +60,13 @@ export default function HomePage() {
                 href={`/tool/${tool.slug}`}
                 key={tool.slug}
                 className="block p-4 rounded-lg 
-                           bg-gray-100 hover:bg-gray-200 
-                           dark:bg-slate-900/50 dark:hover:bg-slate-800/70
-                           ring-1 ring-inset ring-gray-200 dark:ring-0
+                           bg-slate-900/50 hover:bg-slate-800/70
+                           ring-1 ring-slate-700
                            hover:ring-2 hover:ring-indigo-500
                            transition-all"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-white">{tool.name}</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400">{tool.description}</p>
+                <h3 className="font-semibold text-white">{tool.name}</h3>
+                <p className="text-sm text-slate-400">{tool.description}</p>
               </Link>
             ))}
           </div>
@@ -76,4 +75,3 @@ export default function HomePage() {
     </WorkspaceLayout>
   );
 }
-

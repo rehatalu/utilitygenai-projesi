@@ -13,7 +13,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true); // Bu state artık hem mobili hem masaüstünü kontrol edecek
 
   return (
-    <div className="flex h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div className="flex h-screen bg-slate-950 text-slate-100">
       
       {/* 1. MOBİL Menü Arka Planı (Overlay) */}
       {/* Bu hala sadece mobilde (md:hidden) çalışmalı */}
@@ -55,13 +55,13 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         */}
         <button
           type="button"
-          className={`sticky top-0 z-20 p-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-sm
+          className={`sticky top-0 z-20 p-4 bg-slate-950/80 backdrop-blur-sm
                      ${sidebarOpen ? 'hidden' : 'block'} 
                     `} // Menü açıksa gizle
           onClick={() => setSidebarOpen(true)}
           aria-label="Open sidebar"
         >
-          <HiMenuAlt2 className="h-6 w-6 text-slate-900 dark:text-white" />
+          <HiMenuAlt2 className="h-6 w-6 text-white" />
         </button>
 
         {/* Sayfa içeriği buraya gelecek */}
@@ -70,12 +70,12 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         </div>
 
         {/* Ana Footer */}
-        <footer className="w-full p-6 text-center text-xs text-slate-500 dark:text-slate-500">
+        <footer className="w-full p-6 text-center text-xs text-slate-500">
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-2">
-            <Link href="/privacy" className="hover:text-slate-700 dark:hover:text-slate-300">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-slate-700 dark:hover:text-slate-300">Terms of Service</Link>
-            <Link href="/contact" className="hover:text-slate-700 dark:hover:text-slate-300">Contact Us</Link>
-            <Link href="/about" className="hover:text-slate-700 dark:hover:text-slate-300">About Us</Link>
+            <Link href="/privacy" className="hover:text-slate-300">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-slate-300">Terms of Service</Link>
+            <Link href="/contact" className="hover:text-slate-300">Contact Us</Link>
+            <Link href="/about" className="hover:text-slate-300">About Us</Link>
           </div>
           <p>© {new Date().getFullYear()} UtilityGenAI. All rights reserved.</p>
         </footer>
@@ -84,4 +84,3 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     </div>
   );
 }
-
