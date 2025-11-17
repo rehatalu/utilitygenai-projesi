@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import { ReactNode } from "react";
-import "./main.css";
+import "./main.css"; // 'main.css' kullanıyoruz
 import UgaAssistant from "@/components/layout/UgaAssistant";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -9,12 +9,12 @@ const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["600",
 
 export const metadata: Metadata = {
   title: { template: '%s | UtilityGenAI', default: 'UtilityGenAI - Free AI Tools' },
-  description: 'A free collection of AI-powered tools (Email, Paraphraser, etc.) to boost your productivity.',
+  description: 'A free collection of AI-powered tools (Email, Paraphraser, etc) to boost your productivity.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    // GERİ ALMA: "className='dark'" geri eklendi.
+    // ORİJİNAL KOD: className="dark"
     <html lang="en" className="dark"> 
       <head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128" crossOrigin="anonymous"></script>
@@ -23,16 +23,23 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body 
         className={`${inter.variable} ${sora.variable} antialiased bg-slate-950 text-slate-300 relative isolate overflow-hidden`} 
       >
-        {/* "Görsel Grid Desenli" Arka Plan - GERİ ALMA: Sadece karanlık grid deseni */}
+        {/* ORİJİNAL KOD (Hatalı "length" ile)
+           Grid desenini geri getirmek için en azından bu
+           kodu geri yüklüyoruz.
+        */}
         <div 
-          className="absolute inset-0 -z-10 bg-[size:3rem_3rem] bg-[linear-gradient(to_right,rgba(51,65,85,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,65,85,0.5)_1px,transparent_1px)]"
+          className="absolute inset-0 -z-10" 
           aria-hidden="true"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(30, 41, 59, 0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(30, 41, 59, 0.5) 1px, transparent 1px)',
+            backgroundSize: '3rem 3rem',
+          }}
         />
         <div 
           className="absolute left-1/2 top-0 -z-10 -translate-x-1/2"
           aria-hidden="true"
         >
-          {/* GERİ ALMA: Sadece karanlık opacity */}
           <div 
             className="aspect-[1097/845] w-[68.5625rem] bg-gradient-radial from-[#4f46e5] via-transparent to-transparent opacity-20"
             style={{
