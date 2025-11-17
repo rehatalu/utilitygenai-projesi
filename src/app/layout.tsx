@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Bu div artık aydınlıkta açık gri, karanlıkta koyu gri olacak */}
         <div 
           className="absolute inset-0 -z-10 
-                     bg-[length:3rem_3rem]
+                     bg-[size:3rem_3rem]
                      bg-[linear-gradient(to_right,rgba(229,231,235,1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,1)_1px,transparent_1px)]
                      dark:bg-[linear-gradient(to_right,rgba(51,65,85,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,65,85,0.5)_1px,transparent_1px)]"
           aria-hidden="true"
