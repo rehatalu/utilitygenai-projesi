@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -18,26 +17,24 @@ import {
   CommandLineIcon, // Code Explainer
   DocumentTextIcon, // Summarizer
   CameraIcon, // Instagram
-  ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon,
   XMarkIcon, // Kapatma butonu için
 } from '@heroicons/react/24/outline';
 
-// Araç Listesi
-const availableTools = [
-  { id: 'email-generator', name: 'Email Subject Generator', icon: EnvelopeIcon },
-  { id: 'paraphraser', name: 'Paraphraser Tool', icon: DocumentDuplicateIcon },
-  { id: 'social-post', name: 'Social Post Generator', icon: ChatBubbleOvalLeftEllipsisIcon },
-  { id: 'meta-description', name: 'Meta Generator', icon: TagIcon },
-  { id: 'grammar-check', name: 'Grammar Checker', icon: CheckCircleIcon },
-  { id: 'product-description', name: 'Product Generator', icon: ShoppingCartIcon },
-  { id: 'blog-ideas', name: 'Blog Ideas', icon: LightBulbIcon },
-  { id: 'youtube-ideas', name: 'YouTube Idea Generator', icon: VideoCameraIcon },
-  { id: 'hashtag-generator', name: 'Hashtag Generator', icon: HashtagIcon },
-  { id: 'business-name', name: 'Business Name Generator', icon: BriefcaseIcon },
-  { id: 'code-explainer', name: 'AI Code Explainer', icon: CommandLineIcon },
-  { id: 'text-summarizer', name: 'Text Summarizer', icon: DocumentTextIcon },
-  { id: 'instagram-caption', name: 'Instagram Caption Generator', icon: CameraIcon },
+// Araçların listesi (ikonlarla birlikte)
+const tools = [
+  { slug: 'email-generator', name: 'Email Subject Generator', icon: EnvelopeIcon },
+  { slug: 'paraphraser', name: 'Paraphraser Tool', icon: DocumentDuplicateIcon },
+  { slug: 'social-post', name: 'Social Post Generator', icon: ChatBubbleOvalLeftEllipsisIcon },
+  { slug: 'meta-description', name: 'Meta Generator', icon: TagIcon },
+  { slug: 'grammar-check', name: 'Grammar Checker', icon: CheckCircleIcon },
+  { slug: 'product-description', name: 'Product Generator', icon: ShoppingCartIcon },
+  { slug: 'blog-ideas', name: 'Blog Ideas', icon: LightBulbIcon },
+  { slug: 'youtube-ideas', name: 'YouTube Idea Generator', icon: VideoCameraIcon },
+  { slug: 'hashtag-generator', name: 'Hashtag Generator', icon: HashtagIcon },
+  { slug: 'business-name', name: 'Business Name Generator', icon: BriefcaseIcon },
+  { slug: 'code-explainer', name: 'AI Code Explainer', icon: CommandLineIcon },
+  { slug: 'text-summarizer', name: 'Text Summarizer', icon: DocumentTextIcon },
+  { slug: 'instagram-caption', name: 'Instagram Caption Generator', icon: CameraIcon },
 ];
 
 interface SidebarProps {
@@ -45,95 +42,74 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ closeSidebar }: SidebarProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  
-  // URL'yi oku (Adres çubuğu)
-  const pathname = usePathname(); 
+  const pathname = usePathname();
+
+  // Aktif linki belirlemek için yardımcı fonksiyon
+  const isActive = (slug: string) => {
+    return pathname === `/tool/${slug}`;
+  };
 
   return (
-    <aside
-      className={`flex-shrink-0 bg-gray-900 shadow-lg
-      ${isCollapsed ? 'w-20' : 'w-64'} 
-      transition-all duration-300 h-full`} // h-full eklendi
-    >
-      <div className="flex h-full flex-col">
-        {/* MOBİL için X (Kapat) Butonu */}
-        <div className="flex justify-end p-4 md:hidden border-b border-gray-700">
-          <button
-            type="button"
-            onClick={closeSidebar}
-            aria-label="Close sidebar"
-            className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800"
-          >
-            <XMarkIcon className="h-6 w-6" />
-          </button>
-        </div>
-
-        {/* 1. Logo (Ana Sayfa Butonu) */}
-        <div className={`p-4 border-b border-gray-700 ${isCollapsed ? 'flex justify-center' : 'flex items-center gap-2'}`}>
-          <Link
-            href="/" // Artık 'onClick' değil, 'Link'
-            onClick={closeSidebar}
-            className={`flex items-center gap-2 w-full ${isCollapsed ? 'justify-center' : ''}`}
-          >
-            <span className="p-2 bg-indigo-600 rounded-lg text-white">
-              <HomeIcon className="w-5 h-5" />
-            </span>
-            {!isCollapsed && (
-              <span className="text-lg font-semibold text-white">
-                UtilityGenAI
-              </span>
-            )}
-          </Link>
-        </div>
-
-        {/* 2. Araç Listesi */}
-        <nav className="flex-1 space-y-1 p-4">
-          {!isCollapsed && (
-            <p className="px-2 text-xs font-semibold uppercase text-gray-500">Tools</p>
-          )}
-          {availableTools.map((tool) => {
-            // Aktif aracı 'state'den değil, 'URL'den (pathname) anla
-            const isActive = pathname === `/tool/${tool.id}`; 
-            return (
-              <Link
-                key={tool.id}
-                href={`/tool/${tool.id}`} // Artık 'onClick' değil, 'Link'
-                onClick={closeSidebar}
-                className={`flex items-center gap-3 w-full rounded-lg px-3 py-2.5 text-sm font-medium transition
-                  ${isActive
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-gray-400 hover:bg-gray-800 hover:text-white'
-                  }
-                  ${isCollapsed ? 'justify-center' : ''}
-                `}
-              >
-                <tool.icon className="w-5 h-5 flex-shrink-0" />
-                {!isCollapsed && <span>{tool.name}</span>}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* 3. Menü Kapatma Butonu */}
-        <div className={`p-4 border-t border-gray-700 mt-auto ${isCollapsed ? 'space-y-2' : ''}`}>
-          <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            className={`flex items-center gap-3 w-full rounded-lg px-3 py-2 text-sm font-medium 
-              text-gray-400 hover:bg-gray-800 hover:text-white
-              ${isCollapsed ? 'justify-center' : ''}
-            `}
-          >
-            {isCollapsed ? (
-              <ChevronDoubleRightIcon className="w-5 h-5 mx-auto" />
-            ) : (
-              <ChevronDoubleLeftIcon className="w-5 h-5" />
-            )}
-            {!isCollapsed && <span>Collapse menu</span>}
-          </button>
-        </div>
+    <div className="flex flex-col h-full bg-slate-900 text-slate-300">
+      
+      {/* BÖLÜM 1: Logo ve Mobil Kapatma Tuşu */}
+      <div className="flex items-center justify-between h-16 px-4 border-b border-slate-800 flex-shrink-0">
+        <Link href="/" className="flex items-center gap-2" onClick={closeSidebar}>
+          <div className="bg-indigo-600 p-2 rounded-lg">
+            <HomeIcon className="h-6 w-6 text-white" />
+          </div>
+          <span className="text-xl font-bold text-white">UtilityGenAI</span>
+        </Link>
+        {/* Sadece mobilde görünen X (Kapat) butonu */}
+        <button
+          type="button"
+          onClick={closeSidebar}
+          className="md:hidden text-slate-400 hover:text-white"
+          aria-label="Close sidebar"
+        >
+          <XMarkIcon className="h-6 w-6" />
+        </button>
       </div>
-    </aside>
+
+      {/* BÖLÜM 2: KAYDIRILABİLİR ARAÇ LİSTESİ (ÖNEMLİ DÜZELTME) */}
+      <nav className="flex-1 overflow-y-auto py-4 space-y-1">
+        <span className="px-4 text-xs font-semibold uppercase text-slate-500">Tools</span>
+        <ul className="px-2">
+          {tools.map((tool) => (
+            <li key={tool.slug}>
+              <Link
+                href={`/tool/${tool.slug}`}
+                onClick={closeSidebar} // Linke tıklayınca mobil menüyü kapat
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium
+                            transition-colors duration-150
+                            ${
+                              isActive(tool.slug)
+                                ? 'bg-indigo-600 text-white' // Aktif
+                                : 'text-slate-300 hover:bg-slate-800 hover:text-white' // Pasif
+                            }`}
+              >
+                <tool.icon className="h-5 w-5 flex-shrink-0" />
+                <span>{tool.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* BÖLÜM 3: SABİT ALT FOOTER (Privacy, Terms vb.) */}
+      <div className="flex-shrink-0 border-t border-slate-800 p-4">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-slate-500">
+          <Link href="/privacy" onClick={closeSidebar} className="hover:text-slate-300">Privacy Policy</Link>
+          <Link href="/terms" onClick={closeSidebar} className="hover:text-slate-300">Terms of Service</Link>
+          <Link href="/contact" onClick={closeSidebar} className="hover:text-slate-300">Contact Us</Link>
+          <Link href="/about" onClick={closeSidebar} className="hover:text-slate-300">About Us</Link>
+        </div>
+        <p className="text-center text-xs text-slate-600 mt-4">
+          © {new Date().getFullYear()} UtilityGenAI. All rights reserved.
+        </p>
+      </div>
+
+    </div>
   );
 }
 
