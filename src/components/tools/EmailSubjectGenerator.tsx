@@ -46,28 +46,27 @@ export default function EmailSubjectGenerator() {
 
   return (
     <div className="mx-auto max-w-2xl rounded-xl 
-                    bg-gray-100 dark:bg-slate-900 
-                    ring-1 ring-inset ring-gray-200 dark:ring-1 dark:ring-slate-700 
-                    shadow-2xl backdrop-blur-lg
-                    transition-colors duration-300">
+                    bg-slate-900 
+                    ring-1 ring-slate-700 
+                    shadow-2xl backdrop-blur-lg">
       <div className="p-6">
         {/* YENİ (KOYU TEMA + SOLA DAYALI) */}
-        <div className="flex flex-col gap-2 border-b border-gray-200 dark:border-slate-700 pb-4 text-left">
-          <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">
+        <div className="flex flex-col gap-2 border-b border-slate-700 pb-4 text-left">
+          <h1 className="text-2xl font-semibold text-white">
             AI Email Subject Line Generator
           </h1>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+          <p className="text-sm text-slate-400">
             Enter the topic or main idea of your email, and we will generate
             compelling subject lines for you.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-3 text-left">
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+          <label className="block text-sm font-medium text-slate-300">
             Topic or keywords:
             {/* YENİ (KOYU TEMA + ENTER İLE GÖNDER) */}
             <textarea
-              className="mt-2 w-full rounded-xl border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 text-sm text-slate-900 dark:text-white shadow-sm transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
+              className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-800 p-3 text-sm text-white shadow-sm transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
               rows={3}
               placeholder="e.g., Product launch, Newsletter, Sale announcement..."
               value={topic}
@@ -107,7 +106,7 @@ export default function EmailSubjectGenerator() {
         )}
 
         {isLoading && (
-          <div className="mt-6 p-4 bg-gray-100 dark:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400 text-left">
+          <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
             Generating ideas...
           </div>
         )}
@@ -115,16 +114,16 @@ export default function EmailSubjectGenerator() {
         {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
         {results.length > 0 && (
           <div className="mt-6 space-y-3 text-left">
-            <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Results</h2>
+            <h2 className="text-lg font-semibold text-white">Results</h2>
             {results.map((result, index) => (
               <div 
                 key={index}
                 className="relative flex items-center justify-between 
-                           p-4 bg-gray-100 dark:bg-slate-800 rounded-lg 
+                           p-4 bg-slate-800 rounded-lg 
                            transition-all group"
               >
                 {/* Sonuç Metni (Ana içerik) */}
-                <p className="pr-12 text-slate-900 dark:text-slate-200">
+                <p className="pr-12 text-slate-200">
                   {result}
                 </p>
                 
