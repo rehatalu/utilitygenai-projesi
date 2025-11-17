@@ -96,19 +96,6 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
         </ul>
       </nav>
 
-      {/* BÖLÜM 3: SABİT ALT FOOTER (Privacy, Terms vb.) */}
-      <div className="flex-shrink-0 border-t border-slate-800 p-4">
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-slate-500">
-          <Link href="/privacy" onClick={closeSidebar} className="hover:text-slate-300">Privacy Policy</Link>
-          <Link href="/terms" onClick={closeSidebar} className="hover:text-slate-300">Terms of Service</Link>
-          <Link href="/contact" onClick={closeSidebar} className="hover:text-slate-300">Contact Us</Link>
-          <Link href="/about" onClick={closeSidebar} className="hover:text-slate-300">About Us</Link>
-        </div>
-        <p className="text-center text-xs text-slate-600 mt-4">
-          © {new Date().getFullYear()} UtilityGenAI. All rights reserved.
-        </p>
-      </div>
-
     </div>
   );
 }

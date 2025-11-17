@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import Sidebar from './Sidebar';
 
@@ -56,6 +57,17 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         <div className="px-4 py-8 sm:px-8">
           {children}
         </div>
+
+        {/* ANA FOOTER (Görev 7.6) */}
+        <footer className="w-full p-6 text-center text-xs text-slate-500">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-2">
+            <Link href="/privacy" className="hover:text-slate-300">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-slate-300">Terms of Service</Link>
+            <Link href="/contact" className="hover:text-slate-300">Contact Us</Link>
+            <Link href="/about" className="hover:text-slate-300">About Us</Link>
+          </div>
+          <p>© {new Date().getFullYear()} UtilityGenAI. All rights reserved.</p>
+        </footer>
       </main>
     </div>
   );
