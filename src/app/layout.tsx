@@ -20,21 +20,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128" crossOrigin="anonymous"></script>
       </head>
       
+      {/* GERİ ALMA: "inattı" karanlık tema geri eklendi. */}
       <body 
-        className={`${inter.variable} ${sora.variable} antialiased 
-        /* GERİ ALMA: "inattı" karanlık tema geri eklendi. */
-        bg-slate-950 text-slate-300
-        relative isolate overflow-hidden`} 
+        className={`${inter.variable} ${sora.variable} antialiased bg-slate-950 text-slate-300 relative isolate overflow-hidden`} 
       >
-        {/* "Görsel Grid Desenli" Arka Plan */}
+        {/* "Görsel Grid Desenli" Arka Plan - GERİ ALMA: Sadece karanlık grid deseni */}
         <div 
-          className="absolute inset-0 -z-10 
-                     
-                     /* HATA DÜZELTİLDİ: "length" yerine "size" */
-                     bg-[size:3rem_3rem] 
-                     
-                     /* GERİ ALMA: Sadece karanlık grid deseni */
-                     bg-[linear-gradient(to_right,rgba(51,65,85,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,65,85,0.5)_1px,transparent_1px)]"
+          className="absolute inset-0 -z-10 bg-[size:3rem_3rem] bg-[linear-gradient(to_right,rgba(51,65,85,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,65,85,0.5)_1px,transparent_1px)]"
           aria-hidden="true"
         />
         <div 
