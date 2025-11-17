@@ -54,8 +54,8 @@ export default function ThemeSwitcher({ className = '' }: { className?: string }
       onClick={toggleTheme}
       className={`flex items-center justify-center p-2 rounded-lg 
                   transition-colors 
-                  bg-slate-800 hover:bg-slate-700
-                  text-slate-300 hover:text-white
+                  bg-gray-100 hover:bg-gray-200 text-slate-700
+                  dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300 dark:hover:text-white
                   ${className}`}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >

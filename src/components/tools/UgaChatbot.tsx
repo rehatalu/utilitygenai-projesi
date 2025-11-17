@@ -48,18 +48,22 @@ export default function UgaChatbot() {
 
   return (
     <div 
-      className="w-full rounded-xl bg-slate-900 ring-1 ring-slate-700 shadow-2xl backdrop-blur-lg p-4 transition-all duration-300 text-left"
+      className="w-full rounded-xl 
+                  bg-gray-100 dark:bg-slate-900 
+                  ring-1 ring-inset ring-gray-200 dark:ring-1 dark:ring-slate-700 
+                  shadow-2xl backdrop-blur-lg p-4 
+                  transition-all duration-300 text-left"
     >
       {/* İçerik maske üstünde görünmeli - z-index ile */}
       <div className="relative z-10 text-left">
-        <h1 className="text-base font-semibold text-white mb-3 text-left">Chat with UGA</h1>
+        <h1 className="text-base font-semibold text-slate-900 dark:text-white mb-3 text-left">Chat with UGA</h1>
       
-        <div className="h-48 overflow-y-auto mb-3 space-y-3 p-3 bg-slate-800/50 rounded-lg">
+        <div className="h-48 overflow-y-auto mb-3 space-y-3 p-3 bg-gray-200/50 dark:bg-slate-800/50 rounded-lg">
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div 
                 className={`max-w-[85%] px-3 py-2 rounded-lg text-xs text-left
-                  ${msg.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-slate-700 text-slate-200'}
+                  ${msg.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-gray-300 dark:bg-slate-700 text-slate-900 dark:text-slate-200'}
                 `}
               >
                 {msg.content}
@@ -70,12 +74,12 @@ export default function UgaChatbot() {
         </div>
         
         <form onSubmit={handleSubmit} className="text-left">
-          <label htmlFor="chatInput" className="block text-xs font-medium text-slate-300 mb-1">
+          <label htmlFor="chatInput" className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
             Your message:
           </label>
           <textarea
             id="chatInput"
-            className="w-full p-2 border rounded-lg shadow-sm bg-slate-800 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-2 border border-gray-300 dark:border-slate-700 rounded-lg shadow-sm bg-white dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
             rows={2}
             placeholder="Ask UGA about a tool..."
             value={input}

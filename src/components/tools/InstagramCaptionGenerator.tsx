@@ -30,17 +30,21 @@ export default function InstagramCaptionGenerator() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl rounded-xl bg-slate-900 ring-1 ring-slate-700 shadow-2xl backdrop-blur-lg p-6 transition-all duration-300 text-left">
-      <h1 className="text-2xl font-semibold text-white mb-4 text-left">AI Instagram Caption Generator</h1>
-      <p className="text-sm text-slate-400 mb-6 text-left">Create engaging Instagram captions with emojis instantly.</p>
+    <div className="mx-auto max-w-2xl rounded-xl 
+                    bg-gray-100 dark:bg-slate-900 
+                    ring-1 ring-inset ring-gray-200 dark:ring-1 dark:ring-slate-700 
+                    shadow-2xl backdrop-blur-lg p-6 
+                    transition-all duration-300 text-left">
+      <h1 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4 text-left">AI Instagram Caption Generator</h1>
+      <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 text-left">Create engaging Instagram captions with emojis instantly.</p>
 
       <form onSubmit={handleSubmit} className="text-left">
-        <label htmlFor="input" className="block text-sm font-medium text-slate-300 mb-2 text-left">
+        <label htmlFor="input" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 text-left">
           Post topic or description:
         </label>
         <textarea
           id="input"
-          className="w-full p-3 border rounded-lg shadow-sm bg-slate-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-left"
+          className="w-full p-3 border border-gray-300 dark:border-slate-700 rounded-lg shadow-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-left"
           rows={3}
           placeholder="e.g., Sunset photo, Coffee morning, Fitness achievement..."
           value={input}
@@ -65,7 +69,7 @@ export default function InstagramCaptionGenerator() {
       </form>
 
       {isLoading && (
-        <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+        <div className="mt-6 p-4 bg-gray-100 dark:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400 text-left">
           Generating captions...
         </div>
       )}
@@ -73,16 +77,16 @@ export default function InstagramCaptionGenerator() {
       {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {captions.length > 0 && (
         <div className="mt-6 space-y-3 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3">Generated Captions:</h2>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Generated Captions:</h2>
           {captions.map((caption, idx) => (
             <div 
               key={idx}
               className="relative flex items-center justify-between 
-                         p-4 bg-slate-800 rounded-lg 
+                         p-4 bg-gray-100 dark:bg-slate-800 rounded-lg 
                          transition-all group"
             >
               {/* Sonuç Metni (Ana içerik) */}
-              <p className="pr-12 text-slate-200 whitespace-pre-wrap">
+              <p className="pr-12 text-slate-900 dark:text-slate-200 whitespace-pre-wrap">
                 {caption}
               </p>
               

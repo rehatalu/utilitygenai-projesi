@@ -50,16 +50,20 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
   };
 
   return (
-    <div className="flex flex-col h-full bg-slate-900 text-slate-300">
+    <div className="flex flex-col h-full 
+                    bg-white text-slate-900 
+                    dark:bg-slate-900 dark:text-slate-300 
+                    border-r border-gray-200 dark:border-slate-800
+                    transition-colors duration-300">
       
       {/* BÖLÜM 1: Logo ve Kontrol Butonları */}
-      <div className="flex items-center justify-between h-16 px-4 border-b border-slate-800 flex-shrink-0">
+      <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200 dark:border-slate-800 flex-shrink-0">
         {/* Logo/Başlık */}
         <Link href="/" className="flex items-center gap-2" onClick={closeSidebar}>
           <div className="bg-indigo-600 p-2 rounded-lg">
             <HiHome className="h-6 w-6 text-white" />
           </div>
-          <span className="text-xl font-bold text-white">UtilityGenAI</span>
+          <span className="text-xl font-bold text-slate-900 dark:text-white">UtilityGenAI</span>
         </Link>
 
         {/* KONTROL GRUBU (TEMA + KAPAT) - YENİ (Görev 10.2) */}
@@ -71,7 +75,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
           <button
             type="button"
             onClick={closeSidebar}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-gray-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800"
             aria-label="Close sidebar"
           >
             <HiX className="h-6 w-6" />
@@ -81,7 +85,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
 
       {/* BÖLÜM 2: KAYDIRILABİLİR ARAÇ LİSTESİ (ÖNEMLİ DÜZELTME) */}
       <nav className="flex-1 overflow-y-auto py-4 space-y-1">
-        <span className="px-4 text-xs font-semibold uppercase text-slate-500">Tools</span>
+        <span className="px-4 text-xs font-semibold uppercase text-slate-500 dark:text-slate-500">Tools</span>
         <ul className="px-2">
           {tools.map((tool) => (
             <li key={tool.slug}>
@@ -93,7 +97,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
                             ${
                               isActive(tool.slug)
                                 ? 'bg-indigo-600 text-white' // Aktif
-                                : 'text-slate-300 hover:bg-slate-800 hover:text-white' // Pasif
+                                : 'text-slate-600 hover:bg-gray-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white' // Pasif
                             }`}
               >
                 <tool.icon className="h-5 w-5 flex-shrink-0" />

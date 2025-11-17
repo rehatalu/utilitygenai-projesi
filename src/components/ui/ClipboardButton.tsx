@@ -41,8 +41,8 @@ export default function ClipboardButton({ textToCopy, className = '' }: Clipboar
       className={`relative p-2 rounded-lg transition-colors
                   ${
                     copied
-                      ? 'bg-green-700 text-white' // Kopyalandı rengi
-                      : 'bg-slate-700 text-slate-300 hover:bg-slate-600' // Normal renk
+                      ? 'bg-green-600 text-white' // Kopyalandı rengi
+                      : 'bg-gray-200 hover:bg-gray-300 text-slate-700 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600' // Normal renk
                   }
                   ${className}` // Dışarıdan gelen ekstra sınıflar
                 }

@@ -6,14 +6,19 @@ const AiIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function WelcomeHub() {
   return (
-    <div className="mx-auto max-w-2xl rounded-3xl bg-slate-900/80 p-6 shadow-2xl ring-1 ring-slate-700 backdrop-blur-lg">
+    <div className="mx-auto max-w-2xl rounded-3xl 
+                    bg-gray-100 dark:bg-slate-900/80 
+                    p-6 shadow-2xl 
+                    ring-1 ring-inset ring-gray-200 dark:ring-1 dark:ring-slate-700 
+                    backdrop-blur-lg
+                    transition-colors duration-300">
       <div className="flex flex-col items-center gap-4 text-center">
         <AiIcon className="h-12 w-12 text-indigo-400" />
-        <h1 className="text-2xl font-semibold text-white">Welcome to UtilityGenAI</h1>
-        <p className="text-sm text-slate-300">
+        <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">Welcome to UtilityGenAI</h1>
+        <p className="text-sm text-slate-600 dark:text-slate-300">
           This is your new AI-powered workspace. All tools are available in a single unified screen.
         </p>
-        <p className="text-sm text-slate-400">Please select a tool from the menu above to get started.</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400">Please select a tool from the menu above to get started.</p>
       </div>
     </div>
   );

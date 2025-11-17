@@ -794,7 +794,11 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
                   transition={{ duration: 0.3, delay: 0.1 }}
                   className="w-full px-4 mt-8" // "mt-8" ile aracın altına boşluk ekledik
                 >
-                  <div className="rounded-xl bg-slate-900/50 p-6 md:p-8">
+                  <div className="rounded-xl 
+                                  bg-gray-100 dark:bg-slate-900/50 
+                                  ring-1 ring-inset ring-gray-200 dark:ring-0
+                                  p-6 md:p-8
+                                  transition-colors duration-300">
                     <AnimatedTabs tabs={currentTabs} initialTabId="how-to" />
                   </div>
                 </motion.div>
