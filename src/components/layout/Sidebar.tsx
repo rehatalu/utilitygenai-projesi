@@ -20,6 +20,7 @@ import {
   CameraIcon, // Instagram
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
+  XMarkIcon, // Kapatma butonu için
 } from '@heroicons/react/24/outline';
 
 // Araç Listesi
@@ -56,6 +57,18 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
       transition-all duration-300 h-full`} // h-full eklendi
     >
       <div className="flex h-full flex-col">
+        {/* MOBİL için X (Kapat) Butonu */}
+        <div className="flex justify-end p-4 md:hidden border-b border-gray-700">
+          <button
+            type="button"
+            onClick={closeSidebar}
+            aria-label="Close sidebar"
+            className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800"
+          >
+            <XMarkIcon className="h-6 w-6" />
+          </button>
+        </div>
+
         {/* 1. Logo (Ana Sayfa Butonu) */}
         <div className={`p-4 border-b border-gray-700 ${isCollapsed ? 'flex justify-center' : 'flex items-center gap-2'}`}>
           <Link
