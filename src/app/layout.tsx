@@ -29,13 +29,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         {/* "Görsel Grid Desenli" Arka Plan */}
         <div 
-          className="absolute inset-0 -z-10 
-                     
-                     /* HATA DÜZELTİLDİ: "length" yerine "size" */
-                     bg-[size:3rem_3rem] 
-                     
-                     bg-[linear-gradient(to_right,rgba(229,231,235,1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,1)_1px,transparent_1px)]
-                     dark:bg-[linear-gradient(to_right,rgba(51,65,85,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,65,85,0.5)_1px,transparent_1px)]"
+          className="absolute inset-0 -z-10 grid-pattern"
+          style={{
+            backgroundSize: '3rem 3rem',
+          }}
           aria-hidden="true"
         />
         <div 
