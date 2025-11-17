@@ -48,10 +48,10 @@ export default function UgaChatbot() {
 
   return (
     <div 
-      className={`w-full rounded-3xl backdrop-blur-lg p-4 transition-all duration-300 text-left
+      className={`w-full rounded-3xl p-4 transition-all duration-300 text-left
         ${isLoading 
-          ? 'animate-rgb-border' // Yüklenirken (main.css'teki SAĞLAM maskeli RGB)
-          : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl' // Normal hali
+          ? 'animate-rgb-border' // Yüklenirken (main.css'teki SAĞLAM maskeli RGB) - backdrop-blur YOK
+          : 'bg-slate-900/80 ring-1 ring-slate-700 shadow-2xl backdrop-blur-lg' // Normal hali
         }
       `}
     >
