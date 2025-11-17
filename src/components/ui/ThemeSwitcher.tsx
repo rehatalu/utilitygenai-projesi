@@ -5,29 +5,29 @@ import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi';
 
 // Temayı yönetmek için özel bir hook (yardımcı fonksiyon)
 function useTheme() {
-  const [theme, setTheme] = useState('dark'); // Varsayılan tema 'dark'
+  // STRATEJİ DEĞİŞİKLİĞİ 1: Varsayılan state 'dark' oldu.
+  const [theme, setTheme] = useState('dark');
 
   // Bu useEffect SADECE ilk yüklendiğinde çalışır (client-side)
   useEffect(() => {
-    // Tarayıcının hafızasındaki (localStorage) temayı oku
     const savedTheme = localStorage.getItem('theme');
+    
     if (savedTheme) {
+      // Hafızada (localStorage) ne varsa onu uygula
       setTheme(savedTheme);
-      // <html> etiketine 'dark' sınıfını ekle veya kaldır
       document.documentElement.classList.toggle('dark', savedTheme === 'dark');
     } else {
-      // Eğer hafızada yoksa, 'dark' varsayılanını uygula
+      // STRATEJİ DEĞİŞİKLİĞİ 2: Hafızada bir şey yoksa, 'dark' uygula
+      setTheme('dark');
       document.documentElement.classList.add('dark');
     }
-  }, []);
+  }, []); // Boş dependency array, sadece ilk yüklemede çalışır
 
-  // Temayı değiştiren fonksiyon
+  // Temayı değiştiren fonksiyon (Bu kod doğru, aynı kalıyor)
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    // Yeni seçimi hafızaya kaydet
     localStorage.setItem('theme', newTheme);
-    // <html> etiketindeki 'dark' sınıfını güncelle
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
 
@@ -39,6 +39,16 @@ function useTheme() {
 export default function ThemeSwitcher({ className = '' }: { className?: string }) {
   const { theme, toggleTheme } = useTheme();
 
+  // 'useEffect' tamamlanana kadar (hidrasyon) butonu göstermemek için
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    // Sunucu tarafında veya hidrasyon tamamlanmadan önce butonun yerini doldur
+    // (Görsel kaymayı engeller - CLS)
+    return <div className={`h-[36px] w-[36px] ${className}`} />;
+  }
+
   return (
     <button
       onClick={toggleTheme}
@@ -47,14 +57,14 @@ export default function ThemeSwitcher({ className = '' }: { className?: string }
                   bg-slate-800 hover:bg-slate-700
                   text-slate-300 hover:text-white
                   ${className}`}
-      aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {theme === 'light' ? (
-        <HiOutlineMoon className="h-5 w-5" /> // Aydınlıksa Ay ikonunu göster
+      {/* STRATEJİ DEĞİŞİKLİĞİ 3: Düzeltilmiş İkon Mantığı */}
+      {theme === 'dark' ? (
+        <HiOutlineSun className="h-5 w-5" /> // Karanlıktayız, Güneş'i (Aydınlığa Geç) göster
       ) : (
-        <HiOutlineSun className="h-5 w-5" /> // Karanlıksa Güneş ikonunu göster
+        <HiOutlineMoon className="h-5 w-5" /> // Aydınlıktayız, Ay'ı (Karanlığa Geç) göster
       )}
     </button>
   );
 }
-
