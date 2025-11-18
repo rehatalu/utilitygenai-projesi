@@ -2,7 +2,7 @@
 import WorkspaceLayout from "@/components/layout/WorkspaceLayout";
 import WelcomeHub from "@/components/tools/WelcomeHub";
 import { motion } from 'framer-motion';
-import Link from 'next/link'; // Link bileşeni eklendi
+import Link from 'next/link';
 
 // 13 aracın tamamı için veri
 const toolList = [
@@ -24,53 +24,57 @@ const toolList = [
 export default function HomePage() {
   return (
     <WorkspaceLayout>
-      {/* 1. Bölüm: Karşılama (Mevcut) */}
-      <div className="mx-auto flex w-full max-w-4xl justify-center">
-        <motion.div
-          key="welcome"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className="w-full"
-        >
-          <WelcomeHub />
-        </motion.div>
-      </div>
+      {/* DÜZELTME: Mobilde içerik hamburger menü altında kalmaması için üst boşluk */}
+      <div className="pt-20 md:pt-10 pb-10">
+        
+        {/* 1. Bölüm: Karşılama */}
+        <div className="mx-auto flex w-full max-w-4xl justify-center px-4">
+          <motion.div
+            key="welcome"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="w-full"
+          >
+            <WelcomeHub />
+          </motion.div>
+        </div>
 
-      {/* 2. Bölüm: Araç Vitrini (YENİ) */}
-      <div className="mx-auto flex w-full max-w-4xl justify-center">
-        <motion.div
-          key="tool-grid"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2, delay: 0.1 }}
-          className="w-full px-4 mt-12 mb-8"
-        >
-          <h2 className="text-2xl font-bold text-white mb-4">
-            Explore Your AI Workspace
-          </h2>
-          <p className="text-slate-300 mb-6">
-            We&apos;ve built 13 specialized AI tools to handle specific tasks. From writing email subjects to explaining complex code, your free utility belt is ready.
-          </p>
-          
-          {/* Araçların Grid Listesi */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {toolList.map((tool) => (
-              <Link
-                href={`/tool/${tool.slug}`}
-                key={tool.slug}
-                className="block p-4 rounded-lg 
-                           bg-slate-900/50 hover:bg-slate-800/70
-                           ring-1 ring-slate-700
-                           hover:ring-2 hover:ring-indigo-500
-                           transition-all"
-              >
-                <h3 className="font-semibold text-white">{tool.name}</h3>
-                <p className="text-sm text-slate-400">{tool.description}</p>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
+        {/* 2. Bölüm: Araç Vitrini */}
+        <div className="mx-auto flex w-full max-w-4xl justify-center">
+          <motion.div
+            key="tool-grid"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
+            className="w-full px-4 mt-12 mb-8"
+          >
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Explore Your AI Workspace
+            </h2>
+            <p className="text-slate-300 mb-6">
+              We&apos;ve built 13 specialized AI tools to handle specific tasks. From writing email subjects to explaining complex code, your free utility belt is ready.
+            </p>
+            
+            {/* Araçların Grid Listesi */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {toolList.map((tool) => (
+                <Link
+                  href={`/tool/${tool.slug}`}
+                  key={tool.slug}
+                  className="block p-4 rounded-lg bg-slate-900/50 
+                             border border-slate-800
+                             transition-all hover:bg-slate-800/70 
+                             hover:ring-2 hover:ring-indigo-500"
+                >
+                  <h3 className="font-semibold text-white">{tool.name}</h3>
+                  <p className="text-sm text-slate-400">{tool.description}</p>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+        
       </div>
     </WorkspaceLayout>
   );
