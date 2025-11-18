@@ -14,7 +14,7 @@ export default function AboutPage() {
           className="w-full px-4"
         >
           {/* "prose" teması metni otomatik stillendirecektir */}
-          <article className="prose prose-invert max-w-none rounded-xl bg-slate-900/50 p-6 md:p-8 my-4">
+          <article className="prose prose-invert max-w-none rounded-xl bg-slate-900/90 p-6 md:p-8 my-4">
             <h1>About UtilityGenAI</h1>
             <h2>Our Mission: Making AI Simple for Everyone.</h2>
             <p>Welcome to UtilityGenAI, your new home for everyday productivity. We believe that the power of artificial intelligence (AI) shouldn't be complicated. You shouldn't need to be a "prompt engineer" or understand complex models to get simple tasks done.</p>

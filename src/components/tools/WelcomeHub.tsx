@@ -8,7 +8,7 @@ export default function WelcomeHub() {
   return (
     // GERİ ALMA: "inattı" karanlık tema
     <div className="mx-auto max-w-2xl rounded-3xl 
-                    bg-slate-900/50 text-white
+                    bg-slate-900/90 text-white
                     p-6 shadow-2xl 
                     backdrop-blur-lg">
       <div className="flex flex-col items-center gap-4 text-center">

@@ -62,7 +62,7 @@ export default function HomePage() {
                 <Link
                   href={`/tool/${tool.slug}`}
                   key={tool.slug}
-                  className="block p-4 rounded-lg bg-slate-900/50 
+                  className="block p-4 rounded-lg bg-slate-900/95 
                              border border-slate-800
                              transition-all hover:bg-slate-800/70 
                              hover:ring-2 hover:ring-indigo-500"

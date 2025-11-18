@@ -796,7 +796,7 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
                 >
                   {/* GERİ ALMA: "inattı" karanlık tema geri yüklendi. */}
                   <div className="rounded-xl 
-                                  bg-slate-900/50 
+                                  bg-slate-900/90 
                                   ring-1 ring-slate-700
                                   p-6 md:p-8">
                     <AnimatedTabs tabs={currentTabs} initialTabId="how-to" />
