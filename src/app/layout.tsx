@@ -10,6 +10,9 @@ const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["600",
 export const metadata: Metadata = {
   title: { template: '%s | UtilityGenAI', default: 'UtilityGenAI - Free AI Tools' },
   description: 'A free collection of AI-powered tools (Email, Paraphraser, etc.) to boost your productivity.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
