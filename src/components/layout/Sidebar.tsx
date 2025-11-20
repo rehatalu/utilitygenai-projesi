@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { HiHome, HiChevronDoubleLeft } from 'react-icons/hi';
+import { HiHome, HiChevronDoubleLeft, HiClock } from 'react-icons/hi';
 // import ThemeSwitcher from '@/components/ui/ThemeSwitcher'; // "ThemeSwitcher" SİLİNDİ
 import {
   EnvelopeIcon,
@@ -77,6 +77,23 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
 
       {/* BÖLÜM 2: KAYDIRILABİLİR ARAÇ LİSTESİ */}
       <nav className="flex-1 overflow-y-auto py-4 space-y-1">
+        <ul className="px-2 mb-4">
+          <li>
+            <Link
+              href="/history"
+              onClick={closeSidebar}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium
+                          transition-colors duration-150
+                          ${pathname === '/history'
+                              ? 'bg-indigo-600 text-white' // Aktif
+                              : 'text-slate-300 hover:bg-slate-800 hover:text-white' // Pasif
+                          }`}
+            >
+              <HiClock className="h-5 w-5 flex-shrink-0" />
+              <span>My History</span>
+            </Link>
+          </li>
+        </ul>
         <span className="px-4 text-xs font-semibold uppercase text-slate-500">Tools</span>
         <ul className="px-2">
           {tools.map((tool) => (
