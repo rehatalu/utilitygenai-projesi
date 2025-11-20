@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { HiHome, HiX } from 'react-icons/hi';
+import { HiHome, HiChevronDoubleLeft } from 'react-icons/hi';
 // import ThemeSwitcher from '@/components/ui/ThemeSwitcher'; // "ThemeSwitcher" SİLİNDİ
 import {
   EnvelopeIcon,
@@ -70,7 +70,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
             className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
             aria-label="Close sidebar"
           >
-            <HiX className="h-6 w-6" />
+            <HiChevronDoubleLeft className="h-6 w-6" />
           </button>
         </div>
       </div>
