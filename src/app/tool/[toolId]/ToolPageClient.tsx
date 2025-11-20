@@ -66,20 +66,20 @@ const InstagramCaptionGenerator = dynamic(() => import('@/components/tools/Insta
   loading: () => <LoadingTool />,
 });
 
-const toolConfig: Record<string, { component: ComponentType; icon: ElementType }> = {
-  'email-generator': { component: EmailSubjectGenerator, icon: EnvelopeIcon },
-  'paraphraser': { component: ParaphraserTool, icon: DocumentDuplicateIcon },
-  'social-post': { component: SocialPostGenerator, icon: ChatBubbleOvalLeftEllipsisIcon },
-  'meta-description': { component: MetaDescriptionGenerator, icon: TagIcon },
-  'grammar-check': { component: GrammarChecker, icon: CheckCircleIcon },
-  'product-description': { component: ProductDescriptionGenerator, icon: ShoppingCartIcon },
-  'blog-ideas': { component: BlogIdeaGenerator, icon: LightBulbIcon },
-  'youtube-ideas': { component: YoutubeIdeaGenerator, icon: VideoCameraIcon },
-  'hashtag-generator': { component: HashtagGenerator, icon: HashtagIcon },
-  'business-name': { component: BusinessNameGenerator, icon: BriefcaseIcon },
-  'code-explainer': { component: CodeExplainer, icon: CommandLineIcon },
-  'text-summarizer': { component: TextSummarizer, icon: DocumentTextIcon },
-  'instagram-caption': { component: InstagramCaptionGenerator, icon: CameraIcon },
+const toolConfig: Record<string, { component: ComponentType; icon: ElementType; title: string }> = {
+  'email-generator': { component: EmailSubjectGenerator, icon: EnvelopeIcon, title: 'Email Subject Generator' },
+  'paraphraser': { component: ParaphraserTool, icon: DocumentDuplicateIcon, title: 'Paraphraser Tool' },
+  'social-post': { component: SocialPostGenerator, icon: ChatBubbleOvalLeftEllipsisIcon, title: 'Social Post Generator' },
+  'meta-description': { component: MetaDescriptionGenerator, icon: TagIcon, title: 'Meta Generator' },
+  'grammar-check': { component: GrammarChecker, icon: CheckCircleIcon, title: 'Grammar Checker' },
+  'product-description': { component: ProductDescriptionGenerator, icon: ShoppingCartIcon, title: 'Product Generator' },
+  'blog-ideas': { component: BlogIdeaGenerator, icon: LightBulbIcon, title: 'Blog Ideas' },
+  'youtube-ideas': { component: YoutubeIdeaGenerator, icon: VideoCameraIcon, title: 'YouTube Idea Generator' },
+  'hashtag-generator': { component: HashtagGenerator, icon: HashtagIcon, title: 'Hashtag Generator' },
+  'business-name': { component: BusinessNameGenerator, icon: BriefcaseIcon, title: 'Business Name Generator' },
+  'code-explainer': { component: CodeExplainer, icon: CommandLineIcon, title: 'AI Code Explainer' },
+  'text-summarizer': { component: TextSummarizer, icon: DocumentTextIcon, title: 'Text Summarizer' },
+  'instagram-caption': { component: InstagramCaptionGenerator, icon: CameraIcon, title: 'Instagram Caption Generator' },
 };
 
 type ToolId = keyof typeof toolConfig;
@@ -833,7 +833,8 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
               </div>
             </div>
 
-            <ActiveComponent />
+            {/* YENİ: toolId ve toolName prop'larını ActiveComponent'e geçir */}
+            <ActiveComponent toolId={toolId} toolName={config.title} />
 
             {currentTabs && (
               <div className="mt-12">
