@@ -66,7 +66,13 @@ const InstagramCaptionGenerator = dynamic(() => import('@/components/tools/Insta
   loading: () => <LoadingTool />,
 });
 
-const toolConfig: Record<string, { component: ComponentType; icon: ElementType; title: string }> = {
+// Ortak prop tipi - tüm araç bileşenleri bu prop'ları kabul eder
+export interface ToolComponentProps {
+  toolId: string;
+  toolName: string;
+}
+
+const toolConfig: Record<string, { component: ComponentType<ToolComponentProps>; icon: ElementType; title: string }> = {
   'email-generator': { component: EmailSubjectGenerator, icon: EnvelopeIcon, title: 'Email Subject Generator' },
   'paraphraser': { component: ParaphraserTool, icon: DocumentDuplicateIcon, title: 'Paraphraser Tool' },
   'social-post': { component: SocialPostGenerator, icon: ChatBubbleOvalLeftEllipsisIcon, title: 'Social Post Generator' },
