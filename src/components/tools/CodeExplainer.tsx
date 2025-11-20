@@ -44,8 +44,7 @@ export default function CodeExplainer() {
         </label>
         <textarea
           id="input"
-          className="w-full p-3 border border-slate-700 rounded-lg shadow-sm bg-slate-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm text-left"
-          rows={8}
+          className="w-full p-3 border border-slate-700 rounded-lg shadow-sm bg-slate-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm text-left h-40"
           placeholder="Paste your code here..."
           value={input}
           onChange={(e) => setInput(e.target.value)}

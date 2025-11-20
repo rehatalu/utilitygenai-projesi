@@ -66,8 +66,7 @@ export default function EmailSubjectGenerator() {
             Topic or keywords:
             {/* YENİ (KOYU TEMA + ENTER İLE GÖNDER) */}
             <textarea
-              className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-800 p-3 text-sm text-white shadow-sm transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
-              rows={3}
+              className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-800 p-3 text-sm text-white shadow-sm transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 h-40"
               placeholder="e.g., Product launch, Newsletter, Sale announcement..."
               value={topic}
               onChange={(e) => setTopic(e.target.value)}

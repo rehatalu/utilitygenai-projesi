@@ -79,8 +79,7 @@ export default function UgaChatbot() {
           </label>
           <textarea
             id="chatInput"
-            className="w-full p-2 border border-slate-700 rounded-lg shadow-sm bg-slate-800 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            rows={2}
+            className="w-full p-2 border border-slate-700 rounded-lg shadow-sm bg-slate-800 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 h-40"
             placeholder="Ask UGA about a tool..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
