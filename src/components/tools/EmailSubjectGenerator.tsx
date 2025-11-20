@@ -3,12 +3,16 @@
 import { useState } from "react";
 import { SparklesIcon } from '@heroicons/react/24/outline'; // "Düşünen Yıldız" için import et
 import ClipboardButton from '@/components/ui/ClipboardButton';
+import { ToolComponentProps } from '@/types/tool-props';
+import { useHistory } from '@/hooks/useHistory';
 
-export default function EmailSubjectGenerator() {
+export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponentProps) {
   const [topic, setTopic] = useState("");
   const [results, setResults] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const { saveResult } = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,6 +39,7 @@ export default function EmailSubjectGenerator() {
       }
 
       setResults(data.subjects); // "Sonuç Gösterme"
+      saveResult(toolId, toolName, data.subjects.join('\n')); // Sonuçları kaydet
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "An unknown error occurred.";
       setError(message);

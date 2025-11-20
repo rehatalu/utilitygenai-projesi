@@ -2,11 +2,15 @@
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
+import { ToolComponentProps } from '@/types/tool-props';
+import { useHistory } from '@/hooks/useHistory';
 
-export default function GrammarChecker() {
+export default function GrammarChecker({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const { saveResult } = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +26,7 @@ export default function GrammarChecker() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setResult(data.correctedText || data.suggestions || '');
+      saveResult(toolId, toolName, data.correctedText || data.suggestions || ''); // Sonuçları kaydet
     } catch (err: any) {
       setResult(err.message || 'Failed to check grammar');
     }

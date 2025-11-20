@@ -2,11 +2,15 @@
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
+import { ToolComponentProps } from '@/types/tool-props';
+import { useHistory } from '@/hooks/useHistory';
 
-export default function CodeExplainer() {
+export default function CodeExplainer({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [explanation, setExplanation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const { saveResult } = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +26,7 @@ export default function CodeExplainer() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setExplanation(data.explanation || '');
+      saveResult(toolId, toolName, data.explanation || ''); // Sonuçları kaydet
     } catch (err: any) {
       setExplanation(err.message || 'Failed to explain code');
     }

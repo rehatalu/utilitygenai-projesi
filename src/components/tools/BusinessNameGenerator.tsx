@@ -2,11 +2,15 @@
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
+import { ToolComponentProps } from '@/types/tool-props';
+import { useHistory } from '@/hooks/useHistory';
 
-export default function BusinessNameGenerator() {
+export default function BusinessNameGenerator({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [names, setNames] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { saveResult } = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +26,7 @@ export default function BusinessNameGenerator() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setNames(data.names || []);
+      saveResult(toolId, toolName, (data.names || []).join('\n')); // Sonuçları kaydet
     } catch (err: any) {
       setNames([err.message || 'Failed to generate names']);
     }

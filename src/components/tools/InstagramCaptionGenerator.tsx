@@ -2,11 +2,15 @@
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
+import { ToolComponentProps } from '@/types/tool-props';
+import { useHistory } from '@/hooks/useHistory';
 
-export default function InstagramCaptionGenerator() {
+export default function InstagramCaptionGenerator({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [captions, setCaptions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { saveResult } = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +26,7 @@ export default function InstagramCaptionGenerator() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setCaptions(data.captions || []);
+      saveResult(toolId, toolName, (data.captions || []).join('\n')); // Sonuçları kaydet
     } catch (err: any) {
       setCaptions([err.message || 'Failed to generate captions']);
     }

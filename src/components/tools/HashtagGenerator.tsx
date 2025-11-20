@@ -2,11 +2,15 @@
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
+import { ToolComponentProps } from '@/types/tool-props';
+import { useHistory } from '@/hooks/useHistory';
 
-export default function HashtagGenerator() {
+export default function HashtagGenerator({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [hashtags, setHashtags] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { saveResult } = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +26,7 @@ export default function HashtagGenerator() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setHashtags(data.hashtags || []);
+      saveResult(toolId, toolName, (data.hashtags || []).map((tag: string) => `#${tag}`).join(' ')); // Sonuçları kaydet
     } catch (err: any) {
       setHashtags([err.message || 'Failed to generate hashtags']);
     }
