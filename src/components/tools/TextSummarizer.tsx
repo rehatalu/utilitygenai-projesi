@@ -2,15 +2,10 @@
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
-import { ToolComponentProps } from '@/types/tool-props';
-import { useHistory } from '@/hooks/useHistory';
-
-export default function TextSummarizer({ toolId, toolName }: ToolComponentProps) {
+export default function TextSummarizer() {
   const [input, setInput] = useState("");
   const [summary, setSummary] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const { saveResult } = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +21,6 @@ export default function TextSummarizer({ toolId, toolName }: ToolComponentProps)
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setSummary(data.summary || '');
-      saveResult(toolId, toolName, data.summary || ''); // Sonuçları kaydet
     } catch (err: any) {
       setSummary(err.message || 'Failed to summarize text');
     }

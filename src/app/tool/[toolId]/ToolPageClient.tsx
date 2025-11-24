@@ -66,10 +66,7 @@ const InstagramCaptionGenerator = dynamic(() => import('@/components/tools/Insta
   loading: () => <LoadingTool />,
 });
 
-// Ortak prop tipi artık src/types/tool-props.ts'den import ediliyor
-import { ToolComponentProps } from '@/types/tool-props';
-
-const toolConfig: Record<string, { component: ComponentType<ToolComponentProps>; icon: ElementType; title: string }> = {
+const toolConfig: Record<string, { component: ComponentType; icon: ElementType; title: string }> = {
   'email-generator': { component: EmailSubjectGenerator, icon: EnvelopeIcon, title: 'Email Subject Generator' },
   'paraphraser': { component: ParaphraserTool, icon: DocumentDuplicateIcon, title: 'Paraphraser Tool' },
   'social-post': { component: SocialPostGenerator, icon: ChatBubbleOvalLeftEllipsisIcon, title: 'Social Post Generator' },
@@ -836,8 +833,7 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
               </div>
             </div>
 
-            {/* YENİ: toolId ve toolName prop'larını ActiveComponent'e geçir */}
-            <ActiveComponent toolId={toolId} toolName={config.title} />
+            <ActiveComponent />
 
             {currentTabs && (
               <div className="mt-12">

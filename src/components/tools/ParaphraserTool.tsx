@@ -2,15 +2,10 @@
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
-import { ToolComponentProps } from '@/types/tool-props';
-import { useHistory } from '@/hooks/useHistory';
-
-export default function ParaphraserTool({ toolId, toolName }: ToolComponentProps) {
+export default function ParaphraserTool() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const { saveResult } = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +21,6 @@ export default function ParaphraserTool({ toolId, toolName }: ToolComponentProps
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setResult(data.paraphrasedText || '');
-      saveResult(toolId, toolName, data.paraphrasedText || ''); // Sonuçları kaydet
     } catch (err: any) {
       setResult(err.message || 'Failed to paraphrase text');
     }

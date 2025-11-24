@@ -2,15 +2,10 @@
 import { useState } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
-import { ToolComponentProps } from '@/types/tool-props';
-import { useHistory } from '@/hooks/useHistory';
-
-export default function ProductDescriptionGenerator({ toolId, toolName }: ToolComponentProps) {
+export default function ProductDescriptionGenerator() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const { saveResult } = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +29,6 @@ export default function ProductDescriptionGenerator({ toolId, toolName }: ToolCo
         resultText = data.description || '';
         setResult(resultText);
       }
-      saveResult(toolId, toolName, resultText); // Sonuçları kaydet
     } catch (err: any) {
       setResult(err.message || 'Failed to generate description');
     }
