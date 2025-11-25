@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-  apiKey: process.env.UTILITY_AI_KEY,
+  apiKey: process.env.PRO_OPENAI_KEY,
 });
 
 export async function POST(req: NextRequest) {
@@ -58,3 +58,4 @@ Help users understand and use these tools effectively. Be friendly, concise, and
     return NextResponse.json({ error: 'Failed to process chat request' }, { status: 500 });
   }
 }
+

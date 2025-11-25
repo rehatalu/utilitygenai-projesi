@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-const apiKey = process.env.UTILITY_AI_KEY;
+const apiKey = process.env.PRO_OPENAI_KEY;
 
 export async function POST(req: NextRequest) {
   if (!apiKey) {
@@ -60,5 +60,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Failed to explain code' }, { status: 500 });
   }
 }
+
 
 
