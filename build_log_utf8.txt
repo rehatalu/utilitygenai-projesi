@@ -1,0 +1,105 @@
+﻿
+> utilitygenai@0.1.0 build
+> next build
+
+   Ôû▓ Next.js 16.0.1 (Turbopack)
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully in 2.7s
+   Running TypeScript ...
+   Collecting page data ...
+node.exe : Error: The
+ OPENAI_API_KEY envir
+onment variable is mi
+ssing or empty; eithe
+r provide it, or inst
+antiate the OpenAI cl
+ient with an apiKey o
+ption, like new OpenA
+I({ apiKey: 'My API K
+ey' }).
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" "C:
+\Program Files\nodejs
+/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Error:    
+ The OPEN...My AP    
+I Key' }).:Strin    g
+) [], RemoteExc    ep
+tion
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+    at new tJ (C:\Use
+rs\rehat\Documents\PL
+ANLANAN PROJELER\ai_t
+ools_project\utilityg
+enai\.next\server\chu
+nks\[root-of-the-serv
+er]__585d0df8._.js:5:
+30683)
+    at module evaluat
+ion (C:\Users\rehat\D
+ocuments\PLANLANAN PR
+OJELER\ai_tools_proje
+ct\utilitygenai\.next
+\server\chunks\[root-
+of-the-server]__45fd5
+4bd._.js:1:1383)
+    at instantiateMod
+ule (C:\Users\rehat\D
+ocuments\PLANLANAN PR
+OJELER\ai_tools_proje
+ct\utilitygenai\.next
+\server\chunks\[turbo
+pack]_runtime.js:715:
+9)
+    at instantiateRun
+timeModule (C:\Users\
+rehat\Documents\PLANL
+ANAN PROJELER\ai_tool
+s_project\utilitygena
+i\.next\server\chunks
+\[turbopack]_runtime.
+js:743:12)
+    at getOrInstantia
+teRuntimeModule (C:\U
+sers\rehat\Documents\
+PLANLANAN PROJELER\ai
+_tools_project\utilit
+ygenai\.next\server\c
+hunks\[turbopack]_run
+time.js:756:12)
+    at Object.m (C:\U
+sers\rehat\Documents\
+PLANLANAN PROJELER\ai
+_tools_project\utilit
+ygenai\.next\server\c
+hunks\[turbopack]_run
+time.js:765:18)
+    at Object.<anonym
+ous> (C:\Users\rehat\
+Documents\PLANLANAN P
+ROJELER\ai_tools_proj
+ect\utilitygenai\.nex
+t\server\app\api\code
+-explainer\route.js:7
+:3)
+
+> Build error occurre
+d
+Error: Failed to coll
+ect page data for /ap
+i/code-explainer
+    at ignore-listed 
+frames {
+  type: 'Error'
+}

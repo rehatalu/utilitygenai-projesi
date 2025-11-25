@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/outline'; // "Düşünen Yıldız" için import et
 import ClipboardButton from '@/components/ui/ClipboardButton';
 export default function EmailSubjectGenerator() {
@@ -8,6 +9,18 @@ export default function EmailSubjectGenerator() {
   const [results, setResults] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const { saveResult } = useHistory();
+
+  // SONUÇLARA OTOMATİK KAYDIRMA
+  useEffect(() => {
+    if (results.length > 0) {
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [results]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +47,7 @@ export default function EmailSubjectGenerator() {
       }
 
       setResults(data.subjects); // "Sonuç Gösterme"
+      saveResult('email-generator', 'Email Subject Generator', data.subjects.join('\n'));
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "An unknown error occurred.";
       setError(message);
@@ -111,7 +125,7 @@ export default function EmailSubjectGenerator() {
 
         {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
         {results.length > 0 && (
-          <div className="mt-6 space-y-3 text-left">
+          <div ref={resultsRef} className="mt-6 space-y-3 text-left">
             <h2 className="text-lg font-semibold text-white">Results</h2>
             {results.map((result, index) => (
               <div 

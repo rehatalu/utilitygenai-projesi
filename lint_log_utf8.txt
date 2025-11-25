@@ -1,0 +1,74 @@
+﻿
+> utilitygenai@0.1.0 lint
+> eslint
+
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\app\about\page.tsx
+  20:147  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  20:177  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  20:193  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  20:209  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  21:149  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  21:243  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  21:253  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  23:32   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  23:43   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  23:144  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  23:152  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\app\api\uga-chat\route.ts
+  53:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\app\tool\[toolId]\ToolPageClient.tsx
+  257:144  error  Do not use an `<a>` element to navigate to `/tool/hashtag-generator/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  259:136  error  Do not use an `<a>` element to navigate to `/tool/instagram-caption/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  377:174  error  Do not use an `<a>` element to navigate to `/tool/paraphraser/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages        @next/next/no-html-link-for-pages
+  586:26   error  Do not use an `<a>` element to navigate to `/tool/social-post/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages        @next/next/no-html-link-for-pages
+  790:29   error  Do not use an `<a>` element to navigate to `/tool/social-post/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages        @next/next/no-html-link-for-pages
+  798:132  error  Do not use an `<a>` element to navigate to `/tool/hashtag-generator/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\app\tool\[toolId]\page.tsx
+  142:3  warning  'parent' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\BlogIdeaGenerator.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\BusinessNameGenerator.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\CodeExplainer.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\GrammarChecker.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\HashtagGenerator.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\InstagramCaptionGenerator.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\MetaDescriptionGenerator.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\ParaphraserTool.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\ProductDescriptionGenerator.tsx
+  32:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\SocialPostGenerator.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\TextSummarizer.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\UgaChatbot.tsx
+  42:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  89:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\rehat\Documents\PLANLANAN PROJELER\ai_tools_project\utilitygenai\src\components\tools\YoutubeIdeaGenerator.tsx
+  24:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Ô£û 33 problems (32 errors, 1 warning)
+

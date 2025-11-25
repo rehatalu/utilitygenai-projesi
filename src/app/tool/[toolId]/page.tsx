@@ -4,70 +4,70 @@ import ToolPageClient from './ToolPageClient';
 
 // Araç Haritası
 const tools = {
-  'email-generator': { 
-    component: 'EmailSubjectGenerator', 
-    title: 'AI Email Subject Generator', 
-    desc: 'Generate catchy email subject lines instantly.' 
+  'email-generator': {
+    component: 'EmailSubjectGenerator',
+    title: 'AI Email Subject Generator',
+    desc: 'Generate catchy email subject lines instantly.'
   },
-  'paraphraser': { 
-    component: 'ParaphraserTool', 
-    title: 'AI Paraphrasing Tool', 
-    desc: 'Rewrite text professionally with AI.' 
+  'paraphraser': {
+    component: 'ParaphraserTool',
+    title: 'AI Paraphrasing Tool',
+    desc: 'Rewrite text professionally with AI.'
   },
-  'social-post': { 
-    component: 'SocialPostGenerator', 
-    title: 'Social Media Post Generator', 
-    desc: 'Create viral posts for Twitter and LinkedIn.' 
+  'social-post': {
+    component: 'SocialPostGenerator',
+    title: 'Social Media Post Generator',
+    desc: 'Create viral posts for Twitter and LinkedIn.'
   },
-  'meta-description': { 
-    component: 'MetaDescriptionGenerator', 
-    title: 'SEO Meta Description Generator', 
-    desc: 'Boost your SEO with AI-generated meta descriptions.' 
+  'meta-description': {
+    component: 'MetaDescriptionGenerator',
+    title: 'SEO Meta Description Generator',
+    desc: 'Boost your SEO with AI-generated meta descriptions.'
   },
-  'grammar-check': { 
-    component: 'GrammarChecker', 
-    title: 'Free Grammar Checker', 
-    desc: 'Correct grammar and spelling errors automatically.' 
+  'grammar-check': {
+    component: 'GrammarChecker',
+    title: 'Free Grammar Checker',
+    desc: 'Correct grammar and spelling errors automatically.'
   },
-  'product-description': { 
-    component: 'ProductDescriptionGenerator', 
-    title: 'Product Description Generator', 
-    desc: 'Write persuasive product descriptions for e-commerce.' 
+  'product-description': {
+    component: 'ProductDescriptionGenerator',
+    title: 'Product Description Generator',
+    desc: 'Write persuasive product descriptions for e-commerce.'
   },
-  'blog-ideas': { 
-    component: 'BlogIdeaGenerator', 
-    title: 'Blog Post Idea Generator', 
-    desc: 'Get creative blog post ideas and titles.' 
+  'blog-ideas': {
+    component: 'BlogIdeaGenerator',
+    title: 'Blog Post Idea Generator',
+    desc: 'Get creative blog post ideas and titles.'
   },
-  'youtube-ideas': { 
-    component: 'YoutubeIdeaGenerator', 
-    title: 'YouTube Video Idea Generator', 
-    desc: 'Generate viral video ideas and titles for YouTube.' 
+  'youtube-ideas': {
+    component: 'YoutubeIdeaGenerator',
+    title: 'YouTube Video Idea Generator',
+    desc: 'Generate viral video ideas and titles for YouTube.'
   },
-  'hashtag-generator': { 
-    component: 'HashtagGenerator', 
-    title: 'AI Hashtag Generator', 
-    desc: 'Generate trending hashtags for Instagram, TikTok, and Twitter.' 
+  'hashtag-generator': {
+    component: 'HashtagGenerator',
+    title: 'AI Hashtag Generator',
+    desc: 'Generate trending hashtags for Instagram, TikTok, and Twitter.'
   },
-  'business-name': { 
-    component: 'BusinessNameGenerator', 
-    title: 'AI Business Name Generator', 
-    desc: 'Generate unique and catchy business names for your brand.' 
+  'business-name': {
+    component: 'BusinessNameGenerator',
+    title: 'AI Business Name Generator',
+    desc: 'Generate unique and catchy business names for your brand.'
   },
-  'code-explainer': { 
-    component: 'CodeExplainer', 
-    title: 'AI Code Explainer', 
-    desc: 'Understand complex code snippets instantly with AI explanations.' 
+  'code-explainer': {
+    component: 'CodeExplainer',
+    title: 'AI Code Explainer',
+    desc: 'Understand complex code snippets instantly with AI explanations.'
   },
-  'text-summarizer': { 
-    component: 'TextSummarizer', 
-    title: 'AI Text Summarizer', 
-    desc: 'Instantly summarize long articles and texts into concise key points.' 
+  'text-summarizer': {
+    component: 'TextSummarizer',
+    title: 'AI Text Summarizer',
+    desc: 'Instantly summarize long articles and texts into concise key points.'
   },
-  'instagram-caption': { 
-    component: 'InstagramCaptionGenerator', 
-    title: 'AI Instagram Caption Generator', 
-    desc: 'Create engaging Instagram captions with emojis instantly.' 
+  'instagram-caption': {
+    component: 'InstagramCaptionGenerator',
+    title: 'AI Instagram Caption Generator',
+    desc: 'Create engaging Instagram captions with emojis instantly.'
   },
 };
 
@@ -139,7 +139,6 @@ type ToolPageProps = {
 // Dinamik Metadata - Tüm araçlar için benzersiz meta veriler
 export async function generateMetadata(
   { params }: ToolPageProps,
-  parent: ResolvingMetadata
 ): Promise<Metadata> {
   // toolId'yi al
   const { toolId } = await params;

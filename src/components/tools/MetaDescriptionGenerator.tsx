@@ -1,11 +1,24 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 export default function MetaDescriptionGenerator() {
   const [input, setInput] = useState("");
   const [descriptions, setDescriptions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const { saveResult } = useHistory();
+
+  // SONUÇLARA OTOMATİK KAYDIRMA
+  useEffect(() => {
+    if (descriptions.length > 0) {
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [descriptions]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,8 +34,10 @@ export default function MetaDescriptionGenerator() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setDescriptions(data.descriptions || []);
-    } catch (err: any) {
-      setDescriptions([err.message || 'Failed to generate descriptions']);
+      saveResult('meta-description', 'Meta Generator', (data.descriptions || []).join('\n'));
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to generate descriptions';
+      setDescriptions([errorMessage]);
     }
     setIsLoading(false);
     setInput(""); // Kutu temizleme
@@ -49,7 +64,7 @@ export default function MetaDescriptionGenerator() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault(); 
+              e.preventDefault();
               if (e.currentTarget.form) {
                 e.currentTarget.form.requestSubmit();
               }
@@ -74,10 +89,10 @@ export default function MetaDescriptionGenerator() {
 
       {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {descriptions.length > 0 && (
-        <div className="mt-6 space-y-3 text-left">
+        <div ref={resultsRef} className="mt-6 space-y-3 text-left">
           <h2 className="text-lg font-semibold text-white mb-3">Generated Meta Descriptions:</h2>
           {descriptions.map((desc, idx) => (
-            <div 
+            <div
               key={idx}
               className="relative flex items-center justify-between 
                          p-4 bg-slate-800 rounded-lg 
@@ -87,7 +102,7 @@ export default function MetaDescriptionGenerator() {
               <p className="pr-12 text-slate-200">
                 {desc}
               </p>
-              
+
               {/* Kopyalama Butonu (Sağ üst köşe) */}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <ClipboardButton textToCopy={desc} />

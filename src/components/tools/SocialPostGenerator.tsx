@@ -1,11 +1,24 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 export default function SocialPostGenerator() {
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const { saveResult } = useHistory();
+
+  // SONUÇLARA OTOMATİK KAYDIRMA
+  useEffect(() => {
+    if (posts.length > 0) {
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [posts]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,8 +34,10 @@ export default function SocialPostGenerator() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setPosts(data.posts || []);
-    } catch (err: any) {
-      setPosts([err.message || 'Failed to generate posts']);
+      saveResult('social-post', 'Social Post Generator', (data.posts || []).join('\n'));
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to generate posts';
+      setPosts([errorMessage]);
     }
     setIsLoading(false);
     setInput(""); // Kutu temizleme
@@ -49,7 +64,7 @@ export default function SocialPostGenerator() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault(); 
+              e.preventDefault();
               if (e.currentTarget.form) {
                 e.currentTarget.form.requestSubmit();
               }
@@ -74,10 +89,10 @@ export default function SocialPostGenerator() {
 
       {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {posts.length > 0 && (
-        <div className="mt-6 space-y-3 text-left">
+        <div ref={resultsRef} className="mt-6 space-y-3 text-left">
           <h2 className="text-lg font-semibold text-white mb-3">Generated Posts:</h2>
           {posts.map((post, idx) => (
-            <div 
+            <div
               key={idx}
               className="relative flex items-center justify-between 
                          p-4 bg-slate-800 rounded-lg 
@@ -87,7 +102,7 @@ export default function SocialPostGenerator() {
               <p className="pr-12 text-slate-200 whitespace-pre-wrap">
                 {post}
               </p>
-              
+
               {/* Kopyalama Butonu (Sağ üst köşe) */}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <ClipboardButton textToCopy={post} />

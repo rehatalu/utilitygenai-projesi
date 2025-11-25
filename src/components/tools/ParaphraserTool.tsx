@@ -1,11 +1,24 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 export default function ParaphraserTool() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const { saveResult } = useHistory();
+
+  // SONUÇLARA OTOMATİK KAYDIRMA
+  useEffect(() => {
+    if (result) {
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [result]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,8 +34,10 @@ export default function ParaphraserTool() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setResult(data.paraphrasedText || '');
-    } catch (err: any) {
-      setResult(err.message || 'Failed to paraphrase text');
+      saveResult('paraphraser', 'Paraphraser Tool', data.paraphrasedText || '');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to paraphrase text';
+      setResult(errorMessage);
     }
     setIsLoading(false);
     setInput(""); // Kutu temizleme
@@ -49,7 +64,7 @@ export default function ParaphraserTool() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault(); 
+              e.preventDefault();
               if (e.currentTarget.form) {
                 e.currentTarget.form.requestSubmit();
               }
@@ -74,13 +89,13 @@ export default function ParaphraserTool() {
 
       {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {result && (
-        <div className="mt-6 space-y-3 text-left">
+        <div ref={resultsRef} className="mt-6 space-y-3 text-left">
           <h2 className="text-lg font-semibold text-white mb-3">Paraphrased Text:</h2>
-          {(result.split('\n').filter(line => line.trim() !== '').length > 0 
+          {(result.split('\n').filter(line => line.trim() !== '').length > 0
             ? result.split('\n').filter(line => line.trim() !== '')
             : [result]
           ).map((line, index) => (
-            <div 
+            <div
               key={index}
               className="relative flex items-center justify-between 
                          p-4 bg-slate-800 rounded-lg 
@@ -90,7 +105,7 @@ export default function ParaphraserTool() {
               <p className="pr-12 text-slate-200 whitespace-pre-wrap">
                 {line}
               </p>
-              
+
               {/* Kopyalama Butonu (Sağ üst köşe) */}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <ClipboardButton textToCopy={line} />

@@ -1,11 +1,24 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 export default function HashtagGenerator() {
   const [input, setInput] = useState("");
   const [hashtags, setHashtags] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const { saveResult } = useHistory();
+
+  // SONUÇLARA OTOMATİK KAYDIRMA
+  useEffect(() => {
+    if (hashtags.length > 0) {
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [hashtags]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,8 +34,10 @@ export default function HashtagGenerator() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setHashtags(data.hashtags || []);
-    } catch (err: any) {
-      setHashtags([err.message || 'Failed to generate hashtags']);
+      saveResult('hashtag-generator', 'Hashtag Generator', (data.hashtags || []).map((tag: string) => `#${tag}`).join(' '));
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to generate hashtags';
+      setHashtags([errorMessage]);
     }
     setIsLoading(false);
     setInput(""); // Kutu temizleme
@@ -49,7 +64,7 @@ export default function HashtagGenerator() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault(); 
+              e.preventDefault();
               if (e.currentTarget.form) {
                 e.currentTarget.form.requestSubmit();
               }
@@ -74,7 +89,7 @@ export default function HashtagGenerator() {
 
       {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {hashtags.length > 0 && (
-        <div className="mt-6 space-y-3 text-left">
+        <div ref={resultsRef} className="mt-6 space-y-3 text-left">
           <h2 className="text-lg font-semibold text-white mb-3">Generated Hashtags:</h2>
           <div className="relative flex items-center justify-between 
                          p-4 bg-slate-800 rounded-lg 
@@ -87,7 +102,7 @@ export default function HashtagGenerator() {
                 </span>
               ))}
             </div>
-            
+
             {/* Kopyalama Butonu (Tüm hashtagleri kopyala) */}
             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
               <ClipboardButton textToCopy={hashtags.map(tag => `#${tag}`).join(' ')} />

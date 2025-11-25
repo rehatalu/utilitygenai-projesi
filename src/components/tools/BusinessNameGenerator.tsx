@@ -1,11 +1,24 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 export default function BusinessNameGenerator() {
   const [input, setInput] = useState("");
   const [names, setNames] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const { saveResult } = useHistory();
+
+  // SONUÇLARA OTOMATİK KAYDIRMA
+  useEffect(() => {
+    if (names.length > 0) {
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [names]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,8 +34,10 @@ export default function BusinessNameGenerator() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setNames(data.names || []);
-    } catch (err: any) {
-      setNames([err.message || 'Failed to generate names']);
+      saveResult('business-name', 'Business Name Generator', (data.names || []).join('\n'));
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to generate ideas';
+      setNames([errorMessage]);
     }
     setIsLoading(false);
     setInput(""); // Kutu temizleme
@@ -49,7 +64,7 @@ export default function BusinessNameGenerator() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault(); 
+              e.preventDefault();
               if (e.currentTarget.form) {
                 e.currentTarget.form.requestSubmit();
               }
@@ -74,10 +89,10 @@ export default function BusinessNameGenerator() {
 
       {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {names.length > 0 && (
-        <div className="mt-6 space-y-3 text-left">
+        <div ref={resultsRef} className="mt-6 space-y-3 text-left">
           <h2 className="text-lg font-semibold text-white mb-3">Business Name Suggestions:</h2>
           {names.map((name, idx) => (
-            <div 
+            <div
               key={idx}
               className="relative flex items-center justify-between 
                          p-4 bg-slate-800 rounded-lg 
@@ -87,7 +102,7 @@ export default function BusinessNameGenerator() {
               <p className="pr-12 text-slate-200">
                 {name}
               </p>
-              
+
               {/* Kopyalama Butonu (Sağ üst köşe) */}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <ClipboardButton textToCopy={name} />

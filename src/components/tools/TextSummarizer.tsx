@@ -1,11 +1,24 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 export default function TextSummarizer() {
   const [input, setInput] = useState("");
   const [summary, setSummary] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const { saveResult } = useHistory();
+
+  // SONUÇLARA OTOMATİK KAYDIRMA
+  useEffect(() => {
+    if (summary) {
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [summary]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,8 +34,10 @@ export default function TextSummarizer() {
       const data = await response.json();
       if (data.error) throw new Error(data.error);
       setSummary(data.summary || '');
-    } catch (err: any) {
-      setSummary(err.message || 'Failed to summarize text');
+      saveResult('text-summarizer', 'Text Summarizer', data.summary || '');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to summarize text';
+      setSummary(errorMessage);
     }
     setIsLoading(false);
     setInput(""); // Kutu temizleme
@@ -49,7 +64,7 @@ export default function TextSummarizer() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault(); 
+              e.preventDefault();
               if (e.currentTarget.form) {
                 e.currentTarget.form.requestSubmit();
               }
@@ -74,13 +89,13 @@ export default function TextSummarizer() {
 
       {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {summary && (
-        <div className="mt-6 space-y-3 text-left">
+        <div ref={resultsRef} className="mt-6 space-y-3 text-left">
           <h2 className="text-lg font-semibold text-white mb-3">Summary:</h2>
-          {(summary.split('\n').filter(line => line.trim() !== '').length > 0 
+          {(summary.split('\n').filter(line => line.trim() !== '').length > 0
             ? summary.split('\n').filter(line => line.trim() !== '')
             : [summary]
           ).map((line, index) => (
-            <div 
+            <div
               key={index}
               className="relative flex items-center justify-between 
                          p-4 bg-slate-800 rounded-lg 
@@ -90,7 +105,7 @@ export default function TextSummarizer() {
               <p className="pr-12 text-slate-200 whitespace-pre-wrap">
                 {line}
               </p>
-              
+
               {/* Kopyalama Butonu (Sağ üst köşe) */}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <ClipboardButton textToCopy={line} />

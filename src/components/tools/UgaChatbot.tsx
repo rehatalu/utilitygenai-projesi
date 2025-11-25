@@ -10,7 +10,7 @@ export default function UgaChatbot() {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef<null | HTMLDivElement>(null); 
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -23,7 +23,7 @@ export default function UgaChatbot() {
     const userMessage: Message = { role: 'user', content: input };
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
-    setInput(""); 
+    setInput("");
 
     try {
       const response = await fetch('/api/uga-chat', {
@@ -32,22 +32,22 @@ export default function UgaChatbot() {
         body: JSON.stringify({ topic: input }),
       });
       const data = await response.json();
-      
+
       if (!response.ok) throw new Error(data.error || 'API request failed');
       if (data.error) throw new Error(data.error);
 
       const assistantMessage: Message = { role: 'assistant', content: data.response };
       setMessages(prev => [...prev, assistantMessage]);
 
-    } catch (err: any) {
-      const errorMessage: Message = { role: 'assistant', content: err.message || "Sorry, I'm having trouble connecting right now." };
-      setMessages(prev => [...prev, errorMessage]);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to send message';
+      setMessages((prev) => [...prev, { role: 'assistant', content: errorMessage }]);
     }
     setIsLoading(false);
   };
 
   return (
-    <div 
+    <div
       className="w-full rounded-xl 
                   bg-slate-900 
                   ring-1 ring-inset ring-slate-700 
@@ -57,11 +57,11 @@ export default function UgaChatbot() {
       {/* İçerik maske üstünde görünmeli - z-index ile */}
       <div className="relative z-10 text-left">
         <h1 className="text-base font-semibold text-white mb-3 text-left">Chat with UGA</h1>
-      
+
         <div className="h-48 overflow-y-auto mb-3 space-y-3 p-3 bg-slate-800/50 rounded-lg">
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div 
+              <div
                 className={`max-w-[85%] px-3 py-2 rounded-lg text-xs text-left
                   ${msg.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-slate-700 text-slate-200'}
                 `}
@@ -70,9 +70,9 @@ export default function UgaChatbot() {
               </div>
             </div>
           ))}
-          <div ref={messagesEndRef} /> 
+          <div ref={messagesEndRef} />
         </div>
-        
+
         <form onSubmit={handleSubmit} className="text-left">
           <label htmlFor="chatInput" className="block text-xs font-medium text-slate-300 mb-1">
             Your message:
@@ -83,10 +83,10 @@ export default function UgaChatbot() {
             placeholder="Ask UGA about a tool..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
+            onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
-                if (!isLoading && input) handleSubmit(e as any);
+                if (!isLoading && input) handleSubmit(e as unknown as React.FormEvent);
               }
             }}
           />
