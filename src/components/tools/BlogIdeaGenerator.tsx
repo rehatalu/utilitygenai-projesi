@@ -3,7 +3,9 @@ import { useState, useRef, useEffect } from 'react';
 import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
-export default function BlogIdeaGenerator() {
+import { ToolComponentProps } from '@/types/tool-props';
+
+export default function BlogIdeaGenerator({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [ideas, setIdeas] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,15 +28,21 @@ export default function BlogIdeaGenerator() {
 
     setIsLoading(true);
     try {
-      const response = await fetch('/api/blog-ideas', {
+      const response = await fetch('/api/generate-blog', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic: input }),
       });
       const data = await response.json();
       if (data.error) throw new Error(data.error);
-      setIdeas(data.ideas || []);
-      saveResult('blog-ideas', 'Blog Ideas', (data.ideas || []).join('\n'));
+
+      // API artık { output: "..." } string döndürüyor. Biz bunu listeye çevirmeliyiz.
+      // Yeni API "generate-blog" tek bir string metin (output) dönecek.
+      const outputText = data.output || "";
+      const ideasList = outputText.split('\n').filter((line: string) => line.trim() !== '');
+
+      setIdeas(ideasList);
+      saveResult(toolId, toolName, outputText);
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to generate ideas';
       setIdeas([errorMessage]);
@@ -115,4 +123,3 @@ export default function BlogIdeaGenerator() {
     </div>
   );
 }
-
