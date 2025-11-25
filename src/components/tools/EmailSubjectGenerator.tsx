@@ -4,7 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/outline'; // "Düşünen Yıldız" için import et
 import ClipboardButton from '@/components/ui/ClipboardButton';
-export default function EmailSubjectGenerator() {
+import { ToolComponentProps } from '@/types/tool-props';
+export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponentProps) {
   const [topic, setTopic] = useState("");
   const [results, setResults] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);

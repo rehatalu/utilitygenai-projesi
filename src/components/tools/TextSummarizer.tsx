@@ -3,7 +3,8 @@ import { useState, useRef, useEffect } from 'react';
 import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
-export default function TextSummarizer() {
+import { ToolComponentProps } from '@/types/tool-props';
+export default function TextSummarizer({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [summary, setSummary] = useState("");
   const [isLoading, setIsLoading] = useState(false);
