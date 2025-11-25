@@ -1,3 +1,4 @@
+// GÖREV 20: 25.11.2025 - API Anahtarı Önbelleğini Yenilemek İçin Zorunlu Değişiklik.
 "use client";
 import WorkspaceLayout from "@/components/layout/WorkspaceLayout";
 import { motion, AnimatePresence } from 'framer-motion';
@@ -152,7 +153,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
 
             <dt>Are my inputs or data saved?</dt>
             <dd>No. We respect your privacy. Your inputs are processed by the AI and immediately discarded. We do not store your topics or the generated results.</dd>
-            
+
             <dt>What languages does this tool support?</dt>
             <dd>While it is optimized for English, it can understand and generate subject lines in many other major languages. Feel free to experiment!</dd>
           </dl>
@@ -254,9 +255,9 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       content: (
         <div className="prose dark:prose-invert max-w-none">
           <h2>Does this tool generate hashtags?</h2>
-          <p>Yes, our AI will often suggest 3-5 relevant hashtags to increase your post&apos;s visibility. (We also have a separate, dedicated <a href="/tool/hashtag-generator">Hashtag Generator</a> for more advanced needs).</p>
+          <p>Yes, our AI will often suggest 3-5 relevant hashtags to increase your post&apos;s visibility. (We also have a separate, dedicated <Link href="/tool/hashtag-generator/" className="text-blue-400 hover:underline">Hashtag Generator</Link> for more advanced needs).</p>
           <h2>Can I use this for Instagram?</h2>
-          <p>This tool is optimized for text-based platforms (LinkedIn/Twitter). For image-based platforms, we recommend our dedicated <a href="/tool/instagram-caption">Instagram Caption Generator</a> which focuses more on storytelling and visual description.</p>
+          <p>This tool is optimized for text-based platforms (LinkedIn/Twitter). For image-based platforms, we recommend our dedicated <Link href="/tool/instagram-caption/" className="text-blue-400 hover:underline">Instagram Caption Generator</Link> which focuses more on storytelling and visual description.</p>
           <h2>Frequently Asked Questions (FAQ)</h2>
           <dl>
             <dt>Is it free to use?</dt>
@@ -374,7 +375,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
             <dt>What languages does it support?</dt>
             <dd>It is most accurate for English but has a strong understanding of grammar in many major languages.</dd>
             <dt>Does the AI rewrite my entire text?</dt>
-            <dd>No. This is a &quot;checker,&quot; not a paraphraser. It will only suggest corrections for specific errors. If you want to rewrite your text, please use our <a href="/tool/paraphraser">Paraphraser Tool</a>.</dd>
+            <dd>No. This is a &quot;checker,&quot; not a paraphraser. It will only suggest corrections for specific errors. If you want to rewrite your text, please use our <Link href="/tool/paraphraser/" className="text-blue-400 hover:underline">Paraphraser Tool</Link>.</dd>
           </dl>
         </div>
       )
@@ -563,7 +564,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
           <p>Get the right mix of hashtags:</p>
           <ul>
             <li><strong>Input Topic:</strong> &quot;Fitness&quot; <br />
-              <strong>→ Output:</strong> 
+              <strong>→ Output:</strong>
               <br /><strong>Broad (High Competition):</strong> #fitness #health #workout
               <br /><strong>Medium:</strong> #fitnessmotivation #gymlife #fitfam
               <br /><strong>Niche (High Engagement):</strong> #bodyweightworkout #homefitness #fitnesstips</li>
@@ -583,11 +584,11 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
           <h2>Frequently Asked Questions (FAQ)</h2>
           <dl>
             <dt>Is this different from the Social Post Generator?</dt>
-            <dd>Yes. The <a href="/tool/social-post">Social Post Generator</a> creates the *entire post* and suggests 2-3 hashtags. This tool is *specialized* in finding 20-30 different hashtag *ideas* for you to choose from.</dd>
+            <dd>Yes. The <Link href="/tool/social-post/" className="text-blue-400 hover:underline">Social Post Generator</Link> creates the *entire post* and suggests 2-3 hashtags. This tool is *specialized* in finding 20-30 different hashtag *ideas* for you to choose from.</dd>
             <dt>Is this free?</dt>
             <dd>Yes, 100% free.</dd>
           </dl>
-        </div>
+        </div >
       )
     },
   ],
@@ -667,7 +668,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
         <div className="prose dark:prose-invert max-w-none">
           <p>Demystify any code:</p>
           <ul>
-            <li><strong>Input (Python):</strong> `names = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]<br/>upper_names = [name.upper() for name in names]` <br />
+            <li><strong>Input (Python):</strong> `names = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]<br />upper_names = [name.upper() for name in names]` <br />
               <strong>→ Output:</strong> &quot;This is a Python list comprehension. It creates a *new* list called `upper_names` by looping through each `name` in the original `names` list and applying the `.upper()` (uppercase) function to it.&quot;</li>
             <li><strong>Input (JavaScript):</strong> `const a = b ?? &apos;default&apos;;` <br />
               <strong>→ Output:</strong> &quot;This JavaScript code uses the &apos;Nullish Coalescing&apos; operator (??). It means `a` will be set to the value of `b` *only if* `b` is not `null` or `undefined`. If `b` *is* `null` or `undefined`, then `a` will be set to the string &apos;default&apos;.&quot;</li>
@@ -787,7 +788,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
       content: (
         <div className="prose dark:prose-invert max-w-none">
           <h2>Is this different from the Social Post Generator?</h2>
-          <p>Yes, very. The <a href="/tool/social-post">Social Post Generator</a> is for text-first platforms like LinkedIn/Twitter. This tool is for Instagram, which means it focuses on <strong>visual storytelling</strong>, <strong>emoji use</strong>, and <strong>community-building hashtags</strong>.</p>
+          <p>Yes, very. The <Link href="/tool/social-post/" className="text-blue-400 hover:underline">Social Post Generator</Link> is for text-first platforms like LinkedIn/Twitter. This tool is for Instagram, which means it focuses on <strong>visual storytelling</strong>, <strong>emoji use</strong>, and <strong>community-building hashtags</strong>.</p>
           <h2>Does it include a &apos;Link in Bio&apos; call-to-action?</h2>
           <p>Yes. If you select a &quot;Salesy&quot; or &quot;Business&quot; tone, the AI will often automatically include a &quot;Call to Action&quot; (CTA) like &quot;Tap the link in our bio!&quot; or &quot;Comment below!&quot; to drive engagement.</p>
           <h2>Frequently Asked Questions (FAQ)</h2>
@@ -795,7 +796,7 @@ const TOOL_CONTENT_MAP: Record<string, Array<{ id: string; label: string; conten
             <dt>Can I generate captions in other languages?</dt>
             <dd>Yes, the AI is highly capable of generating captions in many languages. Just write your photo description in the language you want.</dd>
             <dt>How many hashtags does it include?</dt>
-            <dd>It typically suggests 5-10 highly relevant hashtags. For a deeper dive on hashtags, you can also use our dedicated <a href="/tool/hashtag-generator">Hashtag Generator</a>.</dd>
+            <dd>It typically suggests 5-10 highly relevant hashtags. For a deeper dive on hashtags, you can also use our dedicated <Link href="/tool/hashtag-generator/" className="text-blue-400 hover:underline">Hashtag Generator</Link>.</dd>
           </dl>
         </div>
       )
