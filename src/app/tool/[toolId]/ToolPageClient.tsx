@@ -4,6 +4,7 @@ import WorkspaceLayout from "@/components/layout/WorkspaceLayout";
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedTabs from '@/components/ui/AnimatedTabs';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import type { ComponentType, ElementType, ReactNode } from 'react';
 import {
   EnvelopeIcon,
