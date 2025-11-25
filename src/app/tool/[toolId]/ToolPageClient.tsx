@@ -6,6 +6,7 @@ import AnimatedTabs from '@/components/ui/AnimatedTabs';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import type { ComponentType, ElementType, ReactNode } from 'react';
+import { ToolComponentProps } from '@/types/tool-props';
 import {
   EnvelopeIcon,
   DocumentDuplicateIcon,
@@ -68,7 +69,7 @@ const InstagramCaptionGenerator = dynamic(() => import('@/components/tools/Insta
   loading: () => <LoadingTool />,
 });
 
-const toolConfig: Record<string, { component: ComponentType; icon: ElementType; title: string }> = {
+const toolConfig: Record<string, { component: ComponentType<ToolComponentProps>; icon: ElementType; title: string }> = {
   'email-generator': { component: EmailSubjectGenerator, icon: EnvelopeIcon, title: 'Email Subject Generator' },
   'paraphraser': { component: ParaphraserTool, icon: DocumentDuplicateIcon, title: 'Paraphraser Tool' },
   'social-post': { component: SocialPostGenerator, icon: ChatBubbleOvalLeftEllipsisIcon, title: 'Social Post Generator' },
@@ -835,7 +836,10 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
               </div>
             </div>
 
-            <ActiveComponent />
+            <ActiveComponent 
+              toolId={toolId} 
+              toolName={config.title || 'AI Tool'} 
+            />
 
             {currentTabs && (
               <div className="mt-12">
@@ -850,4 +854,3 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
     </WorkspaceLayout>
   );
 }
-
