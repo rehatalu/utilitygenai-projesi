@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-const apiKey = process.env.OPENAI_API_KEY;
+const apiKey = process.env.UTILITY_AI_KEY;
 
 const openai = new OpenAI({
   apiKey,
@@ -9,7 +9,7 @@ const openai = new OpenAI({
 
 export async function POST(req: NextRequest) {
   if (!apiKey) {
-    console.error('Missing OPENAI_API_KEY environment variable.');
+    console.error('Missing UTILITY_AI_KEY environment variable.');
     return NextResponse.json({ error: 'API configuration error.' }, { status: 500 });
   }
 

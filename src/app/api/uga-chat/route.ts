@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.UTILITY_AI_KEY,
 });
 
 export async function POST(req: NextRequest) {
@@ -50,13 +50,11 @@ Help users understand and use these tools effectively. Be friendly, concise, and
     const response = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response.';
 
     return NextResponse.json({ response });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('UGA Chat API Error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to generate response' },
-      { status: 500 }
-    );
+    if (error instanceof Error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    return NextResponse.json({ error: 'Failed to process chat request' }, { status: 500 });
   }
 }
-
-
