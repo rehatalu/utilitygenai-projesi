@@ -19,23 +19,20 @@ export async function POST(req: Request) {
       );
     }
 
-    const prompt = `Generate 5 creative and SEO-friendly blog post titles for the topic: "${topic}". 
-    Return ONLY the titles as a simple list, not numbered. Ensure each title is on a new line.`;
-
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
-          content: "You are a creative content strategist and SEO expert."
+          content: "You are a helpful SEO assistant."
         },
         {
           role: "user",
-          content: prompt
+          content: `List 5 catchy blog post titles about: "${topic}". Keep them short. Return ONLY the titles as a simple list, not numbered, one per line.`
         }
       ],
       temperature: 0.7,
-      max_tokens: 300,
+      max_tokens: 150,
     });
 
     const content = completion.choices[0].message.content;
@@ -58,4 +55,3 @@ export async function POST(req: Request) {
     );
   }
 }
-
