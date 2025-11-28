@@ -1,18 +1,6 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-/* body stilleri layout.tsx'te Tailwind class'ları ile yönetiliyor */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* "UGA SÜZÜLME" EFEKTİ */
 @keyframes float {
@@ -24,7 +12,7 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Grid Pattern - Aydınlık ve Karanlık Mod */
+/* Grid Pattern - CSS Variable ile (Yedek olarak) */
 .grid-pattern {
   background-image: linear-gradient(to right, rgba(229, 231, 235, 1) 1px, transparent 1px), 
                     linear-gradient(to bottom, rgba(229, 231, 235, 1) 1px, transparent 1px);
@@ -34,4 +22,3 @@
   background-image: linear-gradient(to right, rgba(51, 65, 85, 0.5) 1px, transparent 1px), 
                     linear-gradient(to bottom, rgba(51, 65, 85, 0.5) 1px, transparent 1px);
 }
-
