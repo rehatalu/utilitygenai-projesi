@@ -843,7 +843,9 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
 
             {currentTabs && (
               <div className="mt-12">
-                <div className="rounded-xl bg-white ring-1 ring-slate-300 shadow-lg dark:bg-slate-900 dark:ring-slate-700 p-6 md:p-8 transition-colors">
+                <div className="rounded-xl bg-white ring-1 ring-slate-300 dark:ring-slate-700 
+                              shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-black/50
+                              dark:bg-slate-900 p-6 md:p-8 transition-colors">
                   <AnimatedTabs tabs={currentTabs} initialTabId="how-to" />
                 </div>
               </div>

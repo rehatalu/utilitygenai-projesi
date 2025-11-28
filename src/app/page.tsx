@@ -63,10 +63,14 @@ export default function HomePage() {
                   href={`/tool/${tool.slug}`}
                   key={tool.slug}
                   className="block p-4 rounded-lg 
-                             bg-white border border-slate-300 dark:border-slate-700 shadow-sm hover:shadow-md
+                             bg-white border border-slate-300/80 dark:border-slate-700 
+                             shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-none
                              dark:bg-slate-900/50
-                             transition-all hover:bg-gray-50 dark:hover:bg-slate-800/70 
-                             hover:ring-2 hover:ring-indigo-500"
+                             transition-all duration-300
+                             hover:bg-gray-50 dark:hover:bg-slate-800/70 
+                             hover:ring-2 hover:ring-indigo-500
+                             hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:hover:shadow-slate-800/50
+                             hover:-translate-y-1"
                 >
                   <h3 className="font-semibold text-slate-900 dark:text-white">{tool.name}</h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400">{tool.description}</p>

@@ -9,10 +9,12 @@ export default function WelcomeHub() {
     <div className="mx-auto max-w-2xl rounded-3xl 
                     bg-white text-slate-900 
                     dark:bg-slate-900/90 dark:text-white
-                    p-6 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] 
-                    ring-1 ring-slate-300 dark:ring-slate-600 shadow-xl
+                    p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-none
+                    ring-1 ring-slate-300/80 dark:ring-slate-700
                     backdrop-blur-lg
-                    transition-colors duration-300">
+                    hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:hover:shadow-slate-800/50
+                    hover:-translate-y-1 
+                    transition-all duration-300">
       <div className="flex flex-col items-center gap-4 text-center">
         <AiIcon className="h-12 w-12 text-indigo-600 dark:text-indigo-400" />
         <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">Welcome to UtilityGenAI</h1>
