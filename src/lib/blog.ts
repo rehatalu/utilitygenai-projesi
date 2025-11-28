@@ -13,15 +13,9 @@ export interface BlogPost {
 
 const blogDirectory = path.join(process.cwd(), 'src/content/blog');
 
+// 1. Tüm yazıları getir
 export function getAllPosts(): BlogPost[] {
-  // Klasör yoksa oluştur
-  if (!fs.existsSync(blogDirectory)) {
-    try {
-      fs.mkdirSync(blogDirectory, { recursive: true });
-    } catch (e) {
-      return [];
-    }
-  }
+  if (!fs.existsSync(blogDirectory)) return [];
   
   const fileNames = fs.readdirSync(blogDirectory);
   const allPosts = fileNames
@@ -36,11 +30,35 @@ export function getAllPosts(): BlogPost[] {
         slug,
         title: data.title || 'Untitled',
         excerpt: data.excerpt || '',
-        date: data.date || new Date().toISOString(),
+        date: data.date || '',
         tags: data.tags || [],
         content,
       } as BlogPost;
     });
 
   return allPosts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+}
+
+// 2. Tek bir yazıyı getir (EKSİK OLAN BU)
+export function getPostBySlug(slug: string): BlogPost | null {
+  try {
+    const fullPath = path.join(blogDirectory, `${slug}.md`);
+    // Dosyanın varlığını kontrol et
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
+    
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+    return {
+      slug,
+      title: data.title,
+      excerpt: data.excerpt,
+      date: data.date,
+      tags: data.tags || [],
+      content,
+    } as BlogPost;
+  } catch (error) {
+    return null;
+  }
 }
