@@ -45,7 +45,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
 
   const isActive = (slug: string) => pathname === `/tool/${slug}`;
   
-  // Link stil fonksiyonu - GÜNCELLENDİ (Daha belirgin hover ve aktif durum)
+  // Link stil fonksiyonu
   const getLinkClass = (active: boolean) => `flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium
                          transition-colors duration-150
                          ${active
@@ -55,13 +55,13 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
 
   return (
     <div className="flex flex-col h-full 
-                    bg-slate-50 text-slate-900 
-                    dark:bg-slate-900 dark:text-slate-300 
-                    border-r border-slate-200 shadow-sm dark:border-slate-800
+                    bg-gray-100 text-slate-900 
+                    dark:bg-[#0f172a] dark:text-slate-300 
+                    border-r border-gray-200 dark:border-slate-800
                     transition-colors duration-300">
       
       {/* BÖLÜM 1: Logo ve Kontrol Butonları */}
-      <div className="flex items-center justify-between h-16 px-4 border-b border-slate-200 dark:border-slate-800 flex-shrink-0">
+      <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200 dark:border-slate-800 flex-shrink-0">
         <Link href="/" className="flex items-center gap-2" onClick={closeSidebar}>
           <div className="bg-indigo-600 p-2 rounded-lg">
             <HiHome className="h-6 w-6 text-white" />
@@ -102,7 +102,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
       </nav>
 
       {/* BÖLÜM 3: UTILITIES (Geçmiş ve Blog) */}
-      <div className="flex-shrink-0 border-t border-slate-200 dark:border-slate-800 p-4">
+      <div className="flex-shrink-0 border-t border-gray-200 dark:border-slate-800 p-4">
         <span className="px-2 text-xs font-semibold uppercase text-slate-500 dark:text-slate-500">Utilities</span>
         <ul className="px-2 mt-1 space-y-1">
             {/* BLOG LINKI */}

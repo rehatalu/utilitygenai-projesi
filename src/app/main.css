@@ -12,14 +12,15 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Grid Deseni (CSS Class ile) */
+/* Grid Deseni - Aydınlık Mod (Daha koyu gri çizgiler) */
 .grid-pattern {
   background-size: 3rem 3rem;
-  background-image: linear-gradient(to right, rgba(229, 231, 235, 0.5) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(229, 231, 235, 0.5) 1px, transparent 1px);
+  background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+                    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
 }
 
+/* Grid Deseni - Karanlık Mod (Daha belirgin çizgiler) */
 .dark .grid-pattern {
-  background-image: linear-gradient(to right, rgba(51, 65, 85, 0.3) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(51, 65, 85, 0.3) 1px, transparent 1px);
+  background-image: linear-gradient(to right, #1e293b 1px, transparent 1px),
+                    linear-gradient(to bottom, #1e293b 1px, transparent 1px);
 }

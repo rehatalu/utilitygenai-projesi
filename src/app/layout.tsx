@@ -20,7 +20,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    // 1. "dark" sınıfı kaldırıldı. ThemeSwitcher yönetecek.
     <html lang="en" className="">
       <head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128" crossOrigin="anonymous"></script>
@@ -29,12 +28,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body 
         className={`${inter.variable} ${sora.variable} antialiased 
                     bg-white text-slate-900 
-                    dark:bg-slate-950 dark:text-slate-300 
+                    dark:bg-[#0B1120] dark:text-slate-300 
                     relative isolate overflow-hidden transition-colors duration-300`} 
       >
         {/* "Görsel Grid Desenli" Arka Plan */}
         <div 
-          className="absolute inset-0 -z-10 grid-pattern" 
+          className="absolute inset-0 -z-10 bg-grid-pattern" 
           aria-hidden="true"
         />
         <div 
