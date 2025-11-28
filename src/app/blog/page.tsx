@@ -2,7 +2,6 @@ import Link from 'next/link';
 import WorkspaceLayout from '@/components/layout/WorkspaceLayout';
 import { getAllPosts } from '@/lib/blog';
 
-// Server Component (Veriyi burada çekiyoruz)
 export default function BlogPage() {
   const posts = getAllPosts();
 

@@ -38,3 +38,20 @@ export function getAllPosts(): BlogPost[] {
   return allPosts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
 }
 
+export function getPostBySlug(slug: string): BlogPost | null {
+  try {
+    const fullPath = path.join(blogDirectory, `${slug}.md`);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+    return {
+      slug,
+      title: data.title,
+      excerpt: data.excerpt,
+      date: data.date,
+      tags: data.tags || [],
+      content,
+    } as BlogPost;
+  } catch (error) {
+    return null;
+  }
+}
