@@ -32,7 +32,7 @@ export default function Header() {
           {navLinks.map((link) => {
             const isActive = pathname.startsWith(link.href);
             return (
-              <Link key={link.href} href={link.href} className="relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 group">
+              <Link key={link.href} href={link.href} className="relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 group hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/10">
                 {isActive && (
                   <motion.div
                     layoutId="header-active"
