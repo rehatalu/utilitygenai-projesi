@@ -31,10 +31,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     dark:bg-[#0B1120] dark:text-slate-300 
                     relative isolate overflow-hidden transition-colors duration-300`} 
       >
-        {/* GARANTİ GRİD DESENİ (SVG) */}
+        {/* GARANTİ GRİD DESENİ (SVG - Inline Style) */}
         <div className="fixed inset-0 -z-10 h-full w-full bg-white dark:bg-slate-950 transition-colors duration-300">
-          <div className="absolute h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          {/* Karanlık Mod İçin Spot Işığı */}
+          {/* Aydınlık Mod Grid (Gri Çizgiler) */}
+          <div className="absolute h-full w-full bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:3rem_3rem] dark:hidden"></div>
+          
+          {/* Karanlık Mod Grid (Koyu Lacivert Çizgiler) */}
+          <div className="absolute h-full w-full bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3rem_3rem] hidden dark:block"></div>
+          
+          {/* Karanlık Mod için Spot Işığı */}
           <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-indigo-500 opacity-20 blur-[100px] hidden dark:block"></div>
         </div>
         
