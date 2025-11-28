@@ -14,7 +14,14 @@ export interface BlogPost {
 const blogDirectory = path.join(process.cwd(), 'src/content/blog');
 
 export function getAllPosts(): BlogPost[] {
-  if (!fs.existsSync(blogDirectory)) return [];
+  // Klasör yoksa oluştur
+  if (!fs.existsSync(blogDirectory)) {
+    try {
+      fs.mkdirSync(blogDirectory, { recursive: true });
+    } catch (e) {
+      return [];
+    }
+  }
   
   const fileNames = fs.readdirSync(blogDirectory);
   const allPosts = fileNames
@@ -29,29 +36,11 @@ export function getAllPosts(): BlogPost[] {
         slug,
         title: data.title || 'Untitled',
         excerpt: data.excerpt || '',
-        date: data.date || '',
+        date: data.date || new Date().toISOString(),
         tags: data.tags || [],
         content,
       } as BlogPost;
     });
 
   return allPosts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
-}
-
-export function getPostBySlug(slug: string): BlogPost | null {
-  try {
-    const fullPath = path.join(blogDirectory, `${slug}.md`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
-    return {
-      slug,
-      title: data.title,
-      excerpt: data.excerpt,
-      date: data.date,
-      tags: data.tags || [],
-      content,
-    } as BlogPost;
-  } catch (error) {
-    return null;
-  }
 }
