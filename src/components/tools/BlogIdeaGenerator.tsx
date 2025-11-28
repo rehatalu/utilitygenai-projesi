@@ -52,8 +52,8 @@ export default function BlogIdeaGenerator({ toolId, toolName }: ToolComponentPro
     <div className="mx-auto max-w-2xl rounded-xl 
                     bg-white text-slate-900
                     dark:bg-slate-900 dark:text-white
-                    ring-1 ring-gray-200 dark:ring-slate-700 
-                    shadow-2xl backdrop-blur-lg p-6 
+                    ring-1 ring-inset ring-gray-300 dark:ring-slate-700 
+                    shadow-xl backdrop-blur-lg p-6 
                     transition-all duration-300 text-left">
       <h1 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4 text-left">Blog Post Idea Generator</h1>
       <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 text-left">Get creative blog post ideas and titles.</p>

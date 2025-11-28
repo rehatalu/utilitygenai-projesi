@@ -62,8 +62,8 @@ export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponen
     <div className="mx-auto max-w-2xl rounded-xl 
                     bg-white text-slate-900
                     dark:bg-slate-900 dark:text-white
-                    ring-1 ring-gray-200 dark:ring-slate-700 
-                    shadow-2xl backdrop-blur-lg transition-colors duration-300">
+                    ring-1 ring-inset ring-gray-300 dark:ring-slate-700 
+                    shadow-xl backdrop-blur-lg transition-colors duration-300">
       <div className="p-6">
         <div className="flex flex-col gap-2 border-b border-gray-200 dark:border-slate-700 pb-4 text-left">
           <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">

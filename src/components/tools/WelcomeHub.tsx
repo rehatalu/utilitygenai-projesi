@@ -9,8 +9,8 @@ export default function WelcomeHub() {
     <div className="mx-auto max-w-2xl rounded-3xl 
                     bg-white text-slate-900 
                     dark:bg-slate-900/90 dark:text-white
-                    p-6 shadow-2xl 
-                    ring-1 ring-gray-200 dark:ring-slate-800
+                    p-6 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] 
+                    ring-1 ring-gray-300 dark:ring-slate-800
                     backdrop-blur-lg
                     transition-colors duration-300">
       <div className="flex flex-col items-center gap-4 text-center">

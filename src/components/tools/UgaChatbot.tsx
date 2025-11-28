@@ -51,7 +51,7 @@ export default function UgaChatbot() {
       className="w-full rounded-xl 
                   bg-slate-900 
                   ring-1 ring-inset ring-slate-700 
-                  shadow-2xl backdrop-blur-lg p-4 
+                  shadow-xl backdrop-blur-lg p-4 
                   transition-all duration-300 text-left"
     >
       {/* İçerik maske üstünde görünmeli - z-index ile */}
