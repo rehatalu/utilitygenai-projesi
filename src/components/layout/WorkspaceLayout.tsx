@@ -45,10 +45,10 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         
         {/* A. HEADER (En Tepe - Sabit) */}
         <div className="flex-shrink-0 relative z-20">
-             {/* Mobil Hamburger Butonu (Header'ın üstüne bindiriyoruz) */}
+             {/* Masaüstünde de Görünür Hamburger Butonu */}
              <button
               type="button"
-              className={`absolute left-4 top-4 p-2 rounded-md bg-slate-800 text-white md:hidden
+              className={`absolute left-4 top-4 p-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-500 transition-all z-50
                         ${sidebarOpen ? 'hidden' : 'block'}`}
               onClick={() => setSidebarOpen(true)}
             >

@@ -24,11 +24,11 @@ export default function Header() {
         <div className="w-8 md:hidden"></div> 
         
         <nav className="hidden md:flex items-center gap-1 mx-auto 
-                        bg-white/80 dark:bg-slate-900/80 
+                        bg-white/90 dark:bg-slate-900/90 
                         p-1.5 rounded-full 
-                        border border-slate-200 dark:border-slate-700
-                        shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-none
-                        backdrop-blur-md">
+                        border border-slate-300 dark:border-slate-600 
+                        shadow-[0_4px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_20px_rgba(99,102,241,0.15)]
+                        backdrop-blur-md transition-all">
           {navLinks.map((link) => {
             const isActive = pathname.startsWith(link.href);
             return (
