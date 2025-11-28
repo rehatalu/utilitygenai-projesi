@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { HiHome, HiClock, HiChevronDoubleLeft, HiBookOpen } from 'react-icons/hi'; // İkonlar
+import { HiHome, HiClock, HiChevronDoubleLeft, HiBookOpen } from 'react-icons/hi';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 import {
   EnvelopeIcon,
@@ -20,20 +20,41 @@ import {
   CameraIcon,
 } from '@heroicons/react/24/outline';
 
-const tools = [
-  { slug: 'email-generator', name: 'Email Subject Generator', icon: EnvelopeIcon },
-  { slug: 'paraphraser', name: 'Paraphraser Tool', icon: DocumentDuplicateIcon },
-  { slug: 'social-post', name: 'Social Post Generator', icon: ChatBubbleOvalLeftEllipsisIcon },
-  { slug: 'meta-description', name: 'Meta Generator', icon: TagIcon },
-  { slug: 'grammar-check', name: 'Grammar Checker', icon: CheckCircleIcon },
-  { slug: 'product-description', name: 'Product Generator', icon: ShoppingCartIcon },
-  { slug: 'blog-ideas', name: 'Blog Ideas', icon: LightBulbIcon },
-  { slug: 'youtube-ideas', name: 'YouTube Idea Generator', icon: VideoCameraIcon },
-  { slug: 'hashtag-generator', name: 'Hashtag Generator', icon: HashtagIcon },
-  { slug: 'business-name', name: 'Business Name Generator', icon: BriefcaseIcon },
-  { slug: 'code-explainer', name: 'AI Code Explainer', icon: CommandLineIcon },
-  { slug: 'text-summarizer', name: 'Text Summarizer', icon: DocumentTextIcon },
-  { slug: 'instagram-caption', name: 'Instagram Caption Generator', icon: CameraIcon },
+// Kategorize edilmiş araç listesi
+const toolCategories = [
+  {
+    title: "Writing & Content",
+    items: [
+      { slug: 'email-generator', name: 'Email Subject Generator', icon: EnvelopeIcon },
+      { slug: 'paraphraser', name: 'Paraphraser Tool', icon: DocumentDuplicateIcon },
+      { slug: 'blog-ideas', name: 'Blog Ideas', icon: LightBulbIcon },
+      { slug: 'grammar-check', name: 'Grammar Checker', icon: CheckCircleIcon },
+      { slug: 'text-summarizer', name: 'Text Summarizer', icon: DocumentTextIcon },
+    ]
+  },
+  {
+    title: "Social Media",
+    items: [
+      { slug: 'social-post', name: 'Social Post Generator', icon: ChatBubbleOvalLeftEllipsisIcon },
+      { slug: 'hashtag-generator', name: 'Hashtag Generator', icon: HashtagIcon },
+      { slug: 'instagram-caption', name: 'Instagram Caption Generator', icon: CameraIcon },
+      { slug: 'youtube-ideas', name: 'YouTube Idea Generator', icon: VideoCameraIcon },
+    ]
+  },
+  {
+    title: "Business & SEO",
+    items: [
+      { slug: 'meta-description', name: 'Meta Generator', icon: TagIcon },
+      { slug: 'product-description', name: 'Product Generator', icon: ShoppingCartIcon },
+      { slug: 'business-name', name: 'Business Name Generator', icon: BriefcaseIcon },
+    ]
+  },
+  {
+    title: "Developer",
+    items: [
+      { slug: 'code-explainer', name: 'AI Code Explainer', icon: CommandLineIcon },
+    ]
+  }
 ];
 
 interface SidebarProps {
@@ -81,23 +102,29 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
         </div>
       </div>
 
-      {/* BÖLÜM 2: KAYDIRILABİLİR ARAÇ LİSTESİ */}
-      <nav className="flex-1 overflow-y-auto py-4 space-y-1">
-        <span className="px-4 text-xs font-semibold uppercase text-slate-500 dark:text-slate-500">Tools</span>
-        <ul className="px-2">
-          {tools.map((tool) => (
-            <li key={tool.slug}>
-              <Link
-                href={`/tool/${tool.slug}`}
-                onClick={closeSidebar}
-                className={getLinkClass(isActive(tool.slug))}
-              >
-                <tool.icon className="h-5 w-5 flex-shrink-0" />
-                <span>{tool.name}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      {/* BÖLÜM 2: KATEGORİK ARAÇ LİSTESİ */}
+      <nav className="flex-1 overflow-y-auto py-6 space-y-8">
+        {toolCategories.map((category) => (
+          <div key={category.title} className="px-2">
+            <h3 className="px-4 text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">
+              {category.title}
+            </h3>
+            <ul className="space-y-1">
+              {category.items.map((tool) => (
+                <li key={tool.slug}>
+                  <Link
+                    href={`/tool/${tool.slug}`}
+                    onClick={closeSidebar}
+                    className={getLinkClass(isActive(tool.slug))}
+                  >
+                    <tool.icon className="h-5 w-5 flex-shrink-0" />
+                    <span>{tool.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </nav>
 
       {/* BÖLÜM 3: UTILITIES (Geçmiş ve Blog) */}
