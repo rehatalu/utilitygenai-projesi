@@ -48,17 +48,16 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
   // Link stil fonksiyonu
   const getLinkClass = (active: boolean) => `
     flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
-    transition-all duration-300 ease-out border
+    transition-all duration-200 ease-out border
     ${active
-      ? 'bg-indigo-600 text-white border-indigo-500 shadow-md' // Aktif: Sabit ve belirgin
-      : 'border-transparent text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-white hover:border-slate-200 dark:hover:border-slate-700 hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] hover:-translate-y-1' // PASİF: Hover'da yukarı kalkar ve gölge oluşur (3D)
+      ? 'bg-indigo-600 text-white border-indigo-500 shadow-[0_4px_14px_0_rgba(79,70,229,0.4)] translate-x-1' // Aktif: Parlak ve Sağa Kaymış
+      : 'border-transparent text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-slate-200 dark:hover:border-slate-700 hover:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.15)] hover:-translate-y-1' // PASİF: Güçlü gölge ile yukarı kalkar
     }
   `;
 
   return (
     <div className="flex flex-col h-full 
-                    bg-white/80 dark:bg-slate-900/95 backdrop-blur-xl border-r border-slate-200 dark:border-slate-800
-                    transition-colors duration-300">
+                    bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 transition-colors duration-300">
       
       {/* BÖLÜM 1: Logo ve Kontrol Butonları */}
       <div className="flex items-center justify-between h-16 px-4 border-b border-slate-200 dark:border-slate-800 flex-shrink-0">
