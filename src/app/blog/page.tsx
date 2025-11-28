@@ -2,7 +2,8 @@ import Link from 'next/link';
 import WorkspaceLayout from '@/components/layout/WorkspaceLayout';
 import { getAllPosts } from '@/lib/blog';
 
-export default async function BlogPage() {
+// Server Component (Veriyi burada çekiyoruz)
+export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
@@ -19,7 +20,7 @@ export default async function BlogPage() {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="group block h-full">
               <div className="h-full flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:border-indigo-500 dark:hover:border-indigo-500 transition-all duration-300">
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -36,7 +37,7 @@ export default async function BlogPage() {
                     {post.excerpt}
                   </p>
                   <div className="text-xs text-slate-500 pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
-                    <span>{post.date}</span>
+                    <span>{new Date(post.date).toLocaleDateString()}</span>
                     <span className="font-medium text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform">Read Article →</span>
                   </div>
                 </div>
