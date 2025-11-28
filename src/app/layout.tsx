@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         {/* "Görsel Grid Desenli" Arka Plan */}
         <div 
-          className="absolute inset-0 -z-10 grid-pattern bg-[length:3rem_3rem]"
+          className="absolute inset-0 -z-10 bg-grid-pattern"
           aria-hidden="true"
         />
         <div 
