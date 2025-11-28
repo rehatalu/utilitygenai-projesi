@@ -1,45 +1,43 @@
 "use client";
+import { useState, useEffect } from 'react';
+import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi';
 
-import { useEffect, useState } from "react";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
-
-export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState("dark");
+export default function ThemeSwitcher({ className = '' }: { className?: string }) {
+  const [theme, setTheme] = useState('dark');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check system preference or local storage
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      setTheme(storedTheme);
-      document.documentElement.classList.toggle("dark", storedTheme === "dark");
+    setMounted(true);
+    const savedTheme = localStorage.getItem('theme');
+    // Eğer kayıtlı tema yoksa veya 'dark' ise karanlık yap
+    if (!savedTheme || savedTheme === 'dark') {
+      setTheme('dark');
+      document.documentElement.classList.add('dark');
     } else {
-      // Default to dark or system
-      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const defaultTheme = systemPrefersDark ? "dark" : "light";
-      setTheme(defaultTheme);
-      document.documentElement.classList.toggle("dark", systemPrefersDark);
+      setTheme('light');
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
+    const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
+
+  if (!mounted) return <div className={`w-9 h-9 ${className}`} />;
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-gray-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800 transition-colors"
-      aria-label="Toggle theme"
+      className={`p-2 rounded-lg transition-colors 
+                  text-slate-500 hover:text-slate-900 hover:bg-gray-200
+                  dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800
+                  ${className}`}
+      aria-label="Toggle Theme"
     >
-      {theme === "dark" ? (
-        <SunIcon className="h-6 w-6" />
-      ) : (
-        <MoonIcon className="h-6 w-6" />
-      )}
+      {theme === 'dark' ? <HiOutlineSun className="w-5 h-5" /> : <HiOutlineMoon className="w-5 h-5" />}
     </button>
   );
 }
-
