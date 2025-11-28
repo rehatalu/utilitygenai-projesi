@@ -23,7 +23,12 @@ export default function Header() {
       <div className="flex items-center h-16 px-4 md:px-8 mx-auto max-w-7xl justify-between">
         <div className="w-8 md:hidden"></div> 
         
-        <nav className="hidden md:flex items-center gap-1 mx-auto bg-slate-100/50 dark:bg-slate-900/50 p-1 rounded-full border border-slate-200 dark:border-slate-800">
+        <nav className="hidden md:flex items-center gap-1 mx-auto 
+                        bg-white/80 dark:bg-slate-900/80 
+                        p-1.5 rounded-full 
+                        border border-slate-200 dark:border-slate-700
+                        shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-none
+                        backdrop-blur-md">
           {navLinks.map((link) => {
             const isActive = pathname.startsWith(link.href);
             return (
@@ -31,11 +36,11 @@ export default function Header() {
                 {isActive && (
                   <motion.div
                     layoutId="header-active"
-                    className="absolute inset-0 bg-white dark:bg-slate-800 rounded-full shadow-md border border-slate-200/50 dark:border-slate-700"
+                    className="absolute inset-0 bg-indigo-50 dark:bg-indigo-900/30 rounded-full shadow-sm border border-indigo-100 dark:border-indigo-800"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
-                <span className={`relative z-10 ${isActive ? 'text-indigo-600 dark:text-indigo-400 font-semibold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'}`}>
+                <span className={`relative z-10 ${isActive ? 'text-indigo-700 dark:text-indigo-300 font-semibold' : 'text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400'}`}>
                   {link.name}
                 </span>
               </Link>
