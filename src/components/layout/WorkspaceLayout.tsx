@@ -14,7 +14,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-100 overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-900 dark:text-slate-100 overflow-hidden">
       
       {/* 1. MOBİL Menü Overlay */}
       {sidebarOpen && (
@@ -59,7 +59,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         </div>
 
         {/* B. ANA İÇERİK (Aşağısı - Kaydırılabilir) */}
-        <main className="flex-1 overflow-y-auto bg-white dark:bg-slate-950 relative">
+        <main className="flex-1 overflow-y-auto bg-transparent relative">
            {/* İçerik için padding buraya verilir */}
            <div className="p-4 md:p-8">
               {children}
