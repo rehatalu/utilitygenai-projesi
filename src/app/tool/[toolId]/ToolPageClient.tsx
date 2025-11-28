@@ -831,7 +831,7 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
             className="w-full px-4"
           >
             <div className="flex items-center justify-center mb-8">
-              <div className="p-4 bg-white rounded-full ring-1 ring-gray-300 shadow-md dark:bg-slate-800 dark:ring-slate-700 transition-colors">
+              <div className="p-4 bg-white rounded-full ring-1 ring-slate-200 shadow-md dark:bg-slate-800 dark:ring-slate-700 transition-colors">
                 <ToolIcon className="h-10 w-10 text-indigo-600 dark:text-indigo-400" />
               </div>
             </div>
@@ -843,7 +843,7 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
 
             {currentTabs && (
               <div className="mt-12">
-                <div className="rounded-xl bg-white ring-1 ring-gray-300 shadow-lg dark:bg-slate-900 dark:ring-slate-800 p-6 md:p-8 transition-colors">
+                <div className="rounded-xl bg-white ring-1 ring-slate-200 shadow-lg dark:bg-slate-900 dark:ring-slate-800 p-6 md:p-8 transition-colors">
                   <AnimatedTabs tabs={currentTabs} initialTabId="how-to" />
                 </div>
               </div>

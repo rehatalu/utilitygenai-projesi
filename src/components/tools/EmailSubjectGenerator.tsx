@@ -62,7 +62,7 @@ export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponen
     <div className="mx-auto max-w-2xl rounded-xl 
                     bg-white text-slate-900
                     dark:bg-slate-900 dark:text-white
-                    ring-1 ring-inset ring-gray-300 dark:ring-slate-700 
+                    ring-1 ring-inset ring-slate-200 dark:ring-slate-700 
                     shadow-xl backdrop-blur-lg transition-colors duration-300">
       <div className="p-6">
         <div className="flex flex-col gap-2 border-b border-gray-200 dark:border-slate-700 pb-4 text-left">
@@ -79,7 +79,7 @@ export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponen
           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
             Topic or keywords:
             <textarea
-              className="mt-2 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm text-slate-900 shadow-sm transition 
+              className="mt-2 w-full rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-900 shadow-sm transition 
                          focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 
                          dark:border-slate-700 dark:bg-slate-800 dark:text-white h-40"
               placeholder="e.g., Product launch, Newsletter, Sale announcement..."
