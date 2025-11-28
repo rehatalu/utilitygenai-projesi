@@ -1,18 +1,14 @@
 "use client";
-
 import { useState, useEffect } from 'react';
 import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi';
 
 export default function ThemeSwitcher({ className = '' }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState('dark'); // Varsayılanı dark kabul edelim
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
     setMounted(true);
-    // 1. LocalStorage'ı kontrol et
     const savedTheme = localStorage.getItem('theme');
-    
-    // 2. Eğer kayıtlı bir tercih varsa onu kullan, yoksa sistem tercihine bakma, direkt DARK yap
     if (savedTheme === 'light') {
       setTheme('light');
       document.documentElement.classList.remove('dark');
@@ -24,21 +20,17 @@ export default function ThemeSwitcher({ className = '' }: { className?: string }
 
   const toggleTheme = () => {
     if (theme === 'dark') {
-      // Aydınlığa geç
       setTheme('light');
       localStorage.setItem('theme', 'light');
       document.documentElement.classList.remove('dark');
     } else {
-      // Karanlığa geç
       setTheme('dark');
       localStorage.setItem('theme', 'dark');
       document.documentElement.classList.add('dark');
     }
   };
 
-  if (!mounted) {
-    return <div className={`w-9 h-9 ${className}`} />;
-  }
+  if (!mounted) return <div className={`w-9 h-9 ${className}`} />;
 
   return (
     <button
@@ -50,11 +42,7 @@ export default function ThemeSwitcher({ className = '' }: { className?: string }
                   ${className}`}
       aria-label="Toggle Theme"
     >
-      {theme === 'dark' ? (
-        <HiOutlineSun className="w-5 h-5" />
-      ) : (
-        <HiOutlineMoon className="w-5 h-5" />
-      )}
+      {theme === 'dark' ? <HiOutlineSun className="w-5 h-5" /> : <HiOutlineMoon className="w-5 h-5" />}
     </button>
   );
 }
