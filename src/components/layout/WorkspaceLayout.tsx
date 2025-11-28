@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import Sidebar from './Sidebar';
+import Header from './Header'; // Yeni Header bileşeni
 import Link from 'next/link';
 
 interface WorkspaceLayoutProps {
@@ -63,6 +64,9 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         >
           <HiMenuAlt2 className="h-6 w-6 text-white" />
         </button>
+
+        {/* YENİ HEADER */}
+        <Header />
 
         {/* Sayfa içeriği buraya gelecek */}
         <div className="px-4 py-8 sm:px-8">
