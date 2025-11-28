@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: 'class', // <<< BU SATIR ÇOK ÖNEMLİ, YOKSA BUTON ÇALIŞMAZ
+  darkMode: 'class', // BU SATIR HAYATİ ÖNEM TAŞIR
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -22,7 +22,4 @@ const config: Config = {
     require('@tailwindcss/typography'),
   ],
 };
-
 export default config;
-
-// Trigger Vercel deployment
