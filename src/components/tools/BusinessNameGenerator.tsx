@@ -4,6 +4,7 @@ import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 import { ToolComponentProps } from '@/types/tool-props';
+
 export default function BusinessNameGenerator({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [names, setNames] = useState<string[]>([]);
@@ -12,7 +13,6 @@ export default function BusinessNameGenerator({ toolId, toolName }: ToolComponen
   const resultsRef = useRef<HTMLDivElement>(null);
   const { saveResult } = useHistory();
 
-  // SONUÇLARA OTOMATİK KAYDIRMA
   useEffect(() => {
     if (names.length > 0) {
       setTimeout(() => {
@@ -37,30 +37,32 @@ export default function BusinessNameGenerator({ toolId, toolName }: ToolComponen
       setNames(data.names || []);
       saveResult('business-name', 'Business Name Generator', (data.names || []).join('\n'));
     } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to generate ideas';
+      const errorMessage = err instanceof Error ? err.message : 'Failed to generate names';
       setNames([errorMessage]);
     }
     setIsLoading(false);
-    setInput(""); // Kutu temizleme
+    setInput("");
   };
 
   return (
     <div className="mx-auto max-w-2xl rounded-xl 
-                    bg-slate-900 
-                    ring-1 ring-inset ring-slate-700 
+                    bg-white text-slate-900
+                    dark:bg-slate-900 dark:text-white
+                    ring-1 ring-gray-200 dark:ring-slate-700 
                     shadow-2xl backdrop-blur-lg p-6 
                     transition-all duration-300 text-left">
-      <h1 className="text-2xl font-semibold text-white mb-4 text-left">AI Business Name Generator</h1>
-      <p className="text-sm text-slate-400 mb-6 text-left">Generate unique and catchy business names for your brand.</p>
+      <h1 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4 text-left">Business Name Generator</h1>
+      <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 text-left">Create catchy, memorable names for your business.</p>
 
       <form onSubmit={handleSubmit} className="text-left">
-        <label htmlFor="input" className="block text-sm font-medium text-slate-300 mb-2 text-left">
-          Business type or description:
+        <label htmlFor="input" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 text-left">
+          Business keywords:
         </label>
         <textarea
           id="input"
-          className="w-full p-3 border border-slate-700 rounded-lg shadow-sm bg-slate-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-left h-40"
-          placeholder="e.g., Coffee shop, Tech startup, Fitness studio..."
+          className="w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-left h-40
+                     dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+          placeholder="e.g., Eco-friendly coffee shop, AI consulting firm..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
@@ -83,37 +85,34 @@ export default function BusinessNameGenerator({ toolId, toolName }: ToolComponen
       </form>
 
       {isLoading && (
-        <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+        <div className="mt-6 p-4 bg-gray-50 dark:bg-slate-800 rounded-lg text-slate-500 dark:text-slate-400 text-left">
           Generating names...
         </div>
       )}
 
-      {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {names.length > 0 && (
         <div ref={resultsRef} className="mt-6 space-y-3 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3">Business Name Suggestions:</h2>
-          {names.map((name, idx) => (
-            <div
-              key={idx}
-              className="relative flex items-center justify-between 
-                         p-4 bg-slate-800 rounded-lg 
-                         transition-all group"
-            >
-              {/* Sonuç Metni (Ana içerik) */}
-              <p className="pr-12 text-slate-200">
-                {name}
-              </p>
-
-              {/* Kopyalama Butonu (Sağ üst köşe) */}
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <ClipboardButton textToCopy={name} />
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Generated Names:</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {names.map((name, idx) => (
+              <div
+                key={idx}
+                className="relative flex items-center justify-between 
+                           p-4 rounded-lg transition-all group
+                           bg-gray-50 border border-gray-200 
+                           dark:bg-slate-800 dark:border-slate-700"
+              >
+                <p className="pr-10 font-medium text-slate-800 dark:text-slate-200">
+                  {name}
+                </p>
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ClipboardButton textToCopy={name} />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
-      {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
     </div>
   );
 }
-

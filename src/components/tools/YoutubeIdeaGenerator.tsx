@@ -4,6 +4,7 @@ import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 import { ToolComponentProps } from '@/types/tool-props';
+
 export default function YoutubeIdeaGenerator({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [ideas, setIdeas] = useState<string[]>([]);
@@ -12,7 +13,6 @@ export default function YoutubeIdeaGenerator({ toolId, toolName }: ToolComponent
   const resultsRef = useRef<HTMLDivElement>(null);
   const { saveResult } = useHistory();
 
-  // SONUÇLARA OTOMATİK KAYDIRMA
   useEffect(() => {
     if (ideas.length > 0) {
       setTimeout(() => {
@@ -41,25 +41,27 @@ export default function YoutubeIdeaGenerator({ toolId, toolName }: ToolComponent
       setIdeas([errorMessage]);
     }
     setIsLoading(false);
-    setInput(""); // Kutu temizleme
+    setInput("");
   };
 
   return (
     <div className="mx-auto max-w-2xl rounded-xl 
-                    bg-slate-900 
-                    ring-1 ring-inset ring-slate-700 
+                    bg-white text-slate-900
+                    dark:bg-slate-900 dark:text-white
+                    ring-1 ring-gray-200 dark:ring-slate-700 
                     shadow-2xl backdrop-blur-lg p-6 
                     transition-all duration-300 text-left">
-      <h1 className="text-2xl font-semibold text-white mb-4 text-left">YouTube Video Idea Generator</h1>
-      <p className="text-sm text-slate-400 mb-6 text-left">Generate viral video ideas and titles for YouTube.</p>
+      <h1 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4 text-left">YouTube Video Idea Generator</h1>
+      <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 text-left">Generate viral video ideas and titles for YouTube.</p>
 
       <form onSubmit={handleSubmit} className="text-left">
-        <label htmlFor="input" className="block text-sm font-medium text-slate-300 mb-2 text-left">
+        <label htmlFor="input" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 text-left">
           Topic or niche:
         </label>
         <textarea
           id="input"
-          className="w-full p-3 border border-slate-700 rounded-lg shadow-sm bg-slate-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-left h-40"
+          className="w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-left h-40
+                     dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           placeholder="e.g., Tech reviews, Cooking tutorials, Fitness tips..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -83,28 +85,26 @@ export default function YoutubeIdeaGenerator({ toolId, toolName }: ToolComponent
       </form>
 
       {isLoading && (
-        <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+        <div className="mt-6 p-4 bg-gray-50 dark:bg-slate-800 rounded-lg text-slate-500 dark:text-slate-400 text-left">
           Generating ideas...
         </div>
       )}
 
-      {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {ideas.length > 0 && (
         <div ref={resultsRef} className="mt-6 space-y-3 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3">Video Ideas:</h2>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Video Ideas:</h2>
           {ideas.map((idea, idx) => (
             <div
               key={idx}
               className="relative flex items-center justify-between 
-                         p-4 bg-slate-800 rounded-lg 
-                         transition-all group"
+                         p-4 rounded-lg transition-all group
+                         bg-gray-50 border border-gray-200 
+                         dark:bg-slate-800 dark:border-slate-700"
             >
-              {/* Sonuç Metni (Ana içerik) */}
-              <p className="pr-12 text-slate-200">
+              <p className="pr-12 text-slate-800 dark:text-slate-200">
                 {idea}
               </p>
 
-              {/* Kopyalama Butonu (Sağ üst köşe) */}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <ClipboardButton textToCopy={idea} />
               </div>
@@ -112,8 +112,6 @@ export default function YoutubeIdeaGenerator({ toolId, toolName }: ToolComponent
           ))}
         </div>
       )}
-      {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
     </div>
   );
 }
-

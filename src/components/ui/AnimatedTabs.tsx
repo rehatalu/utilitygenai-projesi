@@ -24,7 +24,7 @@ export default function AnimatedTabs({ tabs, initialTabId }: AnimatedTabsProps) 
   return (
     <div className="w-full">
       {/* 1. Sekme Başlıkları (Button'lar) */}
-      <nav className="flex border-b border-slate-700">
+      <nav className="flex border-b border-gray-200 dark:border-slate-700">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -32,8 +32,8 @@ export default function AnimatedTabs({ tabs, initialTabId }: AnimatedTabsProps) 
             className={`relative whitespace-nowrap px-4 py-3 text-sm font-medium transition-colors
               ${
                 activeTab === tab.id
-                  ? 'text-white' // Aktif sekme rengi
-                  : 'text-slate-400 hover:text-slate-200' // Pasif sekme rengi
+                  ? 'text-indigo-600 dark:text-white' // Aktif sekme rengi
+                  : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200' // Pasif sekme rengi
               }
             `}
           >
@@ -44,7 +44,7 @@ export default function AnimatedTabs({ tabs, initialTabId }: AnimatedTabsProps) 
             {activeTab === tab.id && (
               <motion.div
                 layoutId="active-tab-indicator" // Bu ID, animasyonun sihrini yapar
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500"
+                className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600 dark:bg-indigo-500"
                 style={{ borderRadius: '2px' }}
               />
             )}
@@ -71,4 +71,3 @@ export default function AnimatedTabs({ tabs, initialTabId }: AnimatedTabsProps) 
     </div>
   );
 }
-

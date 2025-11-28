@@ -2,9 +2,10 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useHistory } from '@/hooks/useHistory';
-import { SparklesIcon } from '@heroicons/react/24/outline'; // "Düşünen Yıldız" için import et
+import { SparklesIcon } from '@heroicons/react/24/outline';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 import { ToolComponentProps } from '@/types/tool-props';
+
 export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponentProps) {
   const [topic, setTopic] = useState("");
   const [results, setResults] = useState<string[]>([]);
@@ -14,7 +15,6 @@ export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponen
   const resultsRef = useRef<HTMLDivElement>(null);
   const { saveResult } = useHistory();
 
-  // SONUÇLARA OTOMATİK KAYDIRMA
   useEffect(() => {
     if (results.length > 0) {
       setTimeout(() => {
@@ -47,7 +47,7 @@ export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponen
         throw new Error(data.error);
       }
 
-      setResults(data.subjects); // "Sonuç Gösterme"
+      setResults(data.subjects);
       saveResult('email-generator', 'Email Subject Generator', data.subjects.join('\n'));
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "An unknown error occurred.";
@@ -55,32 +55,33 @@ export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponen
     }
 
     setIsLoading(false);
-    setTopic(""); // "Kutu Temizleme"
+    setTopic("");
   };
 
   return (
     <div className="mx-auto max-w-2xl rounded-xl 
-                    bg-slate-900 
-                    ring-1 ring-slate-700 
-                    shadow-2xl backdrop-blur-lg">
+                    bg-white text-slate-900
+                    dark:bg-slate-900 dark:text-white
+                    ring-1 ring-gray-200 dark:ring-slate-700 
+                    shadow-2xl backdrop-blur-lg transition-colors duration-300">
       <div className="p-6">
-        {/* YENİ (KOYU TEMA + SOLA DAYALI) */}
-        <div className="flex flex-col gap-2 border-b border-slate-700 pb-4 text-left">
-          <h1 className="text-2xl font-semibold text-white">
+        <div className="flex flex-col gap-2 border-b border-gray-200 dark:border-slate-700 pb-4 text-left">
+          <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">
             AI Email Subject Line Generator
           </h1>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
             Enter the topic or main idea of your email, and we will generate
             compelling subject lines for you.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-3 text-left">
-          <label className="block text-sm font-medium text-slate-300">
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
             Topic or keywords:
-            {/* YENİ (KOYU TEMA + ENTER İLE GÖNDER) */}
             <textarea
-              className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-800 p-3 text-sm text-white shadow-sm transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 h-40"
+              className="mt-2 w-full rounded-xl border border-gray-300 bg-white p-3 text-sm text-slate-900 shadow-sm transition 
+                         focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 
+                         dark:border-slate-700 dark:bg-slate-800 dark:text-white h-40"
               placeholder="e.g., Product launch, Newsletter, Sale announcement..."
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
@@ -99,7 +100,6 @@ export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponen
             className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:bg-slate-500"
             disabled={isLoading || !topic}
           >
-            {/* YENİ (DÜŞÜNEN YILDIZ) */}
             {isLoading ? (
               <>
                 <SparklesIcon className="w-4 h-4 animate-spin" />
@@ -112,35 +112,32 @@ export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponen
         </form>
 
         {error && (
-          // YENİ (KOYU TEMA HATA RENKLERİ)
-          <div className="mt-6 rounded-xl border border-red-400 bg-red-900/30 p-4 text-sm text-red-300">
-            <strong className="font-semibold text-red-200">Error:</strong> {error}
+          <div className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-600 dark:border-red-400 dark:bg-red-900/30 dark:text-red-300">
+            <strong className="font-semibold">Error:</strong> {error}
           </div>
         )}
 
         {isLoading && (
-          <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+          <div className="mt-6 p-4 bg-gray-50 dark:bg-slate-800 rounded-lg text-slate-500 dark:text-slate-400 text-left">
             Generating ideas...
           </div>
         )}
 
-        {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
         {results.length > 0 && (
           <div ref={resultsRef} className="mt-6 space-y-3 text-left">
-            <h2 className="text-lg font-semibold text-white">Results</h2>
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Results</h2>
             {results.map((result, index) => (
               <div 
                 key={index}
                 className="relative flex items-center justify-between 
-                           p-4 bg-slate-800 rounded-lg 
-                           transition-all group"
+                           p-4 rounded-lg transition-all group
+                           bg-gray-50 border border-gray-200 
+                           dark:bg-slate-800 dark:border-slate-700"
               >
-                {/* Sonuç Metni (Ana içerik) */}
-                <p className="pr-12 text-slate-200">
+                <p className="pr-12 text-slate-800 dark:text-slate-200">
                   {result}
                 </p>
                 
-                {/* Kopyalama Butonu (Sağ üst köşe) */}
                 <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                   <ClipboardButton textToCopy={result} />
                 </div>
@@ -148,7 +145,6 @@ export default function EmailSubjectGenerator({ toolId, toolName }: ToolComponen
             ))}
           </div>
         )}
-        {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
       </div>
     </div>
   );

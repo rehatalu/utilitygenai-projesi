@@ -4,6 +4,7 @@ import { useHistory } from '@/hooks/useHistory';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 import ClipboardButton from '@/components/ui/ClipboardButton';
 import { ToolComponentProps } from '@/types/tool-props';
+
 export default function HashtagGenerator({ toolId, toolName }: ToolComponentProps) {
   const [input, setInput] = useState("");
   const [hashtags, setHashtags] = useState<string[]>([]);
@@ -12,7 +13,6 @@ export default function HashtagGenerator({ toolId, toolName }: ToolComponentProp
   const resultsRef = useRef<HTMLDivElement>(null);
   const { saveResult } = useHistory();
 
-  // SONUÇLARA OTOMATİK KAYDIRMA
   useEffect(() => {
     if (hashtags.length > 0) {
       setTimeout(() => {
@@ -41,25 +41,27 @@ export default function HashtagGenerator({ toolId, toolName }: ToolComponentProp
       setHashtags([errorMessage]);
     }
     setIsLoading(false);
-    setInput(""); // Kutu temizleme
+    setInput("");
   };
 
   return (
     <div className="mx-auto max-w-2xl rounded-xl 
-                    bg-slate-900 
-                    ring-1 ring-inset ring-slate-700 
+                    bg-white text-slate-900
+                    dark:bg-slate-900 dark:text-white
+                    ring-1 ring-gray-200 dark:ring-slate-700 
                     shadow-2xl backdrop-blur-lg p-6 
                     transition-all duration-300 text-left">
-      <h1 className="text-2xl font-semibold text-white mb-4 text-left">AI Hashtag Generator</h1>
-      <p className="text-sm text-slate-400 mb-6 text-left">Generate trending hashtags for Instagram, TikTok, and Twitter.</p>
+      <h1 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4 text-left">AI Hashtag Generator</h1>
+      <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 text-left">Generate trending hashtags for Instagram, TikTok, and Twitter.</p>
 
       <form onSubmit={handleSubmit} className="text-left">
-        <label htmlFor="input" className="block text-sm font-medium text-slate-300 mb-2 text-left">
+        <label htmlFor="input" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 text-left">
           Content topic:
         </label>
         <textarea
           id="input"
-          className="w-full p-3 border border-slate-700 rounded-lg shadow-sm bg-slate-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-left h-40"
+          className="w-full p-3 border border-gray-300 rounded-lg shadow-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-left h-40
+                     dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           placeholder="e.g., Fitness motivation, Travel photography, Food recipes..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -83,19 +85,18 @@ export default function HashtagGenerator({ toolId, toolName }: ToolComponentProp
       </form>
 
       {isLoading && (
-        <div className="mt-6 p-4 bg-slate-800 rounded-lg text-slate-400 text-left">
+        <div className="mt-6 p-4 bg-gray-50 dark:bg-slate-800 rounded-lg text-slate-500 dark:text-slate-400 text-left">
           Generating hashtags...
         </div>
       )}
 
-      {/* --- YENİ SONUÇ ALANI (KOPYALAMA BUTONLU) --- */}
       {hashtags.length > 0 && (
         <div ref={resultsRef} className="mt-6 space-y-3 text-left">
-          <h2 className="text-lg font-semibold text-white mb-3">Generated Hashtags:</h2>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Generated Hashtags:</h2>
           <div className="relative flex items-center justify-between 
-                         p-4 bg-slate-800 rounded-lg 
-                         transition-all group">
-            {/* Hashtag Listesi */}
+                         p-4 rounded-lg transition-all group
+                         bg-gray-50 border border-gray-200 
+                         dark:bg-slate-800 dark:border-slate-700">
             <div className="flex flex-wrap gap-2 pr-12">
               {hashtags.map((tag, idx) => (
                 <span key={idx} className="px-3 py-1 bg-indigo-600 text-white rounded-full text-sm">
@@ -104,15 +105,12 @@ export default function HashtagGenerator({ toolId, toolName }: ToolComponentProp
               ))}
             </div>
 
-            {/* Kopyalama Butonu (Tüm hashtagleri kopyala) */}
             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
               <ClipboardButton textToCopy={hashtags.map(tag => `#${tag}`).join(' ')} />
             </div>
           </div>
         </div>
       )}
-      {/* --- YENİ SONUÇ ALANI BİTİŞİ --- */}
     </div>
   );
 }
-
