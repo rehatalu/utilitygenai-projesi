@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { HiHome, HiChevronDoubleLeft, HiClock } from 'react-icons/hi';
-// import ThemeSwitcher from '@/components/ui/ThemeSwitcher'; // "ThemeSwitcher" SİLİNDİ
+import { HiHome, HiClock, HiChevronDoubleLeft, HiBookOpen } from 'react-icons/hi'; // İkonlar
+import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 import {
   EnvelopeIcon,
   DocumentDuplicateIcon,
@@ -20,7 +20,6 @@ import {
   CameraIcon,
 } from '@heroicons/react/24/outline';
 
-// Araçların listesi (ikonlarla birlikte)
 const tools = [
   { slug: 'email-generator', name: 'Email Subject Generator', icon: EnvelopeIcon },
   { slug: 'paraphraser', name: 'Paraphraser Tool', icon: DocumentDuplicateIcon },
@@ -44,30 +43,38 @@ interface SidebarProps {
 export default function Sidebar({ closeSidebar }: SidebarProps) {
   const pathname = usePathname();
 
-  const isActive = (slug: string) => {
-    return pathname === `/tool/${slug}`;
-  };
+  const isActive = (slug: string) => pathname === `/tool/${slug}`;
+  
+  // Link stil fonksiyonu
+  const getLinkClass = (active: boolean) => `flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium
+                         transition-colors duration-150
+                         ${active
+                            ? 'bg-indigo-600 text-white'
+                            : 'text-slate-600 hover:bg-gray-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white'
+                         }`;
 
   return (
-    // GERİ ALMA: Sadece "inattı" karanlık tema
-    <div className="flex flex-col h-full bg-slate-900 text-slate-300 border-r border-slate-800">
+    <div className="flex flex-col h-full 
+                    bg-white text-slate-900 
+                    dark:bg-slate-900 dark:text-slate-300 
+                    border-r border-gray-200 dark:border-slate-800
+                    transition-colors duration-300">
       
       {/* BÖLÜM 1: Logo ve Kontrol Butonları */}
-      <div className="flex items-center justify-between h-16 px-4 border-b border-slate-800 flex-shrink-0">
+      <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200 dark:border-slate-800 flex-shrink-0">
         <Link href="/" className="flex items-center gap-2" onClick={closeSidebar}>
           <div className="bg-indigo-600 p-2 rounded-lg">
             <HiHome className="h-6 w-6 text-white" />
           </div>
-          <span className="text-xl font-bold text-white">UtilityGenAI</span>
+          <span className="text-xl font-bold text-slate-900 dark:text-white">UtilityGenAI</span>
         </Link>
 
-        {/* KONTROL GRUBU (TEMA + KAPAT) */}
         <div className="flex items-center gap-2">
-          {/* "ThemeSwitcher" SİLİNDİ */}
+          <ThemeSwitcher /> 
           <button
             type="button"
             onClick={closeSidebar}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-gray-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800"
             aria-label="Close sidebar"
           >
             <HiChevronDoubleLeft className="h-6 w-6" />
@@ -77,18 +84,14 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
 
       {/* BÖLÜM 2: KAYDIRILABİLİR ARAÇ LİSTESİ */}
       <nav className="flex-1 overflow-y-auto py-4 space-y-1">
-        <span className="px-4 text-xs font-semibold uppercase text-slate-500">Tools</span>
+        <span className="px-4 text-xs font-semibold uppercase text-slate-500 dark:text-slate-500">Tools</span>
         <ul className="px-2">
           {tools.map((tool) => (
             <li key={tool.slug}>
               <Link
                 href={`/tool/${tool.slug}`}
-                onClick={closeSidebar} 
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors duration-150 ${
-                  isActive(tool.slug)
-                    ? 'bg-indigo-600 text-white' // Aktif
-                    : 'text-slate-300 hover:bg-slate-800 hover:text-white' // Pasif
-                }`}
+                onClick={closeSidebar}
+                className={getLinkClass(isActive(tool.slug))}
               >
                 <tool.icon className="h-5 w-5 flex-shrink-0" />
                 <span>{tool.name}</span>
@@ -98,17 +101,35 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
         </ul>
       </nav>
 
-      <div className="p-4 border-t border-slate-800 flex-shrink-0">
-        <span className="px-2 text-xs font-semibold uppercase text-slate-500">Utilities</span>
-        <ul className="px-2 mt-1 space-y-1 mb-4">
-          <li>
-              <Link href="/history" onClick={closeSidebar} className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
-                  <HiClock className="h-5 w-5 flex-shrink-0" />
-                  <span>My History</span>
-              </Link>
-          </li>
+      {/* BÖLÜM 3: UTILITIES (Geçmiş ve Blog) */}
+      <div className="flex-shrink-0 border-t border-gray-200 dark:border-slate-800 p-4">
+        <span className="px-2 text-xs font-semibold uppercase text-slate-500 dark:text-slate-500">Utilities</span>
+        <ul className="px-2 mt-1 space-y-1">
+            {/* BLOG LINKI */}
+            <li>
+                <Link
+                    href="/blog"
+                    onClick={closeSidebar}
+                    className={getLinkClass(pathname.startsWith('/blog'))}
+                >
+                    <HiBookOpen className="h-5 w-5 flex-shrink-0" />
+                    <span>Blog</span>
+                </Link>
+            </li>
+            {/* HISTORY LINKI */}
+            <li>
+                <Link
+                    href="/history"
+                    onClick={closeSidebar}
+                    className={getLinkClass(pathname === '/history')}
+                >
+                    <HiClock className="h-5 w-5 flex-shrink-0" />
+                    <span>My History</span>
+                </Link>
+            </li>
         </ul>
       </div>
+
     </div>
   );
 }
