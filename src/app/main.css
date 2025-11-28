@@ -12,7 +12,7 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Grid Deseni (Aydınlık ve Karanlık Mod İçin) */
+/* Grid Deseni (CSS Class ile) */
 .grid-pattern {
   background-size: 3rem 3rem;
   background-image: linear-gradient(to right, rgba(229, 231, 235, 0.5) 1px, transparent 1px),
