@@ -12,14 +12,15 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Grid Deseni - Aydınlık Mod (Daha koyu gri çizgiler) */
+/* Grid Deseni - GÜÇLENDİRİLMİŞ RENKLER */
+/* Aydınlık Mod: Slate-200 rengi (Daha koyu gri) */
 .grid-pattern {
   background-size: 3rem 3rem;
-  background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
-                    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-image: linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+                    linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
 }
 
-/* Grid Deseni - Karanlık Mod (Daha belirgin çizgiler) */
+/* Karanlık Mod: Slate-800 rengi (Daha belirgin koyu çizgi) */
 .dark .grid-pattern {
   background-image: linear-gradient(to right, #1e293b 1px, transparent 1px),
                     linear-gradient(to bottom, #1e293b 1px, transparent 1px);
