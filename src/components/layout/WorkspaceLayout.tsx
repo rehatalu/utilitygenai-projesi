@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import Sidebar from './Sidebar';
-import Header from './Header'; // Yeni Header bileşeni
+import Header from './Header'; // Header import edildiğinden emin ol
 import Link from 'next/link';
 
 interface WorkspaceLayoutProps {
@@ -11,13 +11,12 @@ interface WorkspaceLayoutProps {
 }
 
 export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
-  const [sidebarOpen, setSidebarOpen] = useState(true); // Bu state artık hem mobili hem masaüstünü kontrol edecek
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
-    <div className="flex h-screen bg-transparent text-slate-100">
+    <div className="flex h-screen bg-slate-950 text-slate-100 overflow-hidden">
       
-      {/* 1. MOBİL Menü Arka Planı (Overlay) */}
-      {/* Bu hala sadece mobilde (md:hidden) çalışmalı */}
+      {/* 1. MOBİL Menü Overlay */}
       {sidebarOpen && (
         <div
           onClick={() => setSidebarOpen(false)}
@@ -26,10 +25,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         />
       )}
 
-      {/* 2. SIDEBAR (Yan Menü) */}
-      {/* `md:static` ve `md:translate-x-0` kaldırıldı.
-        Artık `fixed` pozisyonu ve `transform` her zaman `sidebarOpen` state'ine bağlı.
-      */}
+      {/* 2. SIDEBAR (Sabit Sol Menü) */}
       <div
         className={`fixed inset-y-0 left-0 z-40 w-72 
                    bg-slate-900 border-r border-slate-800
@@ -39,52 +35,49 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         <Sidebar closeSidebar={() => setSidebarOpen(false)} />
       </div>
 
-      {/* 3. ANA İÇERİK ALANI */}
-      {/* ÖNEMLİ DEĞİŞİKLİK: 
-        Ana içerik alanı artık `sidebarOpen` state'ine göre `ml-0` (menü kapalı)
-        veya `md:ml-72` (masaüstünde menü açık) olarak değişecek.
-      */}
-      <main 
-        className={`flex-1 overflow-y-auto transition-all duration-300 ease-in-out
-                   ${sidebarOpen ? 'md:ml-72' : 'ml-0'}
+      {/* 3. SAĞ TARAF (Header + İçerik) */}
+      {/* Bu wrapper, sidebar'ın açıklığına göre sağa/sola kayar */}
+      <div 
+        className={`flex-1 flex flex-col h-screen transition-all duration-300 ease-in-out
+                   ${sidebarOpen ? 'md:ml-72' : 'md:ml-0'}
                   `}
       >
         
-        {/* Hamburger Menü Butonu */}
-        {/* `md:hidden` kaldırıldı. Artık menü kapalıyken (sidebarOpen === false)
-          hem mobilde hem masaüstünde görünecek.
-        */}
-        <button
-          type="button"
-          className={`sticky top-0 z-20 p-4 bg-slate-950/80 backdrop-blur-sm
-                     ${sidebarOpen ? 'hidden' : 'block'} 
-                    `} // Menü açıksa gizle
-          onClick={() => setSidebarOpen(true)}
-          aria-label="Open sidebar"
-        >
-          <HiMenuAlt2 className="h-6 w-6 text-white" />
-        </button>
+        {/* A. HEADER (En Tepe - Sabit) */}
+        <div className="flex-shrink-0 relative z-20">
+             {/* Mobil Hamburger Butonu (Header'ın üstüne bindiriyoruz) */}
+             <button
+              type="button"
+              className={`absolute left-4 top-4 p-2 rounded-md bg-slate-800 text-white md:hidden
+                        ${sidebarOpen ? 'hidden' : 'block'}`}
+              onClick={() => setSidebarOpen(true)}
+            >
+              <HiMenuAlt2 className="h-6 w-6" />
+            </button>
 
-        {/* YENİ HEADER */}
-        <Header />
-
-        {/* Sayfa içeriği buraya gelecek */}
-        <div className="px-4 py-8 sm:px-8">
-          {children}
+            <Header />
         </div>
 
-        {/* Ana Footer */}
-        <footer className="w-full p-6 text-center text-xs text-slate-500">
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-2">
-            <Link href="/privacy" className="hover:text-slate-300">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-slate-300">Terms of Service</Link>
-            <Link href="/contact" className="hover:text-slate-300">Contact Us</Link>
-            <Link href="/about" className="hover:text-slate-300">About Us</Link>
-          </div>
-          <p>© {new Date().getFullYear()} UtilityGenAI. All rights reserved.</p>
-        </footer>
+        {/* B. ANA İÇERİK (Aşağısı - Kaydırılabilir) */}
+        <main className="flex-1 overflow-y-auto bg-white dark:bg-slate-950 relative">
+           {/* İçerik için padding buraya verilir */}
+           <div className="p-4 md:p-8">
+              {children}
+           </div>
 
-      </main>
+           {/* Footer */}
+           <footer className="w-full p-6 text-center text-xs text-slate-500 dark:text-slate-600">
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-2">
+                <Link href="/privacy" className="hover:text-slate-900 dark:hover:text-slate-300">Privacy Policy</Link>
+                <Link href="/terms" className="hover:text-slate-900 dark:hover:text-slate-300">Terms of Service</Link>
+                <Link href="/contact" className="hover:text-slate-900 dark:hover:text-slate-300">Contact Us</Link>
+                <Link href="/about" className="hover:text-slate-900 dark:hover:text-slate-300">About Us</Link>
+              </div>
+              <p>© 2025 UtilityGenAI. All rights reserved.</p>
+           </footer>
+        </main>
+
+      </div>
     </div>
   );
 }
