@@ -45,17 +45,17 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
 
   const isActive = (slug: string) => pathname === `/tool/${slug}`;
   
-  // Link stil fonksiyonu
+  // Link stil fonksiyonu - GÜNCELLENDİ (Daha belirgin hover ve aktif durum)
   const getLinkClass = (active: boolean) => `flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium
                          transition-colors duration-150
                          ${active
                             ? 'bg-indigo-600 text-white'
-                            : 'text-slate-600 hover:bg-gray-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white'
+                            : 'text-slate-600 hover:bg-white hover:shadow-sm hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white'
                          }`;
 
   return (
     <div className="flex flex-col h-full 
-                    bg-white text-slate-900 
+                    bg-slate-50 text-slate-900 
                     dark:bg-slate-900 dark:text-slate-300 
                     border-r border-gray-300 shadow-sm dark:border-slate-800
                     transition-colors duration-300">
@@ -74,7 +74,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
           <button
             type="button"
             onClick={closeSidebar}
-            className="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-gray-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800"
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-white hover:shadow-sm dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800"
             aria-label="Close sidebar"
           >
             <HiChevronDoubleLeft className="h-6 w-6" />
