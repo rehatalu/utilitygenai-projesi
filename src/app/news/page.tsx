@@ -26,6 +26,14 @@ const newsItems = [
     title: "EU AI Act: What It Means for Developers",
     excerpt: "New regulations are coming into effect next month. Find out how compliance will affect your AI applications and data privacy strategies.",
     readTime: "5 min read"
+  },
+  {
+    id: 4,
+    date: "Nov 20, 2025",
+    category: "Hardware",
+    title: "NVIDIA Reveals New H200 AI Chips",
+    excerpt: "Benchmarks show a 2x performance increase for LLM inference. This could significantly lower the cost of running AI models.",
+    readTime: "4 min read"
   }
 ];
 
@@ -44,15 +52,17 @@ export default function NewsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-white dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all hover:shadow-lg group cursor-pointer"
+              className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all hover:shadow-lg group cursor-pointer"
             >
               <div className="flex items-center gap-3 text-xs font-medium mb-3">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">{item.category}</span>
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800">{item.category}</span>
                 <span className="text-slate-500">{item.date}</span>
+                <span className="text-slate-400">•</span>
+                <span className="text-slate-500">{item.readTime}</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{item.title}</h3>
               <p className="text-slate-600 dark:text-slate-400 mb-4">{item.excerpt}</p>
-              <div className="text-sm text-slate-500 font-medium">Read more →</div>
+              <div className="text-sm text-slate-500 font-medium group-hover:translate-x-1 transition-transform inline-block">Read full story →</div>
             </motion.div>
           ))}
         </div>
@@ -60,4 +70,3 @@ export default function NewsPage() {
     </WorkspaceLayout>
   );
 }
-
