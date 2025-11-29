@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { HiSearch } from 'react-icons/hi';
 
 const navLinks = [
-  { name: 'Tools', href: '/' },
+  { name: 'Tools', href: '/#tools-section' },
   { name: 'News', href: '/news' },
   { name: 'Reviews', href: '/reviews' },
   { name: 'Guides', href: '/guides' },

@@ -102,26 +102,33 @@ Start generating better subject lines today and watch your open rates climb!
     faq: [
       {
         question: "Is this tool free?",
-        answer: "Yes, this tool is completely free to use."
+        answer: "Yes, UtilityGenAI offers this tool completely free of charge for unlimited use."
       },
       {
-        question: "How accurate is the AI?",
-        answer: "We use state-of-the-art models (GPT-4o/Mini) to ensure high-quality results."
+        question: "Does it change the meaning of my text?",
+        answer: "No, the core algorithm is designed to preserve the original message while changing the vocabulary and structure."
       }
     ],
     content: `
-## About This Tool
+## What is an AI Paraphrasing Tool?
+An AI paraphrasing tool is a sophisticated software designed to rewrite text while retaining its original meaning. Unlike simple synonym swappers, our tool understands context, tone, and nuance, making it perfect for students, writers, and professionals who need to refresh their content without losing clarity.
 
-This tool leverages advanced Artificial Intelligence to help you automate tasks and improve quality. 
+## How to Use This Tool Effectively
+Getting the best results is simple. Follow these steps:
+1. **Paste your text:** Copy the content you want to rewrite into the input box above.
+2. **Select a Mode:** Choose between 'Standard', 'Fluency', or 'Creative' modes depending on your needs.
+3. **Click Generate:** Let the AI analyze and rewrite your sentences in seconds.
+4. **Review and Edit:** Always review the output to ensure it perfectly matches your intended tone.
 
-### Benefits
-*   **Save Time:** Automate repetitive tasks in seconds.
-*   **Improve Quality:** Get professional-grade output without the effort.
-*   **Boost Creativity:** Overcome writer's block and get new ideas.
+## Why Choose UtilityGenAI?
+While there are many rewriters available, our tool focuses on readability and SEO-friendliness. It removes plagiarism risks by creating unique sentence structures. Whether you are writing an academic essay, a blog post, or a business email, this tool helps you communicate more effectively.
 
-### How it Works
-Simply enter your input in the box above, select your preferences, and click "Generate". Our AI processes your request and delivers the results instantly.
-    `
+## Frequently Asked Questions (FAQ)
+**Is this tool free?**
+Yes, UtilityGenAI offers this tool completely free of charge for unlimited use.
+
+**Does it change the meaning of my text?**
+No, the core algorithm is designed to preserve the original message while changing the vocabulary and structure.`
   }))
 ];
 

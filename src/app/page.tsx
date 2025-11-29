@@ -50,7 +50,41 @@ export default async function HomePage() {
             <WelcomeHubWrapper />
         </div>
 
-        {/* --- NEW: LATEST AI NEWS TICKER --- */}
+        {/* 2. Bölüm: Araç Vitrini */}
+        <div className="mx-auto flex w-full max-w-4xl justify-center" id="tools-section">
+          <div className="w-full px-4 mt-12 mb-8">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+              Explore Your AI Workspace
+            </h2>
+            <p className="text-slate-600 dark:text-slate-300 mb-6">
+              We&apos;ve built 13 specialized AI tools to handle specific tasks. From writing email subjects to explaining complex code, your free utility belt is ready.
+            </p>
+            
+            {/* Araçların Grid Listesi */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {toolList.map((tool) => (
+                <Link
+                  href={`/tool/${tool.slug}`}
+                  key={tool.slug}
+                  className="block p-4 rounded-lg 
+                             bg-white border border-slate-300/80 dark:border-slate-700 
+                             shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-none
+                             dark:bg-slate-900/50
+                             transition-all duration-300
+                             hover:bg-gray-50 dark:hover:bg-slate-800/70 
+                             hover:ring-2 hover:ring-indigo-500
+                             hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:hover:shadow-slate-800/50
+                             hover:-translate-y-1"
+                >
+                  <h3 className="font-semibold text-slate-900 dark:text-white">{tool.name}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{tool.description}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* --- NEW: LATEST AI NEWS TICKER (Moved Below Tools) --- */}
         <div className="mx-auto w-full max-w-4xl mt-12 px-4">
             <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -86,40 +120,6 @@ export default async function HomePage() {
                     </Link>
                 ))}
             </div>
-        </div>
-
-        {/* 2. Bölüm: Araç Vitrini */}
-        <div className="mx-auto flex w-full max-w-4xl justify-center">
-          <div className="w-full px-4 mt-12 mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-              Explore Your AI Workspace
-            </h2>
-            <p className="text-slate-600 dark:text-slate-300 mb-6">
-              We&apos;ve built 13 specialized AI tools to handle specific tasks. From writing email subjects to explaining complex code, your free utility belt is ready.
-            </p>
-            
-            {/* Araçların Grid Listesi */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {toolList.map((tool) => (
-                <Link
-                  href={`/tool/${tool.slug}`}
-                  key={tool.slug}
-                  className="block p-4 rounded-lg 
-                             bg-white border border-slate-300/80 dark:border-slate-700 
-                             shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-none
-                             dark:bg-slate-900/50
-                             transition-all duration-300
-                             hover:bg-gray-50 dark:hover:bg-slate-800/70 
-                             hover:ring-2 hover:ring-indigo-500
-                             hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:hover:shadow-slate-800/50
-                             hover:-translate-y-1"
-                >
-                  <h3 className="font-semibold text-slate-900 dark:text-white">{tool.name}</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">{tool.description}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* --- SEO & INFO BÖLÜMÜ --- */}
