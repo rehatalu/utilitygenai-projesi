@@ -8,14 +8,21 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["600", "700"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: { template: '%s | UtilityGenAI', default: 'UtilityGenAI - Free AI Tools' },
-  description: 'A free collection of AI-powered tools (Email, Paraphraser, etc.) to boost your productivity.',
+  title: { 
+    template: '%s | UtilityGenAI', 
+    default: 'UtilityGenAI - Ultimate AI Tools, Reviews & Tech News' 
+  },
+  description: 'Discover top AI tools, compare models like GPT-4 vs Claude, read daily tech news, and find the perfect AI stack for your profession. Free and secure.',
   icons: {
     icon: '/favicon.svg',
   },
   verification: {
     google: 'tMG23TwFvoFnbWZjFrmxeNsVVvI6xJBYG0hkLlReWJk',
   },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
