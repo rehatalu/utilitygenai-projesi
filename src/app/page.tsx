@@ -79,6 +79,33 @@ export default function HomePage() {
             </div>
           </motion.div>
         </div>
+
+        {/* --- SEO & INFO BÖLÜMÜ --- */}
+        <div className="mt-20 mb-10 max-w-4xl mx-auto px-4">
+          <div className="bg-white dark:bg-slate-900/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+              Your All-in-One AI Productivity Workspace
+            </h2>
+            <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400">
+              <p>
+                Welcome to <strong>UtilityGenAI</strong>, the ultimate collection of free artificial intelligence tools designed to streamline your digital workflow. In an era where efficiency is key, we provide a unified platform where students, developers, marketers, and content creators can access powerful AI models without the complexity.
+              </p>
+              
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2">Why Choose UtilityGenAI?</h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li><strong>100% Free Access:</strong> No subscriptions, no credit cards, no hidden fees. Democratizing AI for everyone.</li>
+                <li><strong>Privacy First:</strong> We do not store your inputs. Your data is processed securely and discarded instantly.</li>
+                <li><strong>Specialized Tools:</strong> Unlike generic chatbots, our tools are fine-tuned for specific tasks—from <a href="/tool/email-generator" className="text-indigo-600 hover:underline">email writing</a> to <a href="/tool/code-explainer" className="text-indigo-600 hover:underline">code debugging</a>.</li>
+              </ul>
+
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mt-6 mb-2">Our Mission</h3>
+              <p>
+                We believe that the future of work is a collaboration between human creativity and artificial intelligence. Our mission is to build the most accessible "utility belt" for the modern web, helping you save hours every week on repetitive tasks so you can focus on what truly matters.
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* --- SEO BÖLÜMÜ SONU --- */}
         
       </div>
     </WorkspaceLayout>
