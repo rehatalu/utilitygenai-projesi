@@ -52,7 +52,8 @@ export default function Header() {
           })}
         </nav>
 
-        {/* Sağ: Search İkonu */}
+        {/* Sağ: Search İkonu (GEÇİCİ OLARAK KALDIRILDI - ADSENSE İÇİN) */}
+        {/* 
         <div className="flex items-center justify-end w-8 md:w-auto">
             <button 
                 className="p-2 text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -61,6 +62,7 @@ export default function Header() {
                 <HiSearch className="w-5 h-5" />
             </button>
         </div>
+        */}
         
       </div>
     </header>
