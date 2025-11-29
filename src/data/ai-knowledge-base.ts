@@ -2,7 +2,7 @@ export interface AITool {
   id: string;
   name: string;
   category: 'LLM' | 'Coding' | 'Image' | 'Video' | 'Writing' | 'Productivity';
-  pricingModel: 'Free' | 'Freemium' | 'Paid';
+  pricingModel: 'Free' | 'Freemium' | 'Paid' | 'TBA' | 'Waitlist';
   startingPrice: string;
   contextWindow: string;
   keyFeatures: string[];
