@@ -37,8 +37,8 @@ const toolCategories = [
     items: [
       { slug: 'social-post', name: 'Social Post Generator', icon: ChatBubbleOvalLeftEllipsisIcon },
       { slug: 'hashtag-generator', name: 'Hashtag Generator', icon: HashtagIcon },
-      { slug: 'instagram-caption', name: 'Instagram Caption Generator', icon: CameraIcon },
-      { slug: 'youtube-ideas', name: 'YouTube Idea Generator', icon: VideoCameraIcon },
+      { slug: 'instagram-caption', name: 'Instagram Captions', icon: CameraIcon },
+      { slug: 'youtube-ideas', name: 'YouTube Ideas', icon: VideoCameraIcon },
     ]
   },
   {
@@ -46,7 +46,7 @@ const toolCategories = [
     items: [
       { slug: 'meta-description', name: 'Meta Generator', icon: TagIcon },
       { slug: 'product-description', name: 'Product Generator', icon: ShoppingCartIcon },
-      { slug: 'business-name', name: 'Business Name Generator', icon: BriefcaseIcon },
+      { slug: 'business-name', name: 'Business Name', icon: BriefcaseIcon },
     ]
   },
   {
