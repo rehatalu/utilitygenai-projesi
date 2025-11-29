@@ -146,7 +146,7 @@ export const aiTools: AITool[] = [
     contextWindow: "N/A",
     keyFeatures: ["Conversational Prompting", "Text Rendering", "Easy to Use"],
     pros: ["Easiest to use", "Good at following instructions", "Text looks good"],
-    cons: [""Digital" look", "Strict censorship"],
+    cons: ["Digital look", "Strict censorship"],
     bestFor: "Beginners & Specifics"
   },
   {
