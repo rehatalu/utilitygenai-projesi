@@ -8,7 +8,7 @@ const navLinks = [
   { name: 'Tools', href: '/#tools-section' },
   { name: 'News', href: '/news' },
   { name: 'Reviews', href: '/reviews' },
-  { name: 'Guides', href: '/guides' },
+  { name: 'Find Your Stack', href: '/sector-finder' }, // Yeni Link
   { name: 'Blog', href: '/blog' },
 ];
 
@@ -25,7 +25,7 @@ export default function Header() {
         {/* Orta: Navigasyon */}
         <nav className="hidden md:flex items-center gap-1 mx-auto bg-slate-100/50 dark:bg-slate-900/50 p-1 rounded-full border border-slate-200 dark:border-slate-800">
           {navLinks.map((link) => {
-            const isActive = link.href === '/' ? pathname === '/' : pathname.startsWith(link.href);
+            const isActive = link.href.startsWith('/#') ? false : pathname.startsWith(link.href);
             
             return (
               <Link
