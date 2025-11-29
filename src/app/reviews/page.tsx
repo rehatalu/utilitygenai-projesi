@@ -29,7 +29,7 @@ function ReviewsContent() {
     const paramB = searchParams.get('toolB');
     const catParam = searchParams.get('category');
 
-    if (catParam && categories.includes(catParam)) {
+    if (catParam && categories.includes(catParam as any)) {
         setSelectedCategory(catParam);
     }
 
