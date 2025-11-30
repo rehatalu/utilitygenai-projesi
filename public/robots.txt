@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.utilitygenai.com
+
+# Sitemaps
+Sitemap: https://www.utilitygenai.com/sitemap.xml
