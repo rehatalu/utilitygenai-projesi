@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import "./main.css"; // 'main.css' kullanıyoruz
 import UgaAssistant from "@/components/layout/UgaAssistant";
 
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleAdSense } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["600", "700"], display: "swap" });
@@ -30,11 +30,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="">
-      <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7523987710595128" crossOrigin="anonymous"></script>
-      </head>
       
-      <body 
+      
+      <body
         className={`${inter.variable} ${sora.variable} antialiased 
                     bg-white text-slate-900 
                     dark:bg-[#0B1120] dark:text-slate-300 
@@ -73,6 +71,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         
         <UgaAssistant />
         <GoogleAnalytics gaId="G-L2PRX13BD3" />
+        <GoogleAdSense publisherId="pub-7523987710595128" />
       </body>
     </html>
   );
