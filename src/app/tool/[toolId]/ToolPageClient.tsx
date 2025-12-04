@@ -190,6 +190,18 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
                 <Accordion items={data.faq} />
             </div>
 
+            <div className="w-full text-center py-8 mb-4">
+              <p className="text-sm text-slate-400">
+                Want to master your workflow? 
+                <Link 
+                  href="/blog" 
+                  className="ml-2 text-indigo-400 hover:text-indigo-300 hover:underline transition-colors font-medium"
+                >
+                  Read our AI Guides &rarr;
+                </Link>
+              </p>
+            </div>
+
           </motion.div>
         </AnimatePresence>
       </div>
