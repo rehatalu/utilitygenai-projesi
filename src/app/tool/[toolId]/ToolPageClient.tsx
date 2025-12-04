@@ -170,18 +170,6 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
                 </div>
             </div>
 
-            <div className="mt-16 mb-4 text-center">
-              <p className="text-sm text-gray-500">
-                Want to get better results manually? 
-                <Link 
-                  href="/blog" 
-                  className="ml-1 text-indigo-500 hover:text-indigo-400 hover:underline transition-colors"
-                >
-                  Read our Cold Email Guide &rarr;
-                </Link>
-              </p>
-            </div>
-
             {/* --- SECTION 4: FAQ --- */}
             <div className="max-w-3xl mx-auto">
                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-8">
@@ -190,7 +178,7 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
                 <Accordion items={data.faq} />
             </div>
 
-            <div className="w-full text-center py-8 mb-4">
+            <div className="w-full text-center py-4 mt-auto"> {/* mt-auto pushes it to the bottom */}
               <p className="text-sm text-slate-400">
                 Want to master your workflow? 
                 <Link 
