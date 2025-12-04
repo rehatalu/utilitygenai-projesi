@@ -170,18 +170,14 @@ export default function ToolPageClient({ toolId }: ToolPageClientProps) {
                 </div>
             </div>
 
-            <div className="mt-12 mb-8 p-6 bg-slate-50/50 border border-slate-200 rounded-xl shadow-sm">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-2xl">💡</span>
-                <h3 className="font-bold text-slate-900">Pro Tip for Marketers</h3>
-              </div>
-              <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-                Generating content is just the first step. Learn how to optimize your workflow and increase your conversion rates in our latest guides.
+            <div className="mt-16 mb-4 text-center">
+              <p className="text-sm text-gray-500">
+                Want to get better results manually? 
                 <Link 
                   href="/blog" 
-                  className="text-indigo-600 font-semibold hover:text-indigo-700 hover:underline ml-1 inline-flex items-center gap-1 transition-colors"
+                  className="ml-1 text-indigo-500 hover:text-indigo-400 hover:underline transition-colors"
                 >
-                  Read AI Guides &rarr;
+                  Read our Cold Email Guide &rarr;
                 </Link>
               </p>
             </div>
