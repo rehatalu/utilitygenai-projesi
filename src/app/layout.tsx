@@ -6,7 +6,7 @@ import UgaAssistant from "@/components/layout/UgaAssistant";
 
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
-import { injectSpeedInsights } from "@vercel/speed-insights";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["600", "700"], display: "swap" });
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  injectSpeedInsights();
+  
   return (
     <html lang="en" className="">
       
@@ -74,6 +74,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </div>
         
         {children} 
+        <SpeedInsights />
         
         <UgaAssistant />
         <GoogleAnalytics gaId="G-L2PRX13BD3" />
