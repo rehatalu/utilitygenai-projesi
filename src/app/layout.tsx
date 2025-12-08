@@ -33,6 +33,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  injectSpeedInsights();
   return (
     <html lang="en" className="">
       
@@ -73,7 +74,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </div>
         
         {children} 
-        {injectSpeedInsights()}
         
         <UgaAssistant />
         <GoogleAnalytics gaId="G-L2PRX13BD3" />
