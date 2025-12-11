@@ -59,6 +59,20 @@ export default function Footer() {
 
         </div>
 
+        <div className="mt-4 flex justify-center md:justify-start">
+          <a 
+            href="https://www.saashub.com/utilitygenai?utm_source=badge&utm_campaign=badge&utm_content=utilitygenai&badge_variant=color&badge_kind=approved" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <img 
+              src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" 
+              alt="UtilityGenAI approved by SaaSHub" 
+              style={{ maxWidth: '150px' }} 
+            />
+          </a>
+        </div>
+
         <div className="pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500 dark:text-slate-500">
           <p>&copy; {currentYear} UtilityGenAI. All rights reserved.</p>
         </div>
