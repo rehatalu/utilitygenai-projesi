@@ -12,18 +12,20 @@ export default function AboutPage() {
 
         <section className="mb-12">
           <p className="text-lg text-center text-slate-600 dark:text-slate-300 leading-relaxed">
-            UtilityGenAI is a next-generation productivity platform designed to democratize access to artificial
-            intelligence tools. We believe that powerful AI should be accessible to everyone—students, freelancers, and
-            professionals—without paid subscriptions.
+            UtilityGenAI is your ultimate digital companion, designed to simplify the complex. In a world where time is
+            the most valuable asset, we provide a comprehensive suite of AI-powered tools that help you work smarter,
+            not harder. Whether you are a student, a creative professional, or an entrepreneur, our platform is built
+            to be the one-stop solution for your daily productivity needs.
           </p>
         </section>
 
         <section className="bg-slate-50 dark:bg-slate-900 p-8 rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 mb-12">
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6 text-center">Our Mission</h2>
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-center max-w-2xl mx-auto">
-            Our goal is to simplify daily digital tasks, from writing compelling content and efficient code to crafting
-            perfect emails, all through simple, fast, and completely free AI-powered tools. We are committed to
-            fostering innovation and creativity across the globe.
+            Our mission is simple: To give you back your time. We believe that powerful technology should be
+            accessible, intuitive, and indispensable. By combining dozens of essential utilities—from content
+            generation to code optimization—under one roof, we eliminate the need for multiple subscriptions and
+            complicated software. We are here to streamline your workflow so you can focus on what truly matters.
           </p>
         </section>
 
